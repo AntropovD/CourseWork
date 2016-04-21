@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace GeneticProgramming
+namespace GeneticProgramming.Map
 {
     public static class MapGenerator
     {
