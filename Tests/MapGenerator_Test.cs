@@ -62,6 +62,8 @@ namespace UnitTestProject1
 
             var allCoords = map.Enemies.Select(i => i).ToList();
             allCoords.AddRange(map.Obstacles);
+            allCoords.Add(map.Start);
+            allCoords.Add(map.Finish);
             
             Assert.IsTrue(allCoords.Distinct().Count() == allCoords.Count);
         }
