@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{0F6BC7B6-BB4D-43D9-B874-E045D7815E70}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GeneticProgramming</RootNamespace>
     <AssemblyName>GeneticProgramming</AssemblyName>
@@ -29,6 +29,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -43,12 +46,15 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Genetic\GeneticConfiguration.cs" />
     <Compile Include="Genetic\GeneticAlgorithm.cs" />
-    <Compile Include="Genetic\PanzerAlgorithm.cs" />
+    <Compile Include="Genetic\GeneticEngine\BaseGeneticEngine.cs" />
+    <Compile Include="Genetic\GeneticEngine\IGeneticEngine.cs" />
+    <Compile Include="Panzer\PanzerAlgorithm.cs" />
     <Compile Include="Genetic\Population.cs" />
     <Compile Include="Map\Coord.cs" />
     <Compile Include="Map\Map.cs" />
     <Compile Include="Map\MapGenerator.cs" />
     <Compile Include="Panzer\Panzer.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

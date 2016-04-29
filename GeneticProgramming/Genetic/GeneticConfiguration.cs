@@ -14,5 +14,9 @@ namespace GeneticProgramming.Genetic
 
         public double CrossoverProb = 0.90;
         public double MutationProb = 0.05;
+
+        public double PanmixiaRatio = 0.40;
+        public double InbreedRatio = 0.30;
+        public double OutbreedRatio = 0.30;
     }
 }
