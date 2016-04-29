@@ -33,8 +33,7 @@ namespace GeneticProgramming.Genetic
             return new PanzerAlgorithm(Enumerable
                 .Range(0, configuraion.InitialPopulationSize)
                 .Select(i => (Command) commands.GetValue(random.Next(commands.Length)))
-                .ToList(),
-                configuraion.MaximumPopulationSize);
+                .ToList());
         }
     }
 }

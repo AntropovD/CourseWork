@@ -5,15 +5,14 @@ namespace GeneticProgramming.Panzer
 {
     public class PanzerAlgorithm 
     {
-        private List<Command> commands;
-        private int maxCommandsSize;
+        public List<Command> commands;
 
-        public PanzerAlgorithm(List<Command> commands, int maxSize)
+        public PanzerAlgorithm(List<Command> commands)
         {
             this.commands = commands;
-            maxCommandsSize = maxSize;
         }
     }
+
     public enum Command
     {
         TurnLeft,

@@ -25,7 +25,7 @@ namespace GeneticProgramming.Genetic.GeneticEngine
 
             int crossoverCount = (int) (basePopulation.Count*configuration.CrossoverProb);
 
-            var methods = new CrossoverMethods();
+            var methods = new CrossoverMethods(configuration);
             
             resultPopulation.AddRange(methods.GetPanmixia(basePopulation));
             resultPopulation.AddRange(methods.GetInbreed(basePopulation));
