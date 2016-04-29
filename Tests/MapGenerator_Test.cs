@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using GeneticProgramming.Map;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
