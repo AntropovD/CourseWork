@@ -18,10 +18,10 @@ namespace GeneticProgramming.Genetic.GeneticEngine
             throw new NotImplementedException();
         }
 
-        public Population CrossPopulation(Population population)
+        public GeneticPopulation CrossPopulation(GeneticPopulation geneticPopulation)
         {
-            var basePopulation = new List<PanzerAlgorithm>(population.Species);
-            var resultPopulation = population.Species;
+            var basePopulation = new List<PanzerAlgorithm>(geneticPopulation.Species);
+            var resultPopulation = geneticPopulation.Species;
 
             int crossoverCount = (int) (basePopulation.Count*configuration.CrossoverProb);
 
@@ -40,15 +40,15 @@ namespace GeneticProgramming.Genetic.GeneticEngine
         
         
 
-        public Population MutatePopulation(Population population)
+        public GeneticPopulation MutatePopulation(GeneticPopulation geneticPopulation)
         {
-            var basePopulation = new List<PanzerAlgorithm>(population.Species);
+            var basePopulation = new List<PanzerAlgorithm>(geneticPopulation.Species);
             int mutationCount = (int)(basePopulation.Count * configuration.MutationProb);
 
             return null;
         }
 
-        public Population SelectPopulation(Population population)
+        public GeneticPopulation SelectPopulation(GeneticPopulation geneticPopulation)
         {
             throw new NotImplementedException();
         }

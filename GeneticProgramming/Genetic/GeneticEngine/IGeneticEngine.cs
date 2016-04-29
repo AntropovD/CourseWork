@@ -5,8 +5,8 @@ namespace GeneticProgramming.Genetic.GeneticEngine
     public interface IGeneticEngine
     {
         int FitnessFunction(PanzerAlgorithm panzerAlgorithm);
-        Population CrossPopulation(Population population);
-        Population MutatePopulation(Population population);
-        Population SelectPopulation(Population population);
+        GeneticPopulation CrossPopulation(GeneticPopulation geneticPopulation);
+        GeneticPopulation MutatePopulation(GeneticPopulation geneticPopulation);
+        GeneticPopulation SelectPopulation(GeneticPopulation geneticPopulation);
     }
 }

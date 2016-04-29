@@ -7,18 +7,18 @@ using GeneticProgramming.Panzer;
 
 namespace GeneticProgramming.Genetic
 {
-    public class Population
+    public class GeneticPopulation
     {
         private readonly GeneticConfiguration configuraion;
 
         public List<PanzerAlgorithm> Species { get; set; }
 
-        public Population(GeneticConfiguration configuration)
+        public GeneticPopulation(GeneticConfiguration configuration)
         {
             configuraion = configuration;
             InitiatePopulation();
         }
-
+        
         public void InitiatePopulation()
         {
             Species = new List<PanzerAlgorithm>();

@@ -11,7 +11,7 @@ namespace UnitTestProject1
         public void InitiatePopulation_should_return_population_size_from_config()
         {
             var config = new GeneticConfiguration();
-            var population = new Population(config);
+            var population = new GeneticPopulation(config);
             population.InitiatePopulation();
             Assert.AreEqual(config.InitialPopulationSize, population.Species.Count);
         }

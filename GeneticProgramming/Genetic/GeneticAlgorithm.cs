@@ -12,12 +12,12 @@ namespace GeneticProgramming.Genetic
     public class GeneticAlgorithm
     {
         public GeneticConfiguration GeneticConfiguration { get; private set; }
-        public Population Population { get; private set; }
+        public GeneticPopulation GeneticPopulation { get; private set; }
         public IGeneticEngine GeneticEngine { get; private set; }
 
         public GeneticAlgorithm(GeneticConfiguration configuration, IGeneticEngine geneticEngine)
         {
-            Population = new Population(configuration);
+            GeneticPopulation = new GeneticPopulation(configuration);
         }
     }
 }

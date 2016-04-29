@@ -18,10 +18,10 @@ namespace GeneticProgramming.Genetic.GeneticEngine
 
         public IEnumerable<PanzerAlgorithm> GetPanmixia(List<PanzerAlgorithm> basePopulation)
         {
-            int panmixiaxCount = (int)(basePopulation.Count * configuration.PanmixiaRatio);
+            int panmixiaCount = (int)(basePopulation.Count * configuration.PanmixiaRatio);
             var random = new Random(Guid.NewGuid().GetHashCode());
 
-            for (int i = 0; i < panmixiaxCount; i++)
+            for (int i = 0; i < panmixiaCount; i++)
             {
                 var specimen1 = basePopulation[random.Next(basePopulation.Count)];
                 var specimen2 = basePopulation[random.Next(basePopulation.Count)];
@@ -82,7 +82,8 @@ namespace GeneticProgramming.Genetic.GeneticEngine
         }
         public PanzerAlgorithm FindMostUnlikely(List<PanzerAlgorithm> basePopulation, PanzerAlgorithm specimen)
         {
-            return basePopulation.Min(algo => Tuple.Create(HammingDistance(algo, specimen), algo)).Item2;
+            var t = basePopulation.Max(algo => Tuple.Create(-HammingDistance(algo, specimen), algo));
+            return t.Item2;
         }
 
         public int HammingDistance(PanzerAlgorithm algo, PanzerAlgorithm specimen)
@@ -91,7 +92,7 @@ namespace GeneticProgramming.Genetic.GeneticEngine
             for (int i = 0; i < Math.Min(algo.commands.Count, specimen.commands.Count); i++)
                 if (algo.commands[i] == specimen.commands[i])
                     count++;
-            return count;
+            return count == algo.commands.Count ? 0 : count;
         }
     }
 }
