@@ -69,8 +69,8 @@ namespace GeneticProgramming.Genetic.GeneticEngine
                 secondIndex -= diff << 1;
             }
 
-            var firstPart = specimen1.commands.GetRange(0, firstIndex);
-            var secondPart = specimen2.commands.GetRange(secondIndex, specimen2.commands.Count - secondIndex);
+            var firstPart = specimen1.commands.Take(firstIndex).ToList();
+            var secondPart = specimen2.commands.Skip(specimen2.commands.Count - secondIndex).Take(secondIndex);
             firstPart.AddRange(secondPart);
             
             return new PanzerAlgorithm(firstPart);
@@ -78,12 +78,13 @@ namespace GeneticProgramming.Genetic.GeneticEngine
         
         public PanzerAlgorithm FindMostLikely(List<PanzerAlgorithm> basePopulation, PanzerAlgorithm specimen)
         {
-            return basePopulation.Max(algo => Tuple.Create(HammingDistance(algo, specimen), algo)).Item2;
+            return basePopulation.Where(algo => algo != specimen)
+                    .Max(algo => Tuple.Create(HammingDistance(algo, specimen), algo)).Item2;
         }
         public PanzerAlgorithm FindMostUnlikely(List<PanzerAlgorithm> basePopulation, PanzerAlgorithm specimen)
         {
-            var t = basePopulation.Max(algo => Tuple.Create(-HammingDistance(algo, specimen), algo));
-            return t.Item2;
+            return basePopulation.Where(algo => algo != specimen)
+                    .Min(algo => Tuple.Create(HammingDistance(algo, specimen), algo)).Item2;
         }
 
         public int HammingDistance(PanzerAlgorithm algo, PanzerAlgorithm specimen)
@@ -92,7 +93,7 @@ namespace GeneticProgramming.Genetic.GeneticEngine
             for (int i = 0; i < Math.Min(algo.commands.Count, specimen.commands.Count); i++)
                 if (algo.commands[i] == specimen.commands[i])
                     count++;
-            return count == algo.commands.Count ? 0 : count;
+            return count;
         }
     }
 }
