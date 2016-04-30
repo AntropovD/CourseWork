@@ -29,7 +29,8 @@ namespace UnitTestProject1
             var algo2 = new PanzerAlgorithm(new List<Command> {Command.MoveBackward, Command.MoveBackward, Command.Stay});
             var algo3 = new PanzerAlgorithm(new List<Command> {Command.TurnLeft, Command.TurnLeft, Command.TurnLeft});
             var result = crossoverMethods.FindMostLikely(new List<PanzerAlgorithm> { algo1, algo2, algo3 }, algo1);
-            Assert.AreEqual(algo2, result);
+
+            CollectionAssert.AreEqual(algo3.commands, result.commands);
         }
 
         [TestMethod]
@@ -40,7 +41,8 @@ namespace UnitTestProject1
             var algo2 = new PanzerAlgorithm(new List<Command> { Command.MoveBackward, Command.MoveBackward, Command.Stay });
             var algo3 = new PanzerAlgorithm(new List<Command> { Command.TurnLeft, Command.TurnLeft, Command.TurnLeft });
             var result = crossoverMethods.FindMostUnlikely(new List<PanzerAlgorithm> { algo1, algo2, algo3 }, algo1);
-            Assert.AreEqual(algo3, result);
+
+            CollectionAssert.AreEqual(algo3.commands, result.commands);
         }
 
         [TestMethod]
