@@ -7,7 +7,7 @@ namespace GeneticProgramming.Map
     {
         public static Map GenerateMap(int width, int height, int obstaclesCount, int enemiesCount)
         {
-            var random = new Random();
+            var random = new Random(Guid.NewGuid().GetHashCode());
 
             var coordSequence = Enumerable.Range(0, width*height)
                 .OrderBy(i => random.Next())

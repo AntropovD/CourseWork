@@ -1,13 +1,10 @@
-﻿using GeneticProgramming.Genetic.GeneticEngine;
-using GeneticProgramming.NInject;
+﻿
 using log4net;
-using Ninject;
 
 namespace GeneticProgramming.Genetic
 {
     public class GeneticAlgorithm
     {
-        public static IKernel AppKernel;
         private GeneticConfiguration configuration;
 
         
@@ -17,7 +14,6 @@ namespace GeneticProgramming.Genetic
             LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public GeneticAlgorithm(GeneticConfiguration configuration)
         {
-            AppKernel = new StandardKernel(new BindingModule());
             this.configuration = configuration;
         }
 

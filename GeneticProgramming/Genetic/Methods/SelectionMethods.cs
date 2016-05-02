@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GeneticProgramming.Genetic.Methods
+﻿namespace GeneticProgramming.Genetic.Methods
 {
     public class SelectionMethods
     {
