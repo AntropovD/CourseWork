@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using System.Xml.Serialization;
+using GeneticProgramming.Genetic;
 using GeneticProgramming.NInject;
 using Ninject;
 
@@ -11,12 +9,15 @@ namespace GeneticProgramming
 {
     public class Program
     {
-        public static IKernel AppKernel;
+        private const string ConfigFilename = "config.xml";
 
         public static void Main()
         {
-            AppKernel = new StandardKernel(new BindingModule());
             Console.WriteLine("Hello genetic algorithms!");
+
+            var configuration = GeneticConfiguration.DeserializeFromFile(ConfigFilename);
+            var t = new GeneticAlgorithm(configuration);
+            t.Run();
         }
     }
 }

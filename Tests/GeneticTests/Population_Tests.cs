@@ -1,5 +1,4 @@
-﻿using System;
-using GeneticProgramming.Genetic;
+﻿using GeneticProgramming.Genetic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTestProject1

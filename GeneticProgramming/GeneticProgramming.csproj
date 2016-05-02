@@ -47,12 +47,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Auxillary\MyRandom.cs" />
+    <Compile Include="Randomizer\GuidRandom.cs" />
     <Compile Include="Genetic\GeneticConfiguration.cs" />
     <Compile Include="Genetic\GeneticAlgorithm.cs" />
     <Compile Include="Genetic\GeneticEngine\BaseGeneticEngine.cs" />
-    <Compile Include="Genetic\GeneticEngine\CrossoverMethods.cs" />
+    <Compile Include="Genetic\Methods\CrossoverMethods.cs" />
     <Compile Include="Genetic\GeneticEngine\IGeneticEngine.cs" />
+    <Compile Include="Genetic\Methods\MutationMethods.cs" />
+    <Compile Include="Genetic\Methods\SelectionMethods.cs" />
     <Compile Include="NInject\BindingModule.cs" />
     <Compile Include="Panzer\PanzerAlgorithm.cs" />
     <Compile Include="Genetic\GeneticPopulation.cs" />
@@ -67,7 +69,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="config.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,6 +1,4 @@
-﻿using GeneticProgramming.Genetic;
-
-namespace GeneticProgramming.Panzer
+﻿namespace GeneticProgramming.Panzer
 {
     public class Panzer
     {
@@ -8,7 +6,6 @@ namespace GeneticProgramming.Panzer
         public int CoordY { get; private set; }
         public Direction Direction { get; private set; }
         public PanzerAlgorithm PanzerAlgorithm { get; private set; }
-
 
         private bool IsAlive = true;
         public int VisibilityRadius = 6;

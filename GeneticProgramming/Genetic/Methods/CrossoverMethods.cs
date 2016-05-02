@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GeneticProgramming.Panzer;
 
 namespace GeneticProgramming.Genetic.GeneticEngine
@@ -18,7 +16,7 @@ namespace GeneticProgramming.Genetic.GeneticEngine
 
         public IEnumerable<PanzerAlgorithm> GetPanmixia(List<PanzerAlgorithm> basePopulation)
         {
-            int panmixiaCount = (int)(basePopulation.Count * configuration.PanmixiaRatio);
+            int panmixiaCount = (int)(basePopulation.Count * configuration.PanmixiaRatio * configuration.CrossoverProb);
             var random = new Random(Guid.NewGuid().GetHashCode());
 
             for (int i = 0; i < panmixiaCount; i++)
@@ -31,7 +29,7 @@ namespace GeneticProgramming.Genetic.GeneticEngine
 
         public IEnumerable<PanzerAlgorithm> GetInbreed(List<PanzerAlgorithm> basePopulation)
         {
-            int inbreedCount = (int) (basePopulation.Count*configuration.InbreedRatio);
+            int inbreedCount = (int) (basePopulation.Count * configuration.InbreedRatio * configuration.CrossoverProb);
             var random = new Random(Guid.NewGuid().GetHashCode());
 
             for (int i = 0; i < inbreedCount; i++)
@@ -44,7 +42,7 @@ namespace GeneticProgramming.Genetic.GeneticEngine
 
         public IEnumerable<PanzerAlgorithm> GetOutbreed(List<PanzerAlgorithm> basePopulation)
         {
-            int outbreedCount = (int) (basePopulation.Count*configuration.OutbreedRatio);
+            int outbreedCount = (int) (basePopulation.Count * configuration.OutbreedRatio * configuration.CrossoverProb);
             var random = new Random(Guid.NewGuid().GetHashCode());
 
             for (int i = 0; i < outbreedCount; i++)
@@ -94,6 +92,23 @@ namespace GeneticProgramming.Genetic.GeneticEngine
                 if (algo.commands[i] == specimen.commands[i])
                     count++;
             return count;
+        }
+
+        public IEnumerable<PanzerAlgorithm> Mutate(List<PanzerAlgorithm> basePopulation, int mutationCount)
+        {
+            var random = new Random(Guid.NewGuid().GetHashCode());
+            var commands = Enum.GetValues(typeof (Command));
+
+            for (int i = 0; i < mutationCount; i++)
+            {
+                var rndAlgorithm = basePopulation[random.Next(basePopulation.Count)];
+                int changesCount = random.Next(rndAlgorithm.commands.Count);
+
+                for (int j = 0; j < changesCount; j++)
+                    rndAlgorithm.commands[random.Next(rndAlgorithm.commands.Count)] = 
+                        (Command) commands.GetValue(random.Next(commands.Length));
+                yield return rndAlgorithm;
+            }
         }
     }
 }

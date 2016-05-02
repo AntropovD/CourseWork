@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
+using System.Xml.Serialization;
 
 namespace GeneticProgramming.Genetic
 {
+    [Serializable]
     public class GeneticConfiguration
     {
         public int InitialPopulationSize = 16;
@@ -18,5 +17,26 @@ namespace GeneticProgramming.Genetic
         public double PanmixiaRatio = 0.40;
         public double InbreedRatio = 0.30;
         public double OutbreedRatio = 0.30;
+
+
+        public void SerializeToFile(string filename)
+        {
+            var formatter = new XmlSerializer(typeof(GeneticConfiguration));
+            using (var fs = new FileStream(filename, FileMode.OpenOrCreate))
+            {
+                formatter.Serialize(fs, this);
+            }
+        }
+
+        public static GeneticConfiguration DeserializeFromFile(string filename)
+        {
+            GeneticConfiguration result;
+            var formatter = new XmlSerializer(typeof(GeneticConfiguration));
+            using (FileStream fs = new FileStream(filename, FileMode.OpenOrCreate))
+            {
+                result = (GeneticConfiguration) formatter.Deserialize(fs);
+            }
+            return result;
+        }
     }
 }

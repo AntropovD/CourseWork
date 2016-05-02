@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using GeneticProgramming.Genetic;
 using GeneticProgramming.Genetic.GeneticEngine;
@@ -30,7 +29,7 @@ namespace UnitTestProject1
             var algo3 = new PanzerAlgorithm(new List<Command> {Command.TurnLeft, Command.TurnLeft, Command.TurnLeft});
             var result = crossoverMethods.FindMostLikely(new List<PanzerAlgorithm> { algo1, algo2, algo3 }, algo1);
 
-            CollectionAssert.AreEqual(algo3.commands, result.commands);
+            CollectionAssert.AreEqual(algo2.commands, result.commands);
         }
 
         [TestMethod]
