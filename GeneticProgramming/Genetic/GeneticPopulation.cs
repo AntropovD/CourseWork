@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using GeneticProgramming.Panzer;
+using GeneticProgramming.Randomizer;
+using Ninject;
 
 namespace GeneticProgramming.Genetic
 {
@@ -28,6 +30,7 @@ namespace GeneticProgramming.Genetic
         {
             var commands = Enum.GetValues(typeof (Command));
             var random = new Random(Guid.NewGuid().GetHashCode());
+
             return new PanzerAlgorithm(Enumerable
                 .Range(0, configuraion.InitialPopulationSize)
                 .Select(i => (Command) commands.GetValue(random.Next(commands.Length)))
