@@ -2,7 +2,7 @@
 using GeneticProgramming.Map;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace UnitTestProject1
+namespace Tests
 {
     [TestClass]
     public class MapGenerator_Test
@@ -36,7 +36,6 @@ namespace UnitTestProject1
         }
 
         [TestMethod]
-        [TestCategory("Unique members")]
         public void MapGenerator_should_return_all_different_coords_in_enemies()
         {
             var map = MapGenerator.GenerateMap(10, 20, 3, 5);
@@ -45,7 +44,6 @@ namespace UnitTestProject1
         }
 
         [TestMethod]
-        [TestCategory("Unique members")]
         public void MapGenerator_should_return_all_different_coords_in_obstacles()
         {
             var map = MapGenerator.GenerateMap(10, 20, 3, 5);
@@ -54,7 +52,6 @@ namespace UnitTestProject1
         }
 
         [TestMethod]
-        [TestCategory("Unique members")]
         public void MapGenerator_should_return_all_different_coords()
         {
             var map = MapGenerator.GenerateMap(10, 20, 3, 5);

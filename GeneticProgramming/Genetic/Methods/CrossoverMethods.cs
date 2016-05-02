@@ -93,22 +93,6 @@ namespace GeneticProgramming.Genetic.GeneticEngine
                     count++;
             return count;
         }
-
-        public IEnumerable<PanzerAlgorithm> Mutate(List<PanzerAlgorithm> basePopulation, int mutationCount)
-        {
-            var random = new Random(Guid.NewGuid().GetHashCode());
-            var commands = Enum.GetValues(typeof (Command));
-
-            for (int i = 0; i < mutationCount; i++)
-            {
-                var rndAlgorithm = basePopulation[random.Next(basePopulation.Count)];
-                int changesCount = random.Next(rndAlgorithm.commands.Count);
-
-                for (int j = 0; j < changesCount; j++)
-                    rndAlgorithm.commands[random.Next(rndAlgorithm.commands.Count)] = 
-                        (Command) commands.GetValue(random.Next(commands.Length));
-                yield return rndAlgorithm;
-            }
-        }
+      
     }
 }

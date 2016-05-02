@@ -13,11 +13,9 @@ namespace GeneticProgramming
 
         public static void Main()
         {
-            Console.WriteLine("Hello genetic algorithms!");
-
             var configuration = GeneticConfiguration.DeserializeFromFile(ConfigFilename);
-            var t = new GeneticAlgorithm(configuration);
-            t.Run();
+            var geneticAlgorithm = new GeneticAlgorithm(configuration);
+            geneticAlgorithm.Run();
         }
     }
 }

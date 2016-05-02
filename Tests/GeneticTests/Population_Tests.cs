@@ -1,7 +1,7 @@
 ﻿using GeneticProgramming.Genetic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace UnitTestProject1
+namespace Tests.GeneticTests
 {
     [TestClass]
     public class Population_Tests
@@ -12,6 +12,7 @@ namespace UnitTestProject1
             var config = new GeneticConfiguration();
             var population = new GeneticPopulation(config);
             population.InitiatePopulation();
+            
             Assert.AreEqual(config.InitialPopulationSize, population.Species.Count);
         }
     }
