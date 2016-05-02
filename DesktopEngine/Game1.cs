@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace DesktopEngine
 {
-    public class Game1 : Microsoft.Xna.Framework.Game
+    public class Game1 : Game
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
@@ -38,7 +38,7 @@ namespace DesktopEngine
         {
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                this.Exit();
+                Exit();
 
             //Keyboard.GetState().IsKeyDown()
 

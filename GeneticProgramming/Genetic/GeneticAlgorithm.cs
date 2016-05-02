@@ -1,7 +1,7 @@
 ﻿using GeneticProgramming.Genetic.GeneticEngine;
 using GeneticProgramming.NInject;
+using log4net;
 using Ninject;
-using NLog;
 
 namespace GeneticProgramming.Genetic
 {
@@ -12,17 +12,17 @@ namespace GeneticProgramming.Genetic
         //public GeneticPopulation GeneticPopulation { get; private set; }
         //public IGeneticEngine GeneticEngine { get; private set; }
 
-        public Logger logger = LogManager.GetCurrentClassLogger();
+        private static readonly ILog log =
+            LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         public GeneticAlgorithm(GeneticConfiguration configuration)
         {
           //  GeneticPopulation = new GeneticPopulation(configuration);
             AppKernel = new StandardKernel(new BindingModule());
-            var logger = LogManager.GetCurrentClassLogger();
         }
 
         public void Run()
         {
-          //  logger.Info("Start Genetic Programming");
+            log.Info("Start Genetic Programming");
         }
     }
 }
