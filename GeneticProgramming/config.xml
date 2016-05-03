@@ -1,8 +1,7 @@
 <?xml version="1.0"?>
 <GeneticConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <InitialPopulationSize>16</InitialPopulationSize>
-  <MaximumPopulationSize>64</MaximumPopulationSize>
-  <MaximumProgramSize>128</MaximumProgramSize>
+  <PopulationSize>32</PopulationSize>
+  <MaxStrategySize>128</MaxStrategySize>
   
   <CrossoverProb>0.9</CrossoverProb>
   <MutationProb>0.05</MutationProb>

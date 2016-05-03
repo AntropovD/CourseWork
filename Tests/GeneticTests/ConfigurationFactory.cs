@@ -8,9 +8,8 @@ namespace Tests.GeneticTests
         {
             return new GeneticConfiguration
             {
-                InitialPopulationSize = 16,
-                MaximumPopulationSize = 64,
-                MaximumProgramSize = 128,
+                PopulationSize = 64,
+                MaxStrategySize = 128,
                 CrossoverProb = 0.9,
                 MutationProb = 0.05,
                 PanmixiaRatio = 0.4,

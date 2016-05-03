@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using GeneticProgramming.Genetic.Methods;
 using GeneticProgramming.Tank;
 
@@ -10,54 +11,45 @@ namespace GeneticProgramming.Genetic.GeneticEngine
         private GeneticConfiguration configuration;
 
         private CrossoverMethods crossoverMethods;
-        private MutationMethods mutationMethods;
+        private Mutation mutation;
         private SelectionMethods selectionMethods;
 
         public BaseGeneticEngine(GeneticConfiguration configuration)
         {
             this.configuration = configuration;
             crossoverMethods = new CrossoverMethods(configuration);
+            mutation = new Mutation();
+            selectionMethods = new SelectionMethods();
         }
         public int FitnessFunction(TankStrategy tankStrategy)
         {
-            throw new NotImplementedException();
+            return new Random(Guid.NewGuid().GetHashCode()).Next();
         }
 
-        public GeneticPopulation CrossoverPopulation(GeneticPopulation geneticPopulation)
+        public List<TankStrategy> CrossoverPopulation(List<TankStrategy> strategies)
         {
-            var basePopulation = new List<TankStrategy>(geneticPopulation.Species);
-            var resultPopulation = geneticPopulation.Species;
-            
-            resultPopulation.AddRange(crossoverMethods.GetPanmixia(basePopulation));
-            resultPopulation.AddRange(crossoverMethods.GetInbreed(basePopulation));
-            resultPopulation.AddRange(crossoverMethods.GetOutbreed(basePopulation));
-
-            geneticPopulation.Species = resultPopulation;
-            return geneticPopulation;;
+            strategies.AddRange(crossoverMethods.GetPanmixia(strategies));
+            strategies.AddRange(crossoverMethods.GetInbreed(strategies));
+            strategies.AddRange(crossoverMethods.GetOutbreed(strategies));
+            return strategies;
         }
 
-        public GeneticPopulation MutatePopulation(GeneticPopulation geneticPopulation)
-        {
-            
-            var basePopulation = new List<TankStrategy>(geneticPopulation.Species);
-            int mutationCount = (int)(basePopulation.Count * configuration.MutationProb);
-
-            var mutatedSpecies = mutationMethods.GetMutatedSpecies(basePopulation, mutationCount);
-
-            //var resultPopulation = geneticPopulation.Species.Add(CrossoverMethods.);
-
-
-            return null;
+        public List<TankStrategy> MutatePopulation(List<TankStrategy> strategies)
+        { 
+            int mutationCount = (int)(strategies.Count * configuration.MutationProb);
+            var mutatedSpecies = mutation.GetMutatedSpecies(strategies, mutationCount);
+            strategies.AddRange(mutatedSpecies);
+            return strategies;
         }
 
-        public GeneticPopulation SelectPopulation(GeneticPopulation geneticPopulation)
+        public Dictionary<TankStrategy, int> SelectPopulation(List<TankStrategy> strategies)
         {
             throw new NotImplementedException();
         }
 
-        public Dictionary<TankStrategy, int> GetFitnessDictionary(List<TankStrategy> totalPopulation)
+        public Dictionary<TankStrategy, int> GetFitnessDictionary(IEnumerable<TankStrategy> totalPopulation)
         {
-            throw new NotImplementedException();
+            return totalPopulation.ToDictionary(tankStrategy => tankStrategy, FitnessFunction);
         }
     }
 }

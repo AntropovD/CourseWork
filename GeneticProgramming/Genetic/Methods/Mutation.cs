@@ -4,7 +4,7 @@ using GeneticProgramming.Tank;
 
 namespace GeneticProgramming.Genetic.Methods
 {
-    public class MutationMethods
+    public class Mutation
     {
         public IEnumerable<TankStrategy> GetMutatedSpecies(List<TankStrategy> basePopulation, int mutationCount)
         {

@@ -52,10 +52,10 @@
     <Compile Include="Genetic\GeneticEngine\BaseGeneticEngine.cs" />
     <Compile Include="Genetic\Methods\CrossoverMethods.cs" />
     <Compile Include="Genetic\GeneticEngine\IGeneticEngine.cs" />
-    <Compile Include="Genetic\Methods\MutationMethods.cs" />
+    <Compile Include="Genetic\Methods\PopulationInitializer.cs" />
+    <Compile Include="Genetic\Methods\Mutation.cs" />
     <Compile Include="Genetic\Methods\SelectionMethods.cs" />
     <Compile Include="Tank\TankStrategy.cs" />
-    <Compile Include="Genetic\GeneticPopulation.cs" />
     <Compile Include="Map\Coord.cs" />
     <Compile Include="Map\Map.cs" />
     <Compile Include="Map\MapGenerator.cs" />
@@ -72,6 +72,7 @@
   <ItemGroup>
     <Content Include="config.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -7,10 +7,9 @@ namespace GeneticProgramming.Genetic
     [Serializable]
     public class GeneticConfiguration
     {
-        public int InitialPopulationSize;
-        public int MaximumPopulationSize;
-        public int MaximumProgramSize;
-
+        public int PopulationSize;
+        public int MaxStrategySize;
+        
         public double CrossoverProb;
         public double MutationProb;
 

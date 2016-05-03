@@ -9,12 +9,12 @@ namespace Tests.GeneticTests
     [TestClass]
     public class MutationMethods_Test
     {
-        private MutationMethods mutationMethods;
+        private Mutation mutation;
 
         [TestInitialize]
         public void TestInitialize()
         {
-            mutationMethods = new MutationMethods();
+            mutation = new Mutation();
         }
 
         [TestMethod]
@@ -26,7 +26,7 @@ namespace Tests.GeneticTests
                 new TankStrategy(new List<Command> {Command.MoveForward, Command.MoveForward})
             };
 
-            var mutatedSpecies = mutationMethods.GetMutatedSpecies(population, 2);
+            var mutatedSpecies = mutation.GetMutatedSpecies(population, 2);
             Assert.AreEqual(2, mutatedSpecies.Count());
         }
     }
