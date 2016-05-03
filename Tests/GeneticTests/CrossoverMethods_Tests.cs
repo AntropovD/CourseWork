@@ -25,7 +25,7 @@ namespace Tests.GeneticTests
             var algo1 = new TankStrategy(new List<Command> {Command.MoveBackward, Command.MoveBackward, Command.Shoot});
             var algo2 = new TankStrategy(new List<Command> {Command.MoveBackward, Command.MoveBackward, Command.Stay});
             var algo3 = new TankStrategy(new List<Command> {Command.TurnLeft, Command.TurnLeft, Command.TurnLeft});
-            var result = crossoverMethods.FindMostLikely(new List<TankStrategy> { algo1, algo2, algo3 }, algo1);
+            var result = algo1.FindMostLikely(new List<TankStrategy> { algo1, algo2, algo3 });
 
             CollectionAssert.AreEqual(algo2.commands, result.commands);
         }
@@ -36,7 +36,7 @@ namespace Tests.GeneticTests
             var algo1 = new TankStrategy(new List<Command> { Command.MoveBackward, Command.MoveBackward, Command.Shoot });
             var algo2 = new TankStrategy(new List<Command> { Command.MoveBackward, Command.MoveBackward, Command.Stay });
             var algo3 = new TankStrategy(new List<Command> { Command.TurnLeft, Command.TurnLeft, Command.TurnLeft });
-            var result = crossoverMethods.FindMostUnlikely(new List<TankStrategy> { algo1, algo2, algo3 }, algo1);
+            var result = algo2.FindMostUnlikely(new List<TankStrategy> { algo1, algo2, algo3 });
 
             CollectionAssert.AreEqual(algo3.commands, result.commands);
         }
@@ -46,7 +46,7 @@ namespace Tests.GeneticTests
         {
             var algo1 = new TankStrategy(Enumerable.Range(0, configuration.MaximumProgramSize).Select(i => Command.MoveForward));
             var algo2 = new TankStrategy(Enumerable.Range(0, configuration.MaximumProgramSize).Select(i => Command.Shoot));
-            var result = crossoverMethods.CrossoverSpecies(algo1, algo2);
+            var result = algo1.Crossover(algo2, configuration.MaximumProgramSize);
             Assert.IsTrue(result.commands.Count < configuration.MaximumProgramSize);
         }
 
@@ -55,7 +55,7 @@ namespace Tests.GeneticTests
         {
             var algo1 = new TankStrategy(new List<Command> { Command.MoveBackward, Command.Shoot, Command.MoveForward });
             var algo2 = new TankStrategy(new List<Command> { Command.MoveBackward, Command.Shoot, Command.MoveForward });
-            var result = crossoverMethods.HammingDistance(algo1, algo2);
+            var result = algo1.HammingDistance(algo2);
             Assert.AreEqual(3, result);
         }
 
@@ -64,7 +64,7 @@ namespace Tests.GeneticTests
         {
             var algo1 = new TankStrategy(new List<Command> { Command.MoveBackward, Command.Shoot, Command.MoveForward });
             var algo2 = new TankStrategy(new List<Command> { Command.MoveBackward, Command.Stay, Command.MoveForward });
-            var result = crossoverMethods.HammingDistance(algo1, algo2);
+            var result = algo1.HammingDistance(algo2);
             Assert.AreEqual(2, result);
         }
 
@@ -73,7 +73,7 @@ namespace Tests.GeneticTests
         {
             var algo1 = new TankStrategy(new List<Command> { Command.MoveBackward, Command.Shoot });
             var algo2 = new TankStrategy(new List<Command> { Command.Stay, Command.MoveForward });
-            var result = crossoverMethods.HammingDistance(algo1, algo2);
+            var result = algo1.HammingDistance(algo2);
             Assert.AreEqual(0, result);
         }
     }

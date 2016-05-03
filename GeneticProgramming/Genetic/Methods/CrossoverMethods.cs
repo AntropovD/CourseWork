@@ -23,7 +23,7 @@ namespace GeneticProgramming.Genetic.GeneticEngine
             {
                 var strategy1 = basePopulation[random.Next(basePopulation.Count)];
                 var strategy2 = basePopulation[random.Next(basePopulation.Count)];
-                yield return strategy1.CrossoverSpecies(strategy2, configuration.MaximumProgramSize);
+                yield return strategy1.Crossover(strategy2, configuration.MaximumProgramSize);
             }
         }
 
@@ -36,7 +36,7 @@ namespace GeneticProgramming.Genetic.GeneticEngine
             {
                 var strategy1 = basePopulation[random.Next(basePopulation.Count)];
                 var strategy2 = strategy1.FindMostLikely(basePopulation);
-                yield return strategy1.CrossoverSpecies(strategy2, configuration.MaximumProgramSize);
+                yield return strategy1.Crossover(strategy2, configuration.MaximumProgramSize);
             }
         }
 
@@ -49,7 +49,7 @@ namespace GeneticProgramming.Genetic.GeneticEngine
             {
                 var strategy1 = basePopulation[random.Next(basePopulation.Count)];
                 var strategy2 = strategy1.FindMostLikely(basePopulation);
-                yield return strategy1.CrossoverSpecies(strategy2, configuration.MaximumProgramSize);
+                yield return strategy1.Crossover(strategy2, configuration.MaximumProgramSize);
             }
         }
     }

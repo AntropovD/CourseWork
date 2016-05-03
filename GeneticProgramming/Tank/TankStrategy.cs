@@ -28,7 +28,7 @@ namespace GeneticProgramming.Tank
             this.commands = commands;
         }
 
-        public TankStrategy CrossoverSpecies(TankStrategy anotherStrategy, int maxSize)
+        public TankStrategy Crossover(TankStrategy anotherStrategy, int maxSize)
         {
             var random = new Random(Guid.NewGuid().GetHashCode());
             int firstIndex = random.Next(commands.Count);
