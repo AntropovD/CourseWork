@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using GeneticProgramming.Panzer;
+using GeneticProgramming.Tank;
 
 namespace GeneticProgramming.Genetic.Methods
 {
     public class MutationMethods
     {
-        public IEnumerable<PanzerAlgorithm> GetMutatedSpecies(List<PanzerAlgorithm> basePopulation, int mutationCount)
+        public IEnumerable<TankStrategy> GetMutatedSpecies(List<TankStrategy> basePopulation, int mutationCount)
         {
             var random = new Random(Guid.NewGuid().GetHashCode());
             var commands = Enum.GetValues(typeof(Command));

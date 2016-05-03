@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using GeneticProgramming.Panzer;
+using GeneticProgramming.Tank;
 
 namespace GeneticProgramming.Genetic.GeneticEngine
 {
@@ -14,7 +14,7 @@ namespace GeneticProgramming.Genetic.GeneticEngine
             this.configuration = configuration;
         }
 
-        public IEnumerable<PanzerAlgorithm> GetPanmixia(List<PanzerAlgorithm> basePopulation)
+        public IEnumerable<TankStrategy> GetPanmixia(List<TankStrategy> basePopulation)
         {
             int panmixiaCount = (int)(basePopulation.Count * configuration.PanmixiaRatio * configuration.CrossoverProb);
             var random = new Random(Guid.NewGuid().GetHashCode());
@@ -27,7 +27,7 @@ namespace GeneticProgramming.Genetic.GeneticEngine
             }
         }
 
-        public IEnumerable<PanzerAlgorithm> GetInbreed(List<PanzerAlgorithm> basePopulation)
+        public IEnumerable<TankStrategy> GetInbreed(List<TankStrategy> basePopulation)
         {
             int inbreedCount = (int) (basePopulation.Count * configuration.InbreedRatio * configuration.CrossoverProb);
             var random = new Random(Guid.NewGuid().GetHashCode());
@@ -40,7 +40,7 @@ namespace GeneticProgramming.Genetic.GeneticEngine
             }
         }
 
-        public IEnumerable<PanzerAlgorithm> GetOutbreed(List<PanzerAlgorithm> basePopulation)
+        public IEnumerable<TankStrategy> GetOutbreed(List<TankStrategy> basePopulation)
         {
             int outbreedCount = (int) (basePopulation.Count * configuration.OutbreedRatio * configuration.CrossoverProb);
             var random = new Random(Guid.NewGuid().GetHashCode());
@@ -53,7 +53,7 @@ namespace GeneticProgramming.Genetic.GeneticEngine
             }
         }
 
-        public PanzerAlgorithm CrossoverSpecies(PanzerAlgorithm specimen1, PanzerAlgorithm specimen2)
+        public TankStrategy CrossoverSpecies(TankStrategy specimen1, TankStrategy specimen2)
         {
             var random = new Random(Guid.NewGuid().GetHashCode());
             int firstIndex = random.Next(specimen1.commands.Count);
@@ -71,21 +71,21 @@ namespace GeneticProgramming.Genetic.GeneticEngine
             var secondPart = specimen2.commands.Skip(specimen2.commands.Count - secondIndex).Take(secondIndex);
             firstPart.AddRange(secondPart);
             
-            return new PanzerAlgorithm(firstPart);
+            return new TankStrategy(firstPart);
         }
         
-        public PanzerAlgorithm FindMostLikely(List<PanzerAlgorithm> basePopulation, PanzerAlgorithm specimen)
+        public TankStrategy FindMostLikely(List<TankStrategy> basePopulation, TankStrategy specimen)
         {
             return basePopulation.Where(algo => algo != specimen)
                     .Max(algo => Tuple.Create(HammingDistance(algo, specimen), algo)).Item2;
         }
-        public PanzerAlgorithm FindMostUnlikely(List<PanzerAlgorithm> basePopulation, PanzerAlgorithm specimen)
+        public TankStrategy FindMostUnlikely(List<TankStrategy> basePopulation, TankStrategy specimen)
         {
             return basePopulation.Where(algo => algo != specimen)
                     .Min(algo => Tuple.Create(HammingDistance(algo, specimen), algo)).Item2;
         }
 
-        public int HammingDistance(PanzerAlgorithm algo, PanzerAlgorithm specimen)
+        public int HammingDistance(TankStrategy algo, TankStrategy specimen)
         {
             int count = 0;
             for (int i = 0; i < Math.Min(algo.commands.Count, specimen.commands.Count); i++)

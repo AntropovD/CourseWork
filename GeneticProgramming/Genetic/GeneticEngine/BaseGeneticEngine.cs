@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using GeneticProgramming.Genetic.Methods;
-using GeneticProgramming.Panzer;
+using GeneticProgramming.Tank;
 
 namespace GeneticProgramming.Genetic.GeneticEngine
 {
@@ -18,14 +18,14 @@ namespace GeneticProgramming.Genetic.GeneticEngine
             this.configuration = configuration;
             crossoverMethods = new CrossoverMethods(configuration);
         }
-        public int FitnessFunction(PanzerAlgorithm panzerAlgorithm)
+        public int FitnessFunction(TankStrategy tankStrategy)
         {
             throw new NotImplementedException();
         }
 
         public GeneticPopulation CrossoverPopulation(GeneticPopulation geneticPopulation)
         {
-            var basePopulation = new List<PanzerAlgorithm>(geneticPopulation.Species);
+            var basePopulation = new List<TankStrategy>(geneticPopulation.Species);
             var resultPopulation = geneticPopulation.Species;
             
             resultPopulation.AddRange(crossoverMethods.GetPanmixia(basePopulation));
@@ -39,7 +39,7 @@ namespace GeneticProgramming.Genetic.GeneticEngine
         public GeneticPopulation MutatePopulation(GeneticPopulation geneticPopulation)
         {
             
-            var basePopulation = new List<PanzerAlgorithm>(geneticPopulation.Species);
+            var basePopulation = new List<TankStrategy>(geneticPopulation.Species);
             int mutationCount = (int)(basePopulation.Count * configuration.MutationProb);
 
             var mutatedSpecies = mutationMethods.GetMutatedSpecies(basePopulation, mutationCount);
@@ -51,6 +51,11 @@ namespace GeneticProgramming.Genetic.GeneticEngine
         }
 
         public GeneticPopulation SelectPopulation(GeneticPopulation geneticPopulation)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Dictionary<TankStrategy, int> GetFitnessDictionary(List<TankStrategy> totalPopulation)
         {
             throw new NotImplementedException();
         }

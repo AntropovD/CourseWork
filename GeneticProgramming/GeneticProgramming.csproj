@@ -54,12 +54,12 @@
     <Compile Include="Genetic\GeneticEngine\IGeneticEngine.cs" />
     <Compile Include="Genetic\Methods\MutationMethods.cs" />
     <Compile Include="Genetic\Methods\SelectionMethods.cs" />
-    <Compile Include="Panzer\PanzerAlgorithm.cs" />
+    <Compile Include="Tank\TankStrategy.cs" />
     <Compile Include="Genetic\GeneticPopulation.cs" />
     <Compile Include="Map\Coord.cs" />
     <Compile Include="Map\Map.cs" />
     <Compile Include="Map\MapGenerator.cs" />
-    <Compile Include="Panzer\Panzer.cs" />
+    <Compile Include="Tank\Tank.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -7,17 +7,16 @@ namespace GeneticProgramming.Genetic
     [Serializable]
     public class GeneticConfiguration
     {
-        public int InitialPopulationSize = 16;
-        public int MaximumPopulationSize = 64;
-        public int MaximumProgramSize = 128;
+        public int InitialPopulationSize;
+        public int MaximumPopulationSize;
+        public int MaximumProgramSize;
 
-        public double CrossoverProb = 0.90;
-        public double MutationProb = 0.05;
+        public double CrossoverProb;
+        public double MutationProb;
 
-        public double PanmixiaRatio = 0.40;
-        public double InbreedRatio = 0.30;
-        public double OutbreedRatio = 0.30;
-
+        public double PanmixiaRatio;
+        public double InbreedRatio;
+        public double OutbreedRatio;
 
         public void SerializeToFile(string filename)
         {

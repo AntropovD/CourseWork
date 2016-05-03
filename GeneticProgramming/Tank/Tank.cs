@@ -1,11 +1,11 @@
-﻿namespace GeneticProgramming.Panzer
+﻿namespace GeneticProgramming.Tank
 {
-    public class Panzer
+    public class Tank
     {
         public int CoordX { get; private set; }
         public int CoordY { get; private set; }
         public Direction Direction { get; private set; }
-        public PanzerAlgorithm PanzerAlgorithm { get; private set; }
+        public TankStrategy TankStrategy { get; private set; }
 
         private bool IsAlive = true;
         public int VisibilityRadius = 6;

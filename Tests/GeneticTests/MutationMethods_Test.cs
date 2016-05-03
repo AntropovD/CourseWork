@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using GeneticProgramming.Genetic.Methods;
-using GeneticProgramming.Panzer;
+using GeneticProgramming.Tank;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Tests.GeneticTests
@@ -20,10 +20,10 @@ namespace Tests.GeneticTests
         [TestMethod]
         public void GetMutatesSpecies_on_mutation_count_2_returns_2_species()
         {
-            var population = new List<PanzerAlgorithm>
+            var population = new List<TankStrategy>
             {
-                new PanzerAlgorithm(new List<Command> {Command.MoveBackward, Command.MoveBackward}),
-                new PanzerAlgorithm(new List<Command> {Command.MoveForward, Command.MoveForward})
+                new TankStrategy(new List<Command> {Command.MoveBackward, Command.MoveBackward}),
+                new TankStrategy(new List<Command> {Command.MoveForward, Command.MoveForward})
             };
 
             var mutatedSpecies = mutationMethods.GetMutatedSpecies(population, 2);
