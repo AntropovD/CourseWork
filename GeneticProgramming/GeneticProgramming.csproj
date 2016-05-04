@@ -58,6 +58,8 @@
     <Compile Include="Genetic\Methods\Mutation.cs" />
     <Compile Include="Genetic\Methods\SelectionMethods.cs" />
     <Compile Include="Genetic\Population.cs" />
+    <Compile Include="Tank\Command.cs" />
+    <Compile Include="Tank\Direction.cs" />
     <Compile Include="Tank\TankStrategy.cs" />
     <Compile Include="Map\Coord.cs" />
     <Compile Include="Map\Map.cs" />

@@ -7,10 +7,9 @@ namespace GeneticProgramming.Genetic.GeneticEngine
 {
     internal class BaseGeneticEngine : IGeneticEngine
     {
-        private GeneticConfiguration configuration;
-
-        private CrossoverMethods crossoverMethods;
-        private Mutation mutation;
+        private readonly GeneticConfiguration configuration;
+        private readonly CrossoverMethods crossoverMethods;
+        private readonly Mutation mutation;
 
         public BaseGeneticEngine(GeneticConfiguration configuration)
         {

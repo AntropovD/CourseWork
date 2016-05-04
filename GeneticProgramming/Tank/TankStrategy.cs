@@ -4,16 +4,6 @@ using System.Linq;
 
 namespace GeneticProgramming.Tank
 {
-    public enum Command
-    {
-        TurnLeft,
-        TurnRight,
-        MoveForward,
-        MoveBackward,
-        Stay,
-        Shoot
-    }
-
     public class TankStrategy : IComparable
     {
         public List<Command> commands; 

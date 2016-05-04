@@ -12,12 +12,4 @@
         public int DefeatRadius = 4;
         public int Ammunition = 20;
     }
-
-    public enum Direction
-    {
-        Up,
-        Down,
-        Left,
-        Right
-    }
 }

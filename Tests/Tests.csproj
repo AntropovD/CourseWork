@@ -59,10 +59,11 @@
     <Compile Include="GeneticTests\ConfigurationFactory.cs" />
     <Compile Include="GeneticTests\MutationMethods_Test.cs" />
     <Compile Include="GeneticTests\SelectionMethods_Tests.cs" />
-    <Compile Include="MapGenerator_Test.cs" />
+    <Compile Include="MapTests\MapGenerator_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GeneticTests\Population_Tests.cs" />
     <Compile Include="GeneticTests\CrossoverMethods_Tests.cs" />
+    <Compile Include="TankTests\TankStrategy_Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GeneticProgramming\GeneticProgramming.csproj">
