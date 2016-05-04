@@ -47,14 +47,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Genetic\FitnessFunction.cs" />
     <Compile Include="Genetic\GeneticConfiguration.cs" />
     <Compile Include="Genetic\GeneticAlgorithm.cs" />
     <Compile Include="Genetic\GeneticEngine\BaseGeneticEngine.cs" />
     <Compile Include="Genetic\Methods\CrossoverMethods.cs" />
     <Compile Include="Genetic\GeneticEngine\IGeneticEngine.cs" />
-    <Compile Include="Genetic\Methods\PopulationInitializer.cs" />
     <Compile Include="Genetic\Methods\Mutation.cs" />
     <Compile Include="Genetic\Methods\SelectionMethods.cs" />
+    <Compile Include="Genetic\Population.cs" />
     <Compile Include="Tank\TankStrategy.cs" />
     <Compile Include="Map\Coord.cs" />
     <Compile Include="Map\Map.cs" />

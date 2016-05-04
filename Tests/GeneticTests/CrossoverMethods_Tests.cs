@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using GeneticProgramming.Genetic;
-using GeneticProgramming.Genetic.GeneticEngine;
+using GeneticProgramming.Genetic.Methods;
 using GeneticProgramming.Tank;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

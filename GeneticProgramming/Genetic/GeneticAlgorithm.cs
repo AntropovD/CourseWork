@@ -1,8 +1,5 @@
-﻿
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using GeneticProgramming.Genetic.GeneticEngine;
-using GeneticProgramming.Genetic.Methods;
 using GeneticProgramming.Tank;
 using log4net;
 
@@ -23,29 +20,28 @@ namespace GeneticProgramming.Genetic
 
         public void Run()
         {
-            
             log.Info("Genetic Programming Started");
-
-            List<TankStrategy> strategies = new PopulationInitializer().Initiate(configuration.PopulationSize,
-                configuration.MaxStrategySize);
+            
+            var population =  new Population(configuration.PopulationSize, configuration.MaxStrategySize);
+            population.Initiate();
+             
+           
             int index = 0;
-            /*
             while (true)
             {
+                var strategies = population.GetStrategies();
+
                 var offsping = GeneticEngine.CrossoverPopulation(strategies);
                 var mutated = GeneticEngine.MutatePopulation(strategies);
-                
-                var totalPopulation = new List<TankStrategy>(strategies.Species);
-                totalPopulation.AddRange(offsping.Species);
-                totalPopulation.AddRange(mutated.Species);
 
-                var fitnessValue = GeneticEngine.GetFitnessDictionary(totalPopulation.Distinct());
+                population.UpdatePopulation(offsping);
+                population.UpdatePopulation(mutated);
 
-                strategies = GeneticEngine.SelectPopulation(fitnessValue);
-                //LogInformation(p)
+                population.SelectPopulation();
+                population.LogInfo();
                 log.Info($"Generation #{index}");
                 index++;
-            }*/
+            }
         }
     }
 }

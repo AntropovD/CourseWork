@@ -1,5 +1,4 @@
-﻿using GeneticProgramming.Genetic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Tests.GeneticTests
 {

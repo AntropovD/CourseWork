@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using GeneticProgramming.Tank;
 
-namespace GeneticProgramming.Genetic.GeneticEngine
+namespace GeneticProgramming.Genetic.Methods
 {
     public class CrossoverMethods
     {
