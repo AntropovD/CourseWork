@@ -7,7 +7,7 @@ namespace GeneticProgramming.Genetic
     {
         public int countValue(TankStrategy tankStrategy)
         {
-            return new Random(Guid.NewGuid().GetHashCode()).Next();
+            return new Random(Guid.NewGuid().GetHashCode()).Next(10000);
         }
     }
 }

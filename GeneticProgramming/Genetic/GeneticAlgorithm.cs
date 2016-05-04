@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GeneticProgramming.Genetic.GeneticEngine;
 using GeneticProgramming.Tank;
 using log4net;
@@ -27,7 +28,7 @@ namespace GeneticProgramming.Genetic
              
            
             int index = 0;
-            while (true)
+            while (! Console.KeyAvailable)
             {
                 var strategies = population.GetStrategies();
 
@@ -43,5 +44,6 @@ namespace GeneticProgramming.Genetic
                 index++;
             }
         }
+ 
     }
 }

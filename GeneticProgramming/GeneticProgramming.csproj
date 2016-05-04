@@ -47,6 +47,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auxillary\DictionaryExtension.cs" />
+    <Compile Include="Auxillary\MathExtension.cs" />
     <Compile Include="Genetic\FitnessFunction.cs" />
     <Compile Include="Genetic\GeneticConfiguration.cs" />
     <Compile Include="Genetic\GeneticAlgorithm.cs" />

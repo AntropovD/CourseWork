@@ -3,8 +3,10 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GeneticProgramming.Auxillary;
 using GeneticProgramming.Genetic.Methods;
 using GeneticProgramming.Tank;
+using static GeneticProgramming.Auxillary.MathExtension;
 using log4net;
 
 namespace GeneticProgramming.Genetic
@@ -37,9 +39,10 @@ namespace GeneticProgramming.Genetic
         {
             population = Enumerable.Range(0, size)
                 .ToDictionary(i => GenerateRandomProgram(maxLength), i => -1);
-            UpdateCurrentPopulation();
+            UpdateInitialPopulation();
         }
-        public void UpdateCurrentPopulation()
+
+        public void UpdateInitialPopulation()
         {
             var strategies = GetStrategies();
             population.Clear();
@@ -55,19 +58,18 @@ namespace GeneticProgramming.Genetic
             });
             foreach (var keyValuePair in tempDictionary)
             {
-                population.Add(keyValuePair.Key, keyValuePair.Value);
+                population.AddOrUpdate(keyValuePair.Key, keyValuePair.Value);
             }
         }
 
         public TankStrategy GenerateRandomProgram(int maxStrategySize)
         {
-            var commands = Enum.GetValues(typeof(Command));
+            var commands = Enum.GetValues(typeof (Command));
             var random = new Random(Guid.NewGuid().GetHashCode());
 
             return new TankStrategy(Enumerable.Range(0, random.Next(maxStrategySize))
-                .Select(i => (Command)commands.GetValue(random.Next(commands.Length))));
+                .Select(i => (Command) commands.GetValue(random.Next(commands.Length))));
         }
-
 
         public void SelectPopulation()
         {
@@ -81,18 +83,7 @@ namespace GeneticProgramming.Genetic
             double average = population.Average(pair => pair.Value);
             double median = GetMedian(population.Values.ToArray());
 
-            log.Info("Population parameters:");
-            log.Info($"\\t min fitness: {min}");
-            log.Info($"\\t max fitness: {max}");
-            log.Info($"\\t average: {average}");
-            log.Info($"\\t median: {median}");
-        }
-
-        private double GetMedian(int[] values)
-        {
-            var sorted = values.OrderBy(x => x).ToList();
-            double mid = (sorted.Count - 1)/2.0;
-            return (sorted[(int) (mid)] + sorted[(int) (mid + 0.5)])/2.0;
+            log.Info($@"Population parameters: Min fitness: {min}, Max fitness: {max}, Average: {average} Median: {median}");
         }
     }
 }
