@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<GeneticConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<GeneticConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <PopulationSize>32</PopulationSize>
   <MaxStrategySize>128</MaxStrategySize>
   
@@ -9,4 +9,4 @@
   <PanmixiaRatio>0.4</PanmixiaRatio>
   <InbreedRatio>0.3</InbreedRatio>
   <OutbreedRatio>0.3</OutbreedRatio>
-</GeneticConfiguration>
+</GeneticConfig>

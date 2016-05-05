@@ -1,20 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using GeneticProgramming.Genetic.Methods;
-using GeneticProgramming.Tank;
+using GeneticProgramming.Simulator.Tanks;
 
 namespace GeneticProgramming.Genetic.GeneticEngine
 {
     internal class BaseGeneticEngine : IGeneticEngine
     {
-        private readonly GeneticConfiguration configuration;
+        private readonly GeneticConfig _config;
         private readonly CrossoverMethods crossoverMethods;
         private readonly Mutation mutation;
 
-        public BaseGeneticEngine(GeneticConfiguration configuration)
+        public BaseGeneticEngine(GeneticConfig _config)
         {
-            this.configuration = configuration;
-            crossoverMethods = new CrossoverMethods(configuration);
+            this._config = _config;
+            crossoverMethods = new CrossoverMethods(_config);
             mutation = new Mutation();
         }
 
@@ -28,7 +27,7 @@ namespace GeneticProgramming.Genetic.GeneticEngine
 
         public List<TankStrategy> MutatePopulation(List<TankStrategy> strategies)
         { 
-            int mutationCount = (int)(strategies.Count * configuration.MutationProb);
+            int mutationCount = (int)(strategies.Count * _config.MutationProb);
             var mutatedSpecies = mutation.GetMutatedSpecies(strategies, mutationCount);
             strategies.AddRange(mutatedSpecies);
             return strategies;

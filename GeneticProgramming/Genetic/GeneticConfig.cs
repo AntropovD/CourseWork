@@ -5,7 +5,7 @@ using System.Xml.Serialization;
 namespace GeneticProgramming.Genetic
 {
     [Serializable]
-    public class GeneticConfiguration
+    public class GeneticConfig
     {
         public int PopulationSize;
         public int MaxStrategySize;
@@ -19,20 +19,20 @@ namespace GeneticProgramming.Genetic
 
         public void SerializeToFile(string filename)
         {
-            var formatter = new XmlSerializer(typeof(GeneticConfiguration));
+            var formatter = new XmlSerializer(typeof(GeneticConfig));
             using (var fs = new FileStream(filename, FileMode.OpenOrCreate))
             {
                 formatter.Serialize(fs, this);
             }
         }
 
-        public static GeneticConfiguration DeserializeFromFile(string filename)
+        public static GeneticConfig DeserializeFromFile(string filename)
         {
-            GeneticConfiguration result;
-            var formatter = new XmlSerializer(typeof(GeneticConfiguration));
+            GeneticConfig result;
+            var formatter = new XmlSerializer(typeof(GeneticConfig));
             using (FileStream fs = new FileStream(filename, FileMode.OpenOrCreate))
             {
-                result = (GeneticConfiguration) formatter.Deserialize(fs);
+                result = (GeneticConfig) formatter.Deserialize(fs);
             }
             return result;
         }

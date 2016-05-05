@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using GeneticProgramming.Auxillary;
 using GeneticProgramming.Genetic.Methods;
-using GeneticProgramming.Tank;
+using GeneticProgramming.Simulator.Tanks;
 using static GeneticProgramming.Auxillary.MathExtension;
 using log4net;
 

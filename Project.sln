@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneticProgramming", "Genet
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopEngine", "DesktopEngine\DesktopEngine.csproj", "{9567F4CC-351A-4285-AC5C-0AD4CC71F74E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{3A136BFC-9D11-403A-A1A9-AF152B8812BE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,14 +29,6 @@ Global
 		{9567F4CC-351A-4285-AC5C-0AD4CC71F74E}.Release|Any CPU.ActiveCfg = Release|x86
 		{9567F4CC-351A-4285-AC5C-0AD4CC71F74E}.Release|x86.ActiveCfg = Release|x86
 		{9567F4CC-351A-4285-AC5C-0AD4CC71F74E}.Release|x86.Build.0 = Release|x86
-		{3A136BFC-9D11-403A-A1A9-AF152B8812BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3A136BFC-9D11-403A-A1A9-AF152B8812BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3A136BFC-9D11-403A-A1A9-AF152B8812BE}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{3A136BFC-9D11-403A-A1A9-AF152B8812BE}.Debug|x86.Build.0 = Debug|Any CPU
-		{3A136BFC-9D11-403A-A1A9-AF152B8812BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3A136BFC-9D11-403A-A1A9-AF152B8812BE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3A136BFC-9D11-403A-A1A9-AF152B8812BE}.Release|x86.ActiveCfg = Release|Any CPU
-		{3A136BFC-9D11-403A-A1A9-AF152B8812BE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

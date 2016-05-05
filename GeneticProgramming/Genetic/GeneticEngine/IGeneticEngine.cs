@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using GeneticProgramming.Tank;
+using GeneticProgramming.Simulator.Tanks;
 
 namespace GeneticProgramming.Genetic.GeneticEngine
 {

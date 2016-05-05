@@ -1,13 +1,22 @@
 ﻿using System;
-using GeneticProgramming.Tank;
+using GeneticProgramming.Simulator;
+using GeneticProgramming.Simulator.Tanks;
 
 namespace GeneticProgramming.Genetic
 {
     public class FitnessFunction
     {
+        private BattleSimulator simulator = new BattleSimulator();
+
+        public FitnessFunction()
+        {
+            
+        }
+
         public int countValue(TankStrategy tankStrategy)
         {
-            return new Random(Guid.NewGuid().GetHashCode()).Next(10000);
+            simulator.Execute(tankStrategy);
+            return simulator.GetFitness();
         }
     }
 }

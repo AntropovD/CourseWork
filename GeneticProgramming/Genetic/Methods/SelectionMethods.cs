@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using GeneticProgramming.Tank;
+using GeneticProgramming.Simulator.Tanks;
 
 namespace GeneticProgramming.Genetic.Methods
 {
@@ -24,7 +24,7 @@ namespace GeneticProgramming.Genetic.Methods
             {
                 int index1 = random.Next(size);
                 int index2 = random.Next(size);
-                if (array[index1].Value > array[index2].Value)
+                if (array[index1].Value >= array[index2].Value)
                 {
                     population.Remove(array[index2].Key);
                     array.RemoveAt(index2);

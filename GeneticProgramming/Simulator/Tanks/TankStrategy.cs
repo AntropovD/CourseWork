@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace GeneticProgramming.Tank
+namespace GeneticProgramming.Simulator.Tanks
 {
     public class TankStrategy : IComparable
     {
@@ -63,5 +63,15 @@ namespace GeneticProgramming.Tank
         {
             return obj.GetHashCode();
         }
+    }
+
+    public enum Command
+    {
+        Left,
+        Right,
+        Forward,
+        Backward,
+        Stay,
+        Shoot
     }
 }

@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Linq;
+using GeneticProgramming.Simulator.Tanks;
 
-namespace GeneticProgramming.Map
+namespace GeneticProgramming.Simulator.Maps
 {
     public static class MapGenerator
     {
+        /*
         public static Map GenerateMap(int width, int height, int obstaclesCount, int enemiesCount)
         {
             var random = new Random(Guid.NewGuid().GetHashCode());
@@ -32,10 +33,16 @@ namespace GeneticProgramming.Map
 
             return new Map(width, height, obstacles, enemies, startCoord, finishCoord);
         }
-
+    */
         private static int Distance(Coord a, Coord b)
         {
             return Math.Abs(a.X - b.X) + Math.Abs(a.Y - b.Y);
+        }
+
+        public static Map GenerateMap()
+        {
+            var tank = new Tank(2, 2);
+            return new Map(20, 20, tank, new Coord(20, 20));
         }
     }
 }

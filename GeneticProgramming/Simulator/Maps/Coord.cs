@@ -1,6 +1,6 @@
-﻿namespace GeneticProgramming.Map
+﻿namespace GeneticProgramming.Simulator.Maps
 {
-    public struct Coord
+    public class Coord
     {
         public readonly int X;
         public readonly int Y;
@@ -9,6 +9,21 @@
         {
             X = x;
             Y = y;
+        }
+
+        public static Coord operator +(Coord C, Coord D)
+        {
+            return new Coord(C.X + D.X, C.Y + D.Y);
+        }
+
+        public static bool operator ==(Coord C, Coord D)
+        {
+            return C.Equals(D);
+        }
+
+        public static bool operator !=(Coord C, Coord D)
+        {
+            return !(C.Equals(D));
         }
 
         public bool Equals(Coord other)

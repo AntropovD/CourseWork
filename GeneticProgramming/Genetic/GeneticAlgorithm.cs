@@ -1,32 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
 using GeneticProgramming.Genetic.GeneticEngine;
-using GeneticProgramming.Tank;
 using log4net;
 
 namespace GeneticProgramming.Genetic
 {
     public class GeneticAlgorithm
     {
-        private readonly GeneticConfiguration configuration;
+        private readonly GeneticConfig _config;
         private readonly IGeneticEngine GeneticEngine;
         private static readonly ILog log =
             LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
-        public GeneticAlgorithm(GeneticConfiguration configuration)
+        public GeneticAlgorithm(GeneticConfig _config)
         {
-            this.configuration = configuration;
-            GeneticEngine = new BaseGeneticEngine(configuration);
+            this._config = _config;
+            GeneticEngine = new BaseGeneticEngine(_config);
         }
 
         public void Run()
         {
             log.Info("Genetic Programming Started");
             
-            var population =  new Population(configuration.PopulationSize, configuration.MaxStrategySize);
+            var population =  new Population(_config.PopulationSize, _config.MaxStrategySize);
             population.Initiate();
-             
-           
+
             int index = 0;
             while (! Console.KeyAvailable)
             {
