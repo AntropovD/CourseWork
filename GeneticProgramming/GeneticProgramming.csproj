@@ -54,7 +54,6 @@
     <Compile Include="Configurations\MapConfig.cs" />
     <Compile Include="Configurations\TankConfig.cs" />
     <Compile Include="Genetic\FitnessFunction.cs" />
-    <Compile Include="Genetic\GeneticConfig.cs" />
     <Compile Include="Genetic\GeneticAlgorithm.cs" />
     <Compile Include="Genetic\GeneticEngine\BaseGeneticEngine.cs" />
     <Compile Include="Simulator\Maps\MapConfig.cs" />
@@ -84,6 +83,7 @@
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

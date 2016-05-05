@@ -2,7 +2,7 @@
 
 namespace GeneticProgramming.Auxillary
 {
-    public static class MathExtension
+    static class MathExtension
     {
         public static double GetMedian(int[] values)
         {

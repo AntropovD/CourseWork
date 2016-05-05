@@ -1,4 +1,5 @@
 ﻿using GeneticProgramming;
+using GeneticProgramming.Configurations;
 
 namespace Tests
 {

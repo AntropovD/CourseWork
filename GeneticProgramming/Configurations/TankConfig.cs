@@ -1,6 +1,6 @@
 using System;
 
-namespace GeneticProgramming
+namespace GeneticProgramming.Configurations
 {
     [Serializable]
     public class TankConfig

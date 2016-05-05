@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using GeneticProgramming.Configurations;
 using GeneticProgramming.Genetic;
-using GeneticProgramming.Simulator;
-using GeneticProgramming.Simulator.Tanks;
 
 namespace GeneticProgramming
 {
@@ -13,7 +10,7 @@ namespace GeneticProgramming
         public static void Main()
         {
             var configuration = Configuration.DeserializeFromFile(ConfigFilename);
-            var geneticAlgorithm = new GeneticAlgorithm(configuration.GeneticConfig);
+            var geneticAlgorithm = new GeneticAlgorithm(configuration);
             geneticAlgorithm.Run();
         }
     }

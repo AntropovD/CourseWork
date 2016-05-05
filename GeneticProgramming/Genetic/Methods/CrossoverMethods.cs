@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using GeneticProgramming.Configurations;
 using GeneticProgramming.Simulator.Tanks;
 
 namespace GeneticProgramming.Genetic.Methods

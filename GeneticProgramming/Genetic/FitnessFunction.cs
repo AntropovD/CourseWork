@@ -1,5 +1,4 @@
-﻿using System;
-using GeneticProgramming.Simulator;
+﻿using GeneticProgramming.Simulator;
 using GeneticProgramming.Simulator.Tanks;
 
 namespace GeneticProgramming.Genetic
