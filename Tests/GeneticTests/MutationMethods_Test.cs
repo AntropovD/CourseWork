@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using GeneticProgramming.Genetic.Methods;
-using GeneticProgramming.Simulator.Tank;
+using GeneticProgramming.Simulator.Tanks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Tests.GeneticTests
@@ -22,8 +22,8 @@ namespace Tests.GeneticTests
         {
             var population = new List<TankStrategy>
             {
-                new TankStrategy(new List<Command> {Command.MoveBackward, Command.MoveBackward}),
-                new TankStrategy(new List<Command> {Command.MoveForward, Command.MoveForward})
+                new TankStrategy(new List<Command> {Command.Backward, Command.Backward}),
+                new TankStrategy(new List<Command> {Command.Forward, Command.Forward})
             };
 
             var mutatedSpecies = mutation.GetMutatedSpecies(population, 2);

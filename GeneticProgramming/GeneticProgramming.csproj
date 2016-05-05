@@ -52,6 +52,7 @@
     <Compile Include="Configurations\Configuration.cs" />
     <Compile Include="Configurations\GeneticConfig.cs" />
     <Compile Include="Configurations\MapConfig.cs" />
+    <Compile Include="Configurations\TankConfig.cs" />
     <Compile Include="Genetic\FitnessFunction.cs" />
     <Compile Include="Genetic\GeneticConfig.cs" />
     <Compile Include="Genetic\GeneticAlgorithm.cs" />

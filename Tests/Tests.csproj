@@ -56,7 +56,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="GeneticTests\ConfigurationFactory.cs" />
+    <Compile Include="ConfigurationFactory.cs" />
     <Compile Include="GeneticTests\MutationMethods_Test.cs" />
     <Compile Include="GeneticTests\SelectionMethods_Tests.cs" />
     <Compile Include="MapTests\MapGenerator_Test.cs" />

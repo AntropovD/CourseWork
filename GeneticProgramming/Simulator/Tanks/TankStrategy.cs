@@ -67,8 +67,8 @@ namespace GeneticProgramming.Simulator.Tanks
 
     public enum Command
     {
-        Left,
-        Right,
+        TurnLeft,
+        TurnRight,
         Forward,
         Backward,
         Stay,
