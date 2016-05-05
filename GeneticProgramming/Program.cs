@@ -23,7 +23,7 @@ namespace GeneticProgramming
 
         public static void Main()
         {
-            var configuration = GeneticConfig.DeserializeFromFile(ConfigFilename);
+            var configuration = Configuration.DeserializeFromFile(ConfigFilename);
             var geneticAlgorithm = new GeneticAlgorithm(configuration);
             geneticAlgorithm.Run();
         }
