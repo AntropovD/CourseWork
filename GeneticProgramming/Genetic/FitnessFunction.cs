@@ -1,5 +1,4 @@
-﻿using GeneticProgramming.Simulator;
-using GeneticProgramming.Simulator.Tanks;
+﻿using GeneticProgramming.Simulator.Tanks;
 
 namespace GeneticProgramming.Genetic
 {

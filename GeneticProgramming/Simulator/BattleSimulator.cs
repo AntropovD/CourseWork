@@ -9,11 +9,13 @@ namespace GeneticProgramming.Simulator
         private int fitnessValue = 0;
 
         private bool visual;
+        private BaseVisualiser visualiser;
 
         public BattleSimulator(Map Map, bool visual = false)
         {
             this.Map = Map;
             this.visual = visual;
+            visualiser = new ConsoleVisualiser();
         }
         
         public void Execute(TankStrategy strategy)
@@ -23,7 +25,8 @@ namespace GeneticProgramming.Simulator
             foreach (var command in strategy.commands)
             {
                 MakeStep(command);
-                
+                if (visual) 
+                    visualiser.Visualise(Map);
                 if (Map.Tank.Coord == Map.FinishCoord)
                     result += 1000;
                 result++;

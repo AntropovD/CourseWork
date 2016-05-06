@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using GeneticProgramming;
 using GeneticProgramming.Configurations;
 using GeneticProgramming.Genetic.Methods;
 using GeneticProgramming.Simulator.Tanks;

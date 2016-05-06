@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GeneticProgramming.Configurations;
-using GeneticProgramming.Genetic;
 using GeneticProgramming.Simulator;
 using GeneticProgramming.Simulator.Maps;
 using GeneticProgramming.Simulator.Tanks;
@@ -23,7 +23,7 @@ namespace GeneticProgramming
             var map = MapGenerator.GenerateMap();
             var simulator = new BattleSimulator(map, true);
             simulator.Execute(strategy);
-
+         
 
 //            var geneticAlgorithm = new GeneticAlgorithm(configuration);
 //            geneticAlgorithm.Run();

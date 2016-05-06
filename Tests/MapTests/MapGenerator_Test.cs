@@ -1,7 +1,4 @@
-﻿using GeneticProgramming.Simulator.Maps;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-namespace Tests
+﻿namespace Tests
 {/*
     [TestClass]
     public class MapGenerator_Test

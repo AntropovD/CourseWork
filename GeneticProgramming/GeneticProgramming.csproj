@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Auxillary\DictionaryExtension.cs" />
     <Compile Include="Auxillary\MathExtension.cs" />
+    <Compile Include="Auxillary\StringExtension.cs" />
     <Compile Include="Configurations\Configuration.cs" />
     <Compile Include="Configurations\GeneticConfig.cs" />
     <Compile Include="Configurations\MapConfig.cs" />

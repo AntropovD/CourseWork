@@ -1,5 +1,4 @@
-﻿using System;
-using GeneticProgramming.Simulator.Tanks;
+﻿using GeneticProgramming.Simulator.Tanks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Tests.TankTests

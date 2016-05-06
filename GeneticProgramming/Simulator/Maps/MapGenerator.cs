@@ -1,18 +1,32 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using GeneticProgramming.Simulator.Tanks;
 
 namespace GeneticProgramming.Simulator.Maps
 {
-    public static class MapGenerator
+    public class MapGenerator
     {
-        /*
-        public static Map GenerateMap(int width, int height, int obstaclesCount, int enemiesCount)
-        {
-            var random = new Random(Guid.NewGuid().GetHashCode());
+        private MapConfig MapConfig { get; set; }
 
-            var coordSequence = Enumerable.Range(0, width*height)
-                .OrderBy(i => random.Next())
-                .Select(i => new Coord(i/width, i%width)).ToList();
+        public MapGenerator(MapConfig mapConfig)
+        {
+            MapConfig = mapConfig;
+        }
+
+        private IEnumerable<Coord> GenerateRandomSequence()
+        {
+            int width = MapConfig.width;
+            int height = MapConfig.height;
+            var rnd = new Random(Guid.NewGuid().GetHashCode());
+            return Enumerable.Range(0, width*height)
+                .OrderBy(i => rnd.Next())
+                .Select(i => new Coord(i/width, i%width));
+        }
+
+        public Map GenerateMap()
+        {
+            var coordSequence = GenerateRandomSequence();
 
             var obstacles = coordSequence.Take(obstaclesCount).ToList();
             var enemies = coordSequence.Skip(obstaclesCount).Take(enemiesCount).ToList();
@@ -31,18 +45,12 @@ namespace GeneticProgramming.Simulator.Maps
                 throw new Exception("Cannot create map");
             }
 
-            return new Map(width, height, obstacles, enemies, startCoord, finishCoord);
+            return new Map(MapConfig.width, MapConfig.height, obstacles, enemies, startCoord, finishCoord);
         }
-    */
+    
         private static int Distance(Coord a, Coord b)
         {
             return Math.Abs(a.X - b.X) + Math.Abs(a.Y - b.Y);
-        }
-
-        public static Map GenerateMap()
-        {
-            var tank = new Tank(2, 2);
-            return new Map(20, 20, tank, new Coord(20, 20));
         }
     }
 }
