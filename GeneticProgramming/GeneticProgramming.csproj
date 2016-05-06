@@ -63,6 +63,7 @@
     <Compile Include="Genetic\Methods\SelectionMethods.cs" />
     <Compile Include="Genetic\Population.cs" />
     <Compile Include="Simulator\BattleSimulator.cs" />
+    <Compile Include="Simulator\Tanks\Direction.cs" />
     <Compile Include="Simulator\Tanks\TankStrategy.cs" />
     <Compile Include="Simulator\Maps\Coord.cs" />
     <Compile Include="Simulator\Maps\Map.cs" />

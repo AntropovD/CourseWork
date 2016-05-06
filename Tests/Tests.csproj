@@ -64,6 +64,7 @@
     <Compile Include="GeneticTests\Population_Tests.cs" />
     <Compile Include="GeneticTests\CrossoverMethods_Tests.cs" />
     <Compile Include="TankTests\TankStrategy_Tests.cs" />
+    <Compile Include="TankTests\Direction_Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GeneticProgramming\GeneticProgramming.csproj">

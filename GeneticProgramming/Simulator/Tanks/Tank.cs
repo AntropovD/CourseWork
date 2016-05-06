@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GeneticProgramming.Simulator.Maps;
 
 namespace GeneticProgramming.Simulator.Tanks
@@ -6,7 +7,7 @@ namespace GeneticProgramming.Simulator.Tanks
     public class Tank
     {
         public Coord Coord { get; set; }
-        public Direction Direction { get; private set; }
+        public Direction Direction { get; set; }
 
         public Tank(int coordX, int coordY, Direction direction = Direction.Right)
         {
@@ -29,7 +30,23 @@ namespace GeneticProgramming.Simulator.Tanks
 
         public Coord NextStep(Command command)
         {
-            return Coord + Movements[Direction];
+            switch (command)
+            {
+                case Command.Forward:
+                    return Coord + Movements[Direction];
+                case Command.Backward:
+                    return Coord - Movements[Direction];
+                case Command.TurnRight:
+                    Direction = DirectionExtensions.RotateRight(Direction);
+                    return Coord;
+                case Command.TurnLeft:
+                    Direction = DirectionExtensions.RotateLeft(Direction);
+                    return Coord;
+                case Command.Stay:
+                    return Coord;
+                default:
+                    throw new Exception("Unknown Command");
+            }
         }
 
         private static readonly Dictionary<Direction, Coord> Movements = new Dictionary<Direction, Coord>
@@ -39,13 +56,5 @@ namespace GeneticProgramming.Simulator.Tanks
             { Direction.Left, new Coord(-1, 0) },
             { Direction.Right, new Coord(0, 1) }
         };
-    }
-
-    public enum Direction
-    {
-        Up,
-        Down,
-        Left,
-        Right
     }
 }
