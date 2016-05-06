@@ -12,14 +12,16 @@ namespace GeneticProgramming.Simulator.Tanks
 
     public class DirectionExtensions
     {
+        private static readonly int length = Enum.GetNames(typeof (Direction)).Length;
+
         public static Direction RotateRight(Direction direction)
         {
-            return (Direction) (((int)direction + 1) % Enum.GetNames(typeof(Direction)).Length);
+            return (Direction) (((int)direction + 1) % length);
         }
 
         public static Direction RotateLeft(Direction direction)
         {
-            return (Direction)(((int)direction - 1) % Enum.GetNames(typeof(Direction)).Length);
+            return (Direction)(((int)direction + (length - 1)) % length);
         }
     }
 }

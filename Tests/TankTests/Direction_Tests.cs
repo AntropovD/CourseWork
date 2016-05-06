@@ -32,11 +32,11 @@ namespace Tests.TankTests
         }
 
         [TestMethod]
-        public void RotateLeft_on_down_should_return_right()
+        public void RotateLeft_on_up_should_return_left()
         {
-            var direction = Direction.Down;
+            var direction = Direction.Up;
             var result = DirectionExtensions.RotateLeft(direction);
-            Assert.AreEqual(Direction.Right, result);
+            Assert.AreEqual(Direction.Left, result);
         }
     }
 }
