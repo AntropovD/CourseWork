@@ -1,8 +1,9 @@
-﻿using GeneticProgramming.Simulator.Tanks;
+﻿using System;
+using GeneticProgramming.Simulator.Tanks;
 
 namespace GeneticProgramming.Simulator.Maps
 {
-    public class Map
+    public class Map : ICloneable
     {
         public int Width { get; private set; }
         public int Height { get; private set; }
@@ -32,5 +33,9 @@ namespace GeneticProgramming.Simulator.Maps
         //            Start = start;
         //            FinishCoord = finish;
         //        }
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
     }
 }

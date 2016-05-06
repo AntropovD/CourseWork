@@ -1,5 +1,9 @@
-﻿using GeneticProgramming.Configurations;
+﻿using System.Collections.Generic;
+using GeneticProgramming.Configurations;
 using GeneticProgramming.Genetic;
+using GeneticProgramming.Simulator;
+using GeneticProgramming.Simulator.Maps;
+using GeneticProgramming.Simulator.Tanks;
 
 namespace GeneticProgramming
 {
@@ -10,8 +14,19 @@ namespace GeneticProgramming
         public static void Main()
         {
             var configuration = Configuration.DeserializeFromFile(ConfigFilename);
-            var geneticAlgorithm = new GeneticAlgorithm(configuration);
-            geneticAlgorithm.Run();
+
+            var strategy = new TankStrategy(new List<Command>
+            {
+                Command.Forward, Command.Forward, Command.TurnLeft,
+                Command.Forward, Command.TurnRight, Command.Backward, Command.Backward
+            });
+            var map = MapGenerator.GenerateMap();
+            var simulator = new BattleSimulator(map, true);
+            simulator.Execute(strategy);
+
+
+//            var geneticAlgorithm = new GeneticAlgorithm(configuration);
+//            geneticAlgorithm.Run();
         }
     }
 }

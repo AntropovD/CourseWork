@@ -5,7 +5,7 @@ namespace GeneticProgramming.Genetic
 {
     public class FitnessFunction
     {
-        private BattleSimulator simulator = new BattleSimulator();
+//        private BattleSimulator simulator = new BattleSimulator();
 
         public FitnessFunction()
         {
@@ -14,8 +14,9 @@ namespace GeneticProgramming.Genetic
 
         public int countValue(TankStrategy tankStrategy)
         {
-            simulator.Execute(tankStrategy);
-            return simulator.GetFitness();
+//            simulator.Execute(tankStrategy);
+//            return simulator.GetFitness();
+            return 100;
         }
     }
 }

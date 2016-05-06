@@ -8,9 +8,12 @@ namespace GeneticProgramming.Simulator
         private Map Map { get; set; }
         private int fitnessValue = 0;
 
-        public BattleSimulator()
+        private bool visual;
+
+        public BattleSimulator(Map Map, bool visual = false)
         {
-            Map = MapGenerator.GenerateMap();
+            this.Map = Map;
+            this.visual = visual;
         }
         
         public void Execute(TankStrategy strategy)
@@ -20,6 +23,7 @@ namespace GeneticProgramming.Simulator
             foreach (var command in strategy.commands)
             {
                 MakeStep(command);
+                
                 if (Map.Tank.Coord == Map.FinishCoord)
                     result += 1000;
                 result++;
