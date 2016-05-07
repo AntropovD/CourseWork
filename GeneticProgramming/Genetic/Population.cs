@@ -3,10 +3,10 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using GeneticProgramming.Auxillary;
+using GeneticProgramming.Extensions;
 using GeneticProgramming.Genetic.Methods;
 using GeneticProgramming.Simulator.Tanks;
-using static GeneticProgramming.Auxillary.MathExtension;
+using static GeneticProgramming.Extensions.MathExtension;
 using log4net;
 
 namespace GeneticProgramming.Genetic

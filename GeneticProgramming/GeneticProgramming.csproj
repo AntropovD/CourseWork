@@ -47,10 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Auxillary\DictionaryExtension.cs" />
-    <Compile Include="Auxillary\ListExtension.cs" />
-    <Compile Include="Auxillary\MathExtension.cs" />
-    <Compile Include="Auxillary\StringExtension.cs" />
+    <Compile Include="Extensions\DictionaryExtension.cs" />
+    <Compile Include="Extensions\ListExtension.cs" />
+    <Compile Include="Extensions\MathExtension.cs" />
+    <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="Configurations\Configuration.cs" />
     <Compile Include="Configurations\GeneticConfig.cs" />
     <Compile Include="Configurations\MapConfig.cs" />

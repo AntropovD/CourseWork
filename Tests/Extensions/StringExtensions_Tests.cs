@@ -1,5 +1,4 @@
-﻿using System;
-using GeneticProgramming.Auxillary;
+﻿using GeneticProgramming.Extensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Tests.Extensions

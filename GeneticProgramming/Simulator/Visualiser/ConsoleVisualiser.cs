@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using GeneticProgramming.Auxillary;
+using GeneticProgramming.Extensions;
 using GeneticProgramming.Simulator.Maps;
 using GeneticProgramming.Simulator.Tanks;
-using static System.String;
 
-namespace GeneticProgramming.Simulator
+namespace GeneticProgramming.Simulator.Visualiser
 {
     abstract class BaseVisualiser
     {
@@ -35,11 +33,11 @@ namespace GeneticProgramming.Simulator
         protected string[] GenerateEmptyFieldWithBorder(int width, int height)
         {
             string[] result = new string[height + 2];
-            result[0] = Concat(Enumerable.Repeat("#", width + 2));
+            string emptyLine = String.Join("", Enumerable.Repeat(" ", width));
+            result[0] = String.Concat(Enumerable.Repeat("#", width + 2));
             for (int i = 1; i <= height; i++)
-                result[i] = Concat("#", String.Join("", Enumerable.Repeat(" ", width)), "#");
-            result[height + 1] = Concat(Enumerable.Repeat("#", width + 2));
-
+                result[i] = String.Concat("#", emptyLine, "#");
+            result[height + 1] = String.Concat(Enumerable.Repeat("#", width + 2));
             return result;
         }
 

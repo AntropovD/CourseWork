@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using GeneticProgramming.Auxillary;
 using GeneticProgramming.Configurations;
-using GeneticProgramming.Simulator.Tanks;
+using GeneticProgramming.Extensions;
 
 namespace GeneticProgramming.Simulator.Maps
 {

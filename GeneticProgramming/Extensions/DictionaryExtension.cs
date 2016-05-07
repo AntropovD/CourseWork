@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace GeneticProgramming.Auxillary
+namespace GeneticProgramming.Extensions
 {
-    static class DictionaryExtension
+    public static class DictionaryExtension
     {
         public static IDictionary<TKey, TValue> AddOrUpdate<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key, TValue value)
         {

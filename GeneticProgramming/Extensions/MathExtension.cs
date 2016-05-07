@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace GeneticProgramming.Auxillary
+namespace GeneticProgramming.Extensions
 {
     static class MathExtension
     {

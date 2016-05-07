@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using GeneticProgramming.Configurations;
 using GeneticProgramming.Simulator;
 using GeneticProgramming.Simulator.Maps;
