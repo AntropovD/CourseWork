@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Auxillary\DictionaryExtension.cs" />
+    <Compile Include="Auxillary\ListExtension.cs" />
     <Compile Include="Auxillary\MathExtension.cs" />
     <Compile Include="Auxillary\StringExtension.cs" />
     <Compile Include="Configurations\Configuration.cs" />
@@ -58,7 +59,6 @@
     <Compile Include="Genetic\GeneticAlgorithm.cs" />
     <Compile Include="Genetic\GeneticEngine\BaseGeneticEngine.cs" />
     <Compile Include="Simulator\Visualiser\ConsoleVisualiser.cs" />
-    <Compile Include="Simulator\Maps\MapConfig.cs" />
     <Compile Include="Genetic\Methods\CrossoverMethods.cs" />
     <Compile Include="Genetic\GeneticEngine\IGeneticEngine.cs" />
     <Compile Include="Genetic\Methods\Mutation.cs" />

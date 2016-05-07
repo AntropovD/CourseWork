@@ -56,5 +56,12 @@ namespace GeneticProgramming.Simulator.Tanks
             { Direction.Left, new Coord(-1, 0) },
             { Direction.Right, new Coord(0, 1) }
         };
+
+        public static Tank RandomizeTank(Coord coord)
+        {
+            var directions = Enum.GetValues(typeof (Direction));
+            var rnd = new Random(Guid.NewGuid().GetHashCode());
+            return new Tank(coord, (Tanks.Direction)directions.GetValue(rnd.Next(directions.Length)));
+        }
     }
 }

@@ -20,7 +20,6 @@ namespace GeneticProgramming.Simulator
         
         public void Execute(TankStrategy strategy)
         {
-            Map = MapGenerator.GenerateMap();
             int result = 0;
             foreach (var command in strategy.commands)
             {

@@ -20,7 +20,8 @@ namespace GeneticProgramming
                 Command.Forward, Command.Forward, Command.TurnLeft,
                 Command.Forward, Command.TurnRight, Command.Backward, Command.Backward
             });
-            var map = MapGenerator.GenerateMap();
+            var map = new MapGenerator(configuration.MapConfig).GenerateMap();
+            //.GenerateMap();
             var simulator = new BattleSimulator(map, true);
             simulator.Execute(strategy);
          

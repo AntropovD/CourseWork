@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="ConfigurationFactory.cs" />
     <Compile Include="Extensions\StringExtensions_Tests.cs" />
+    <Compile Include="Extensions\ListExtension_Tests.cs" />
     <Compile Include="GeneticTests\MutationMethods_Test.cs" />
     <Compile Include="MapTests\MapGenerator_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
