@@ -1,5 +1,8 @@
-﻿using GeneticProgramming.Genetic;
+﻿using System.Collections.Generic;
+using System.Linq;
+using GeneticProgramming.Genetic;
 using GeneticProgramming.Genetic.Methods;
+using GeneticProgramming.Simulator;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Tests.Genetic_Tests
@@ -14,18 +17,18 @@ namespace Tests.Genetic_Tests
         {
             mutation = new Mutation();
         }
-        /*
+        
         [TestMethod]
         public void GetMutatesSpecies_on_mutation_count_2_returns_2_species()
         {
-            var population = new List<TankStrategy>
+            var population = new List<Strategy>
             {
-                new TankStrategy(new List<string> {string.Backward, string.Backward}),
-                new TankStrategy(new List<string> {string.Forward, string.Forward})
+                new Strategy(new List<string> {"Backward", "Backward"}),
+                new Strategy(new List<string> {"Forward", "Forward"})
             };
 
             var mutatedSpecies = mutation.GetMutatedSpecies(population, 2);
             Assert.AreEqual(2, mutatedSpecies.Count());
-        }*/
+        }
     }
 }
