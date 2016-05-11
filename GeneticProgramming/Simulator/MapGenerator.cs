@@ -26,48 +26,15 @@ namespace GeneticProgramming.Simulator
                 .ToList();
         }
 
-        public Simulator.Map GenerateMap()
+        public Map GenerateMap()
         {
-           /* var coordSequence = GenerateRandomCoords().ToList();
-
-            var obstacles = coordSequence.Take(MapConfig.ObstaclesCount).ToList();
-            coordSequence.RemoveRange(0, MapConfig.ObstaclesCount);
-            var enemies = coordSequence.Take(MapConfig.EnemiesCount).ToList();
-            coordSequence.RemoveRange(0, MapConfig.EnemiesCount);
-            var startCoord = coordSequence.First();
-            coordSequence.RemoveAt(0);
-            var finishCoord = coordSequence.First();
-            coordSequence.RemoveAt(0);
-            var tankCoord = coordSequence.First();
-          */
-
             var coordsList = GenerateRandomCoords();
             var obstacles = coordsList.TakeRange(MapConfig.ObstaclesCount);
             var enemies = coordsList.TakeRange(MapConfig.EnemiesCount);
             var startCoord = coordsList.FirstAndRemove();
             var finishCoord = coordsList.FirstAndRemove();
             
-            return new Simulator.Map(MapConfig.Width, MapConfig.Height, obstacles, enemies, startCoord, finishCoord);
-            /*
-            Coord finishCoord;
-            try
-            {
-                int halfOfBiggerSide = Math.Max(MapConfig.Width, MapConfig.Height) / 2;
-                finishCoord = coordSequence
-                    .Skip(MapConfig.ObstaclesCount + MapConfig.EnemiesCount + 1)
-                    .First(coord => Distance(startCoord, coord) > halfOfBiggerSide);
-            }
-            catch (InvalidOperationException)
-            {
-                throw new Exception("Cannot create map");
-            }*/
-
-        //    return new Map(MapConfig.Width, MapConfig.Height, obstacles, enemies, startCoord, finishCoord);
-        }
-    
-        private static int Distance(Coord a, Coord b)
-        {
-            return Math.Abs(a.X - b.X) + Math.Abs(a.Y - b.Y);
+            return new Map(MapConfig.Width, MapConfig.Height, obstacles, enemies, startCoord, finishCoord);
         }
     }
 }

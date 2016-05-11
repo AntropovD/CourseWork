@@ -3,7 +3,7 @@ using GeneticProgramming.Configurations;
 using GeneticProgramming.Simulator;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Tests.Map_Tests
+namespace Tests.Simulator_Tests
 {
     [TestClass]
     public class MapGenerator_Test
@@ -33,7 +33,7 @@ namespace Tests.Map_Tests
         }
 
         [TestMethod]
-        public void MapGeneratoron_width_should_return_map_with_obstacles_count()
+        public void MapGeneratoron_should_return_map_with_obstacles_count()
         {
             var map = generator.GenerateMap();
             Assert.AreEqual(config.ObstaclesCount, map.Obstacles.Count);

@@ -1,8 +1,7 @@
 ﻿using GeneticProgramming.Simulator;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using static GeneticProgramming.Simulator.DirectionExtensions;
 
-namespace Tests.Tank_Tests
+namespace Tests.Simulator_Tests
 {
     [TestClass]
     public class Direction_Tests
@@ -11,7 +10,7 @@ namespace Tests.Tank_Tests
         public void RotateRight_on_up_should_return_right()
         {
             var direction = Direction.Up;
-            var result = RotateRight(direction);
+            var result = DirectionExtensions.RotateRight(direction);
             Assert.AreEqual(Direction.Right, result);
         }
 
@@ -19,7 +18,7 @@ namespace Tests.Tank_Tests
         public void RotateRight_on_left_should_return_up()
         {
             var direction = Direction.Up;
-            var result = RotateRight(direction);
+            var result = DirectionExtensions.RotateRight(direction);
             Assert.AreEqual(Direction.Right, result);
         }
 
@@ -27,7 +26,7 @@ namespace Tests.Tank_Tests
         public void RotateLeft_on_right_should_return_up()
         {
             var direction = Direction.Right;
-            var result = RotateLeft(direction);
+            var result = DirectionExtensions.RotateLeft(direction);
             Assert.AreEqual(Direction.Up, result);
         }
 
@@ -35,7 +34,7 @@ namespace Tests.Tank_Tests
         public void RotateLeft_on_up_should_return_left()
         {
             var direction = Direction.Up;
-            var result = RotateLeft(direction);
+            var result = DirectionExtensions.RotateLeft(direction);
             Assert.AreEqual(Direction.Left, result);
         }
     }
