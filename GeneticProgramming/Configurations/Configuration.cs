@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Xml.Serialization;
 
 namespace GeneticProgramming.Configurations
 {
@@ -14,7 +15,7 @@ namespace GeneticProgramming.Configurations
         
         public void SerializeToFile(string filename)
         {
-            var formatter = new System.Xml.Serialization.XmlSerializer(typeof(Configuration));
+            var formatter = new XmlSerializer(typeof(Configuration));
             using (var fs = new FileStream(filename, FileMode.OpenOrCreate))
             {
                 formatter.Serialize(fs, this);
@@ -23,7 +24,7 @@ namespace GeneticProgramming.Configurations
         public static Configuration DeserializeFromFile(string filename)
         {
             Configuration result;
-            var formatter = new System.Xml.Serialization.XmlSerializer(typeof(Configuration));
+            var formatter = new XmlSerializer(typeof(Configuration));
             using (FileStream fs = new FileStream(filename, FileMode.OpenOrCreate))
             {
                 result = (Configuration)formatter.Deserialize(fs);

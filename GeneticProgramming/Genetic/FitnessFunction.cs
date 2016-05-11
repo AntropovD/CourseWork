@@ -6,11 +6,6 @@ namespace GeneticProgramming.Genetic
     {
 //        private BattleSimulator simulator = new BattleSimulator();
 
-        public FitnessFunction()
-        {
-            
-        }
-
         public int countValue(TankStrategy tankStrategy)
         {
 //            simulator.Execute(tankStrategy);

@@ -31,7 +31,7 @@ namespace DesktopEngine
         {
             int width = Texture.Width / Columns;
             int height = Texture.Height / Rows;
-            int row = (int)((float)currentFrame / (float)Columns);
+            int row = (int)(currentFrame / (float)Columns);
             int column = currentFrame % Columns;
 
             Rectangle sourceRectangle = new Rectangle(width * column, height * row, width, height);

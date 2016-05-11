@@ -7,14 +7,14 @@ namespace GeneticProgramming.Genetic.GeneticEngine
 {
     internal class BaseGeneticEngine : IGeneticEngine
     {
-        private readonly GeneticConfig _config;
+        private readonly GeneticConfig config;
         private readonly CrossoverMethods crossoverMethods;
         private readonly Mutation mutation;
 
-        public BaseGeneticEngine(GeneticConfig _config)
+        public BaseGeneticEngine(GeneticConfig config)
         {
-            this._config = _config;
-            crossoverMethods = new CrossoverMethods(_config);
+            this.config = config;
+            crossoverMethods = new CrossoverMethods(config);
             mutation = new Mutation();
         }
 
@@ -28,7 +28,7 @@ namespace GeneticProgramming.Genetic.GeneticEngine
 
         public List<TankStrategy> MutatePopulation(List<TankStrategy> strategies)
         { 
-            int mutationCount = (int)(strategies.Count * _config.MutationProb);
+            int mutationCount = (int)(strategies.Count * config.MutationProb);
             var mutatedSpecies = mutation.GetMutatedSpecies(strategies, mutationCount);
             strategies.AddRange(mutatedSpecies);
             return strategies;

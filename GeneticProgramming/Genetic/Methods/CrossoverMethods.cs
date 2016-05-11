@@ -23,7 +23,7 @@ namespace GeneticProgramming.Genetic.Methods
             {
                 var strategy1 = strategies[random.Next(strategies.Count)];
                 var strategy2 = strategies[random.Next(strategies.Count)];
-                yield return strategy1.Crossover(strategy2, _config.MaxStrategySize);
+                yield return strategy1.Crossover(strategy2, _config.MaxStrategyLength);
             }
         }
 
@@ -36,7 +36,7 @@ namespace GeneticProgramming.Genetic.Methods
             {
                 var strategy1 = strategies[random.Next(strategies.Count)];
                 var strategy2 = strategy1.FindMostLikely(strategies);
-                yield return strategy1.Crossover(strategy2, _config.MaxStrategySize);
+                yield return strategy1.Crossover(strategy2, _config.MaxStrategyLength);
             }
         }
 
@@ -49,7 +49,7 @@ namespace GeneticProgramming.Genetic.Methods
             {
                 var strategy1 = strategies[random.Next(strategies.Count)];
                 var strategy2 = strategy1.FindMostLikely(strategies);
-                yield return strategy1.Crossover(strategy2, _config.MaxStrategySize);
+                yield return strategy1.Crossover(strategy2, _config.MaxStrategyLength);
             }
         }
     }

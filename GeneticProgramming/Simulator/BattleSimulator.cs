@@ -7,7 +7,7 @@ namespace GeneticProgramming.Simulator
     public class BattleSimulator
     {
         private Map Map { get; set; }
-        private int fitnessValue = 0;
+        private int fitnessValue;
 
         private bool visual;
         private BaseVisualiser visualiser;
@@ -34,7 +34,7 @@ namespace GeneticProgramming.Simulator
             fitnessValue = result;
         }
 
-        private void MakeStep(Command command)
+        private void MakeStep(string command)
         {
             Coord nextCoord = Map.Tank.NextStep(command);
             if (IsPossible(nextCoord))

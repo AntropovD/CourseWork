@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 using GeneticProgramming.Extensions;
 using GeneticProgramming.Genetic.Methods;
 using GeneticProgramming.Simulator.Tanks;
-using static GeneticProgramming.Extensions.MathExtension;
 using log4net;
+using static GeneticProgramming.Extensions.MathExtension;
 
 namespace GeneticProgramming.Genetic
 {
@@ -20,12 +20,12 @@ namespace GeneticProgramming.Genetic
         private SelectionMethods selectionMethods;
 
         private static readonly ILog log =
-            LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-        public Population(int populationSize, int maxStrategySize)
+        public Population(int populationSize, int MaxStrategyLength)
         {
             size = populationSize;
-            maxLength = maxStrategySize;
+            maxLength = MaxStrategyLength;
             function = new FitnessFunction();
             selectionMethods = new SelectionMethods(populationSize);
         }
@@ -37,8 +37,8 @@ namespace GeneticProgramming.Genetic
 
         public void Initiate()
         {
-            population = Enumerable.Range(0, size)
-                .ToDictionary(i => GenerateRandomProgram(maxLength), i => -1);
+           /* population = Enumerable.Range(0, size)
+                .ToDictionary(i => GenerateRandomProgram(maxLength), i => -1);*/
             UpdateInitialPopulation();
         }
 
@@ -60,15 +60,6 @@ namespace GeneticProgramming.Genetic
             {
                 population.AddOrUpdate(keyValuePair.Key, keyValuePair.Value);
             }
-        }
-
-        public TankStrategy GenerateRandomProgram(int maxStrategySize)
-        {
-            var commands = Enum.GetValues(typeof (Command));
-            var random = new Random(Guid.NewGuid().GetHashCode());
-
-            return new TankStrategy(Enumerable.Range(0, random.Next(maxStrategySize))
-                .Select(i => (Command) commands.GetValue(random.Next(commands.Length))));
         }
 
         public void SelectPopulation()

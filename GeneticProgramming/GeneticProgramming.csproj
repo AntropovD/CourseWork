@@ -58,6 +58,7 @@
     <Compile Include="Genetic\FitnessFunction.cs" />
     <Compile Include="Genetic\GeneticAlgorithm.cs" />
     <Compile Include="Genetic\GeneticEngine\BaseGeneticEngine.cs" />
+    <Compile Include="Genetic\ProgramGenerator.cs" />
     <Compile Include="Simulator\Visualiser\ConsoleVisualiser.cs" />
     <Compile Include="Genetic\Methods\CrossoverMethods.cs" />
     <Compile Include="Genetic\GeneticEngine\IGeneticEngine.cs" />

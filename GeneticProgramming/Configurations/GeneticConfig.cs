@@ -6,7 +6,7 @@ namespace GeneticProgramming.Configurations
     public class GeneticConfig
     {
         public int PopulationSize { get; set; }
-        public int MaxStrategySize { get; set; }
+        public int MaxStrategyLength { get; set; }
 
         public double CrossoverProb { get; set; }
         public double MutationProb { get; set; }

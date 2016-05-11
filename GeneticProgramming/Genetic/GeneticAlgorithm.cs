@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using GeneticProgramming.Configurations;
 using GeneticProgramming.Genetic.GeneticEngine;
 using log4net;
@@ -9,7 +10,7 @@ namespace GeneticProgramming.Genetic
     {
         private readonly IGeneticEngine GeneticEngine;
         private static readonly ILog log =
-            LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+            LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         private Configuration configuration;
 
@@ -24,7 +25,7 @@ namespace GeneticProgramming.Genetic
             log.Info("Genetic Programming Started");
             
             var population =  new Population(configuration.GeneticConfig.PopulationSize, 
-                                            configuration.GeneticConfig.MaxStrategySize);
+                                            configuration.GeneticConfig.MaxStrategyLength);
             population.Initiate();
 
             int index = 0;

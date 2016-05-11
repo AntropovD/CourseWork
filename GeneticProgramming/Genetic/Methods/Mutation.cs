@@ -9,7 +9,7 @@ namespace GeneticProgramming.Genetic.Methods
         public IEnumerable<TankStrategy> GetMutatedSpecies(List<TankStrategy> basePopulation, int mutationCount)
         {
             var random = new Random(Guid.NewGuid().GetHashCode());
-            var commands = Enum.GetValues(typeof(Command));
+            var strings = Enum.GetValues(typeof(string));
 
             for (int i = 0; i < mutationCount; i++)
             {
@@ -19,7 +19,7 @@ namespace GeneticProgramming.Genetic.Methods
                 for (int j = 0; j < changesCount; j++)
                 {
                     int index = random.Next(rndAlgorithm.commands.Count);
-                    Command cmd = (Command)commands.GetValue(random.Next(commands.Length));
+                    string cmd = (string)strings.GetValue(random.Next(strings.Length));
                     rndAlgorithm.commands[index] = cmd;
                 }
                 yield return rndAlgorithm;

@@ -6,14 +6,14 @@ namespace GeneticProgramming.Simulator.Tanks
 {
     public class TankStrategy : IComparable
     {
-        public List<Command> commands; 
+        public List<string> commands; 
 
-        public TankStrategy(IEnumerable<Command> commands)
+        public TankStrategy(IEnumerable<string> commands)
         {
             this.commands = commands.ToList();
         }
 
-        public TankStrategy(List<Command> commands)
+        public TankStrategy(List<string> commands)
         {
             this.commands = commands;
         }
@@ -63,15 +63,5 @@ namespace GeneticProgramming.Simulator.Tanks
         {
             return obj.GetHashCode();
         }
-    }
-
-    public enum Command
-    {
-        TurnLeft,
-        TurnRight,
-        Forward,
-        Backward,
-        Stay,
-        Shoot
     }
 }

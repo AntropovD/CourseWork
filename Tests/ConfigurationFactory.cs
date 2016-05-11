@@ -9,7 +9,7 @@ namespace Tests
             GeneticConfig = new GeneticConfig
             {
                 PopulationSize = 100,
-                MaxStrategySize = 500,
+                MaxStrategyLength = 500,
                 CrossoverProb = 0.90,
                 MutationProb = 0.05,
                 PanmixiaRatio = 0.4,

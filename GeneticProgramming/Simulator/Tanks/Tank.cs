@@ -28,25 +28,26 @@ namespace GeneticProgramming.Simulator.Tanks
 //        public int DefeatRadius = 4;
 //        public int Ammunition = 20;
 
-        public Coord NextStep(Command command)
+        public Coord NextStep(string command)
         {
-            switch (command)
+            return Coord;
+            /*switch (command)
             {
-                case Command.Forward:
+                case string.Forward:
                     return Coord + Movements[Direction];
-                case Command.Backward:
+                case string.Backward:
                     return Coord - Movements[Direction];
-                case Command.TurnRight:
+                case string.TurnRight:
                     Direction = DirectionExtensions.RotateRight(Direction);
                     return Coord;
-                case Command.TurnLeft:
+                case string.TurnLeft:
                     Direction = DirectionExtensions.RotateLeft(Direction);
                     return Coord;
-                case Command.Stay:
+                case string.Stay:
                     return Coord;
                 default:
-                    throw new Exception("Unknown Command");
-            }
+                    throw new Exception("Unknown string");
+            }*/
         }
 
         private static readonly Dictionary<Direction, Coord> Movements = new Dictionary<Direction, Coord>
@@ -61,7 +62,7 @@ namespace GeneticProgramming.Simulator.Tanks
         {
             var directions = Enum.GetValues(typeof (Direction));
             var rnd = new Random(Guid.NewGuid().GetHashCode());
-            return new Tank(coord, (Tanks.Direction)directions.GetValue(rnd.Next(directions.Length)));
+            return new Tank(coord, (Direction)directions.GetValue(rnd.Next(directions.Length)));
         }
     }
 }

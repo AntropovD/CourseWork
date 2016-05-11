@@ -10,7 +10,7 @@ namespace GeneticProgramming.Simulator.Maps
     {
         private MapConfig MapConfig { get; set; }
 
-        public MapGenerator(Configurations.MapConfig mapConfig)
+        public MapGenerator(MapConfig mapConfig)
         {
             MapConfig = mapConfig;
         }
