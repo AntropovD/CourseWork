@@ -57,7 +57,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ConfigurationFactory.cs" />
-    <Compile Include="Extensions\Median_Tests.cs" />
+    <Compile Include="Extensions\MedianCounter_Tests.cs" />
     <Compile Include="Extensions\StringExtensions_Tests.cs" />
     <Compile Include="Extensions\ListExtension_Tests.cs" />
     <Compile Include="Extensions\DictionaryExtensions_Tests.cs" />
@@ -69,6 +69,7 @@
     <Compile Include="Genetic Tests\CrossoverMethods_Tests.cs" />
     <Compile Include="Tank Tests\TankStrategy_Tests.cs" />
     <Compile Include="Tank Tests\Direction_Tests.cs" />
+    <Compile Include="UnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GeneticProgramming\GeneticProgramming.csproj">

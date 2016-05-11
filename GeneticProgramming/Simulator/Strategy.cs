@@ -18,11 +18,11 @@ namespace GeneticProgramming.Simulator
             this.commands = commands;
         }
 
-        public Strategy Crossover(Strategy anotherStrategy, int maxSize)
+        public Strategy Crossover(Strategy strategy, int maxSize)
         {
             var random = new Random(Guid.NewGuid().GetHashCode());
             int firstIndex = random.Next(commands.Count);
-            int secondIndex = random.Next(anotherStrategy.commands.Count);
+            int secondIndex = random.Next(strategy.commands.Count);
 
             if (firstIndex + secondIndex > maxSize)
             {
@@ -31,14 +31,20 @@ namespace GeneticProgramming.Simulator
                 firstIndex -= diff << 1;
                 secondIndex -= diff << 1;
             }
+            var resultStrategy = GetStrategiesConcatenation(strategy, firstIndex, secondIndex);
 
+            return new Strategy(resultStrategy);
+        }
+
+        private List<string> GetStrategiesConcatenation(Strategy strategy, int firstIndex, int secondIndex)
+        {
             var firstPart = commands.Take(firstIndex).ToList();
             firstPart = AddBracketsEnd(firstPart);
-            var secondPart = anotherStrategy.commands.Skip(anotherStrategy.commands.Count - secondIndex).Take(secondIndex).ToList();
-            secondPart = ShiftWhileDepthNotZero(secondPart);
-            firstPart.AddRange(secondPart);
 
-            return new Strategy(firstPart);
+            var secondPart = strategy.commands.Skip(strategy.commands.Count - secondIndex).Take(secondIndex).ToList();
+            secondPart = ShiftWhileDepthNotZero(secondPart);
+            
+            return firstPart.Concat(secondPart).ToList();
         }
 
         public List<string> AddBracketsEnd(List<string> programPart)
@@ -73,7 +79,6 @@ namespace GeneticProgramming.Simulator
             }
             return programPart.Skip(minIndex).ToList();
         }
-
 
         public Strategy FindMostLikely(List<Strategy> basePopulation)
         {

@@ -1,5 +1,6 @@
 ﻿using GeneticProgramming.Configurations;
 using GeneticProgramming.Genetic;
+using GeneticProgramming.Genetic.Methods;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Tests.Tank_Tests
@@ -8,12 +9,12 @@ namespace Tests.Tank_Tests
     public class TankStrategy_Tests
     {
         private readonly GeneticConfig _config = ConfigurationFactory.Configuration.GeneticConfig;
-        private CrossoverMethods crossoverMethods;
+        private Crossover crossover;
 
         [TestInitialize]
         public void TestInitialize()
         {
-            crossoverMethods = new CrossoverMethods(_config);
+            crossover = new Crossover(_config);
         }
         /*
         [TestMethod]

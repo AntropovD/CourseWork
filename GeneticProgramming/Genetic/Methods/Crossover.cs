@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using GeneticProgramming.Configurations;
 using GeneticProgramming.Simulator;
 
-namespace GeneticProgramming.Genetic
+namespace GeneticProgramming.Genetic.Methods
 {
-    public class CrossoverMethods
+    public class Crossover
     {
         private readonly GeneticConfig config;
 
-        public CrossoverMethods(GeneticConfig config)
+        public Crossover(GeneticConfig config)
         {
             this.config = config;
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using GeneticProgramming.Configurations;
+using GeneticProgramming.Genetic.Methods;
 using GeneticProgramming.Simulator;
 using log4net;
 
@@ -18,7 +19,7 @@ namespace GeneticProgramming.Genetic
         public GeneticAlgorithm(Configuration configuration)
         {
             this.configuration = configuration;
-            geneticEngine = new BaseGeneticEngine(configuration.GeneticConfig);
+            geneticEngine = new GeneticEngine(configuration.GeneticConfig);
         }
 
         public void Run()
@@ -37,8 +38,9 @@ namespace GeneticProgramming.Genetic
         private void MakeNextGeneration(ref int index)
         {
             var nextGenerationStrategies = GetNextGenerationStrategies();
-            var selectedStrategies = geneticEngine.SelectPoplulation(nextGenerationStrategies);
-            population = population.UpdatePopulation(selectedStrategies);
+            population.UpdateStrategies(nextGenerationStrategies);
+            population = geneticEngine.SelectPopulation(population);
+        
             population.LogInfo(index);
             population.LogAllStrategies(index);
             index++;
@@ -47,8 +49,8 @@ namespace GeneticProgramming.Genetic
         private List<Strategy> GetNextGenerationStrategies()
         {
             var strategies = population.GetStrategies();
-            var offsping = geneticEngine.CrossoverPopulation(strategies);
-            var mutated = geneticEngine.MutatePopulation(strategies);
+            var offsping = geneticEngine.CrossoverStrategies(strategies);
+            var mutated = geneticEngine.MutateStrategies(strategies);
             return strategies.Concat(offsping).Concat(mutated).Distinct().ToList();
         }
     }

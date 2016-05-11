@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using GeneticProgramming.Simulator;
 
-namespace GeneticProgramming.Genetic
+namespace GeneticProgramming.Genetic.Methods
 {
     public class Mutation
     {

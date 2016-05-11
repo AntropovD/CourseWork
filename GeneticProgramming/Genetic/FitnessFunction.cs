@@ -3,11 +3,11 @@ using GeneticProgramming.Simulator;
 
 namespace GeneticProgramming.Genetic
 {
-    public class FitnessFunction
+    public class FitnessEvaluator
     {
 //        private BattleSimulator simulator = new BattleSimulator();
 
-        public int countValue(Strategy tankStrategy)
+        public int countFitness(Strategy tankStrategy)
         {
 //            simulator.Execute(tankStrategy);
 //            return simulator.GetFitness();

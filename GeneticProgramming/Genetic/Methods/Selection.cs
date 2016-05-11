@@ -3,22 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using GeneticProgramming.Simulator;
 
-namespace GeneticProgramming.Genetic
+namespace GeneticProgramming.Genetic.Methods
 {
-    public class SelectionMethods
+    public class Selection
     {
-        private int populationSize;
+        private readonly int populationSize;
 
-        public SelectionMethods(int populationSize)
+        public Selection(int populationSize)
         {
             this.populationSize = populationSize;
         }
 
-        public Dictionary<Strategy, int> GetTournamentSelection(Dictionary<Strategy, int> population)
+        public void MakeTournamentSelection(Population population)
         {
-            int size = population.Count;
+            int size = population.SpeciesAndValues.Count;
             var random = new Random(Guid.NewGuid().GetHashCode());
-            var array = population.ToList();
+            var array = population.SpeciesAndValues.ToList();
 
             while (size > populationSize)
             {
@@ -26,12 +26,11 @@ namespace GeneticProgramming.Genetic
                 int index2 = random.Next(size);
                 if (array[index1].Value >= array[index2].Value)
                 {
-                    population.Remove(array[index2].Key);
+                    population.SpeciesAndValues.Remove(array[index2].Key);
                     array.RemoveAt(index2);
                     size--;
                 }
             }
-            return population;
         }
     }
 }

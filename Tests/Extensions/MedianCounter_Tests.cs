@@ -4,7 +4,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Tests.Extensions
 {
     [TestClass]
-    public class Median_Tests
+    public class MedianCounter_Tests
     {
         [TestMethod]
         public void GetMedian_on_12345_should_return_3()
