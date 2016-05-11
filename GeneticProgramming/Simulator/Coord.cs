@@ -1,4 +1,4 @@
-﻿namespace GeneticProgramming.Simulator.Maps
+﻿namespace GeneticProgramming.Simulator
 {
     public class Coord
     {

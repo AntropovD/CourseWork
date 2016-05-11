@@ -1,6 +1,6 @@
 using System;
 
-namespace GeneticProgramming.Simulator.Tanks
+namespace GeneticProgramming.Simulator
 {
     public enum Direction
     {

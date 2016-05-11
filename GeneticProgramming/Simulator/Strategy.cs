@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace GeneticProgramming.Simulator.Tanks
+namespace GeneticProgramming.Simulator
 {
     public class Strategy : IComparable
     {

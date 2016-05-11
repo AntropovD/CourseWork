@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using GeneticProgramming.Simulator.Tanks;
+using GeneticProgramming.Simulator;
 
-namespace GeneticProgramming.Genetic.GeneticEngine
+namespace GeneticProgramming.Genetic
 {
     interface IGeneticEngine
     {

@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using GeneticProgramming.Extensions;
-using GeneticProgramming.Simulator.Maps;
-using GeneticProgramming.Simulator.Tanks;
 
-namespace GeneticProgramming.Simulator.Visualiser
+namespace GeneticProgramming.Simulator
 {
     abstract class BaseVisualiser
     {

@@ -1,8 +1,7 @@
-﻿using GeneticProgramming.Genetic;
-using GeneticProgramming.Simulator.Tanks;
+﻿using GeneticProgramming.Simulator;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Tests.GeneticTests
+namespace Tests.Genetic_Tests
 {
     [TestClass]
     public class ProgramGenerator_Tests

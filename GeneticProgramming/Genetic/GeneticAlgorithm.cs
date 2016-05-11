@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using GeneticProgramming.Configurations;
-using GeneticProgramming.Genetic.GeneticEngine;
-using GeneticProgramming.Simulator.Tanks;
+using GeneticProgramming.Simulator;
 using log4net;
 
 namespace GeneticProgramming.Genetic

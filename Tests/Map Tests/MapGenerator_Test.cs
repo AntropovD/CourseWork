@@ -1,9 +1,9 @@
 ﻿using System.Linq;
 using GeneticProgramming.Configurations;
-using GeneticProgramming.Simulator.Maps;
+using GeneticProgramming.Simulator;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Tests.MapTests
+namespace Tests.Map_Tests
 {
     [TestClass]
     public class MapGenerator_Test

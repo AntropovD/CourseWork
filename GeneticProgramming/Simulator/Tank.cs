@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using GeneticProgramming.Simulator.Maps;
 
-namespace GeneticProgramming.Simulator.Tanks
+namespace GeneticProgramming.Simulator
 {
     public class Tank
     {

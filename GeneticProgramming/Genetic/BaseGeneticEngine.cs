@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using GeneticProgramming.Configurations;
-using GeneticProgramming.Genetic.Methods;
-using GeneticProgramming.Simulator.Tanks;
+using GeneticProgramming.Simulator;
 
-namespace GeneticProgramming.Genetic.GeneticEngine
+namespace GeneticProgramming.Genetic
 {
     internal class BaseGeneticEngine : IGeneticEngine
     {

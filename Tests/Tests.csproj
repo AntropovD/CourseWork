@@ -61,14 +61,14 @@
     <Compile Include="Extensions\StringExtensions_Tests.cs" />
     <Compile Include="Extensions\ListExtension_Tests.cs" />
     <Compile Include="Extensions\DictionaryExtensions_Tests.cs" />
-    <Compile Include="GeneticTests\MutationMethods_Test.cs" />
-    <Compile Include="GeneticTests\ProgramGenerator_Tests.cs" />
-    <Compile Include="MapTests\MapGenerator_Test.cs" />
+    <Compile Include="Genetic Tests\MutationMethods_Test.cs" />
+    <Compile Include="Genetic Tests\ProgramGenerator_Tests.cs" />
+    <Compile Include="Map Tests\MapGenerator_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="GeneticTests\Population_Tests.cs" />
-    <Compile Include="GeneticTests\CrossoverMethods_Tests.cs" />
-    <Compile Include="TankTests\TankStrategy_Tests.cs" />
-    <Compile Include="TankTests\Direction_Tests.cs" />
+    <Compile Include="Genetic Tests\Population_Tests.cs" />
+    <Compile Include="Genetic Tests\CrossoverMethods_Tests.cs" />
+    <Compile Include="Tank Tests\TankStrategy_Tests.cs" />
+    <Compile Include="Tank Tests\Direction_Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GeneticProgramming\GeneticProgramming.csproj">

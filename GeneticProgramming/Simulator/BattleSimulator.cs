@@ -1,8 +1,4 @@
-﻿using GeneticProgramming.Simulator.Maps;
-using GeneticProgramming.Simulator.Tanks;
-using GeneticProgramming.Simulator.Visualiser;
-
-namespace GeneticProgramming.Simulator
+﻿namespace GeneticProgramming.Simulator
 {
     public class BattleSimulator
     {

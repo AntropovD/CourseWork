@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Tests.GeneticTests
+namespace Tests.Genetic_Tests
 {
     [TestClass]
     public class Population_Tests

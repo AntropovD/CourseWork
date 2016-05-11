@@ -1,8 +1,8 @@
 ﻿using GeneticProgramming.Configurations;
-using GeneticProgramming.Genetic.Methods;
+using GeneticProgramming.Genetic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Tests.TankTests
+namespace Tests.Tank_Tests
 {
     [TestClass]
     public class TankStrategy_Tests

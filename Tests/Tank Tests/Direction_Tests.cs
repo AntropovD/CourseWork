@@ -1,8 +1,8 @@
-﻿using GeneticProgramming.Simulator.Tanks;
+﻿using GeneticProgramming.Simulator;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using static GeneticProgramming.Simulator.Tanks.DirectionExtensions;
+using static GeneticProgramming.Simulator.DirectionExtensions;
 
-namespace Tests.TankTests
+namespace Tests.Tank_Tests
 {
     [TestClass]
     public class Direction_Tests

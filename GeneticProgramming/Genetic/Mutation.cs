@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using GeneticProgramming.Simulator.Tanks;
+using GeneticProgramming.Simulator;
 
-namespace GeneticProgramming.Genetic.Methods
+namespace GeneticProgramming.Genetic
 {
     public class Mutation
     {
@@ -19,8 +19,8 @@ namespace GeneticProgramming.Genetic.Methods
                 {
                     int index = rnd.Next(rndAlgorithm.commands.Count);
                     string cmd = rndAlgorithm.commands[index];
-                    if (StrategiesGenerator.IsFunction(cmd))
-                        rndAlgorithm.commands[index] = StrategiesGenerator.FunctionSet[rnd.Next(FunctionSet.Count)];
+//                    if (StrategiesGenerator.IsFunction(cmd))
+//                        rndAlgorithm.commands[index] = StrategiesGenerator.FunctionSet[rnd.Next(FunctionSet.Count)];
 
                     rndAlgorithm.commands[index] = cmd;
                 }

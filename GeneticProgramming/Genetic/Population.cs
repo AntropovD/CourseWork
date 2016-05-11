@@ -3,7 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using GeneticProgramming.Configurations;
-using GeneticProgramming.Simulator.Tanks;
+using GeneticProgramming.Simulator;
 using log4net;
 using static GeneticProgramming.Extensions.MedianCounter;
 

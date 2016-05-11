@@ -4,7 +4,7 @@ using System.Linq;
 using GeneticProgramming.Configurations;
 using GeneticProgramming.Extensions;
 
-namespace GeneticProgramming.Simulator.Maps
+namespace GeneticProgramming.Simulator
 {
     public class MapGenerator
     {
@@ -26,7 +26,7 @@ namespace GeneticProgramming.Simulator.Maps
                 .ToList();
         }
 
-        public Map GenerateMap()
+        public Simulator.Map GenerateMap()
         {
            /* var coordSequence = GenerateRandomCoords().ToList();
 
@@ -47,7 +47,7 @@ namespace GeneticProgramming.Simulator.Maps
             var startCoord = coordsList.FirstAndRemove();
             var finishCoord = coordsList.FirstAndRemove();
             
-            return new Map(MapConfig.Width, MapConfig.Height, obstacles, enemies, startCoord, finishCoord);
+            return new Simulator.Map(MapConfig.Width, MapConfig.Height, obstacles, enemies, startCoord, finishCoord);
             /*
             Coord finishCoord;
             try
