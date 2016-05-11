@@ -5,7 +5,8 @@ namespace GeneticProgramming.Genetic.GeneticEngine
 {
     interface IGeneticEngine
     {
-        List<TankStrategy> CrossoverPopulation(List<TankStrategy> strategies); 
-        List<TankStrategy> MutatePopulation(List<TankStrategy> strategies);
+        List<Strategy> CrossoverPopulation(List<Strategy> strategies); 
+        List<Strategy> MutatePopulation(List<Strategy> strategies);
+        List<Strategy> SelectPoplulation(List<Strategy> strategies);
     }
 }

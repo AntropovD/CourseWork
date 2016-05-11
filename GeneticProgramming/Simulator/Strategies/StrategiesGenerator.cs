@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using GeneticProgramming.Simulator.Tanks;
 
-namespace GeneticProgramming.Genetic
+namespace GeneticProgramming.Simulator.Tanks
 {
-    public class ProgramGenerator
+    public class StrategiesGenerator
     {
         private readonly int length;
-        private const double closeBracketCoeff = 0.3;
-        private const double newFunctionCoeff = 0.7; 
+        private const double closeBracketCoeff = 0.7;
+        private const double newFunctionCoeff = 0.5; 
 
-        public ProgramGenerator(int maxStrategyLength)
+        public StrategiesGenerator(int maxStrategyLength)
         {
             length = maxStrategyLength;
             AllTerminals = new List<string>(TerminalSet);
@@ -19,7 +18,7 @@ namespace GeneticProgramming.Genetic
             AllTerminals.Add("}");
         }
 
-        public List<string> GenerateRandomProgram()
+        public Strategy GenerateProgram()
         {
             List<string> result = new List<string>();
             int functionDepth = 0;
@@ -49,7 +48,7 @@ namespace GeneticProgramming.Genetic
             }
             for (i = 0; i < functionDepth; i++)
                 result.Add("}");
-            return result;
+            return new Strategy(result);
         }
 
         public bool CheckProgram(List<string> program)
@@ -65,6 +64,16 @@ namespace GeneticProgramming.Genetic
                     return false;
             }
             return true;
+        }
+
+        public bool IsTerminal(string cmd)
+        {
+            return TerminalSet.Contains(cmd);
+        }
+
+        public bool IsFunction(string cmd)
+        {
+            return FunctionSet.Contains(cmd);
         }
 
         private List<string> AllTerminals; 

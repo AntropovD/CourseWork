@@ -7,49 +7,49 @@ namespace GeneticProgramming.Genetic.Methods
 {
     public class CrossoverMethods
     {
-        private readonly GeneticConfig _config;
+        private readonly GeneticConfig config;
 
-        public CrossoverMethods(GeneticConfig _config)
+        public CrossoverMethods(GeneticConfig config)
         {
-            this._config = _config;
+            this.config = config;
         }
 
-        public IEnumerable<TankStrategy> GetPanmixia(List<TankStrategy> strategies)
+        public IEnumerable<Strategy> GetPanmixia(List<Strategy> strategies)
         {
-            int panmixiaCount = (int)(strategies.Count * _config.PanmixiaRatio * _config.CrossoverProb);
+            int panmixiaCount = (int)(strategies.Count * config.PanmixiaRatio * config.CrossoverProb);
             var random = new Random(Guid.NewGuid().GetHashCode());
 
             for (int i = 0; i < panmixiaCount; i++)
             {
                 var strategy1 = strategies[random.Next(strategies.Count)];
                 var strategy2 = strategies[random.Next(strategies.Count)];
-                yield return strategy1.Crossover(strategy2, _config.MaxStrategyLength);
+                yield return strategy1.Crossover(strategy2, config.MaxStrategyLength);
             }
         }
 
-        public IEnumerable<TankStrategy> GetInbreed(List<TankStrategy> strategies)
+        public IEnumerable<Strategy> GetInbreed(List<Strategy> strategies)
         {
-            int inbreedCount = (int) (strategies.Count * _config.InbreedRatio * _config.CrossoverProb);
+            int inbreedCount = (int) (strategies.Count * config.InbreedRatio * config.CrossoverProb);
             var random = new Random(Guid.NewGuid().GetHashCode());
 
             for (int i = 0; i < inbreedCount; i++)
             {
                 var strategy1 = strategies[random.Next(strategies.Count)];
                 var strategy2 = strategy1.FindMostLikely(strategies);
-                yield return strategy1.Crossover(strategy2, _config.MaxStrategyLength);
+                yield return strategy1.Crossover(strategy2, config.MaxStrategyLength);
             }
         }
 
-        public IEnumerable<TankStrategy> GetOutbreed(List<TankStrategy> strategies)
+        public IEnumerable<Strategy> GetOutbreed(List<Strategy> strategies)
         {
-            int outbreedCount = (int) (strategies.Count * _config.OutbreedRatio * _config.CrossoverProb);
+            int outbreedCount = (int) (strategies.Count * config.OutbreedRatio * config.CrossoverProb);
             var random = new Random(Guid.NewGuid().GetHashCode());
 
             for (int i = 0; i < outbreedCount; i++)
             {
                 var strategy1 = strategies[random.Next(strategies.Count)];
                 var strategy2 = strategy1.FindMostLikely(strategies);
-                yield return strategy1.Crossover(strategy2, _config.MaxStrategyLength);
+                yield return strategy1.Crossover(strategy2, config.MaxStrategyLength);
             }
         }
     }

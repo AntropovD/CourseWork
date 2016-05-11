@@ -57,6 +57,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ConfigurationFactory.cs" />
+    <Compile Include="Extensions\Median_Tests.cs" />
     <Compile Include="Extensions\StringExtensions_Tests.cs" />
     <Compile Include="Extensions\ListExtension_Tests.cs" />
     <Compile Include="Extensions\DictionaryExtensions_Tests.cs" />

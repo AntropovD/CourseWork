@@ -1,4 +1,5 @@
-﻿using GeneticProgramming.Simulator.Tanks;
+﻿using System;
+using GeneticProgramming.Simulator.Tanks;
 
 namespace GeneticProgramming.Genetic
 {
@@ -6,11 +7,12 @@ namespace GeneticProgramming.Genetic
     {
 //        private BattleSimulator simulator = new BattleSimulator();
 
-        public int countValue(TankStrategy tankStrategy)
+        public int countValue(Strategy tankStrategy)
         {
 //            simulator.Execute(tankStrategy);
 //            return simulator.GetFitness();
-            return 100;
+            var rnd = new Random(Guid.NewGuid().GetHashCode());
+            return rnd.Next(1000);
         }
     }
 }

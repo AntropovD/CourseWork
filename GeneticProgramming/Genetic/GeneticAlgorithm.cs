@@ -1,50 +1,56 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using GeneticProgramming.Configurations;
 using GeneticProgramming.Genetic.GeneticEngine;
+using GeneticProgramming.Simulator.Tanks;
 using log4net;
 
 namespace GeneticProgramming.Genetic
 {
     public class GeneticAlgorithm
     {
-        private readonly IGeneticEngine GeneticEngine;
-        private static readonly ILog log =
-            LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
-        private Configuration configuration;
+        private Population population;
+        private readonly Configuration configuration;
+        private readonly IGeneticEngine geneticEngine;
+        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         public GeneticAlgorithm(Configuration configuration)
         {
             this.configuration = configuration;
-            GeneticEngine = new BaseGeneticEngine(configuration.GeneticConfig);
+            geneticEngine = new BaseGeneticEngine(configuration.GeneticConfig);
         }
 
         public void Run()
         {
             log.Info("Genetic Programming Started");
-            
-            var population =  new Population(configuration.GeneticConfig.PopulationSize, 
-                                            configuration.GeneticConfig.MaxStrategyLength);
-            population.Initiate();
-
+            population = new Population(configuration.GeneticConfig);
             int index = 0;
-            while (! Console.KeyAvailable)
+            while (!Console.KeyAvailable)
             {
-                var strategies = population.GetStrategies();
-
-                var offsping = GeneticEngine.CrossoverPopulation(strategies);
-                var mutated = GeneticEngine.MutatePopulation(strategies);
-
-                population.UpdatePopulation(offsping);
-                population.UpdatePopulation(mutated);
-
-                population.SelectPopulation();
-                population.LogInfo();
-                log.Info($"Generation #{index}");
-                index++;
+                MakeNextGeneration(ref index);
+                if (population.HasAnyFinished() || index == 30)
+                    return;
             }
         }
- 
+
+        private void MakeNextGeneration(ref int index)
+        {
+            var nextGenerationStrategies = GetNextGenerationStrategies();
+            var selectedStrategies = geneticEngine.SelectPoplulation(nextGenerationStrategies);
+            population = population.UpdatePopulation(selectedStrategies);
+            population.LogInfo(index);
+            population.LogAllStrategies(index);
+            index++;
+        }
+
+        private List<Strategy> GetNextGenerationStrategies()
+        {
+            var strategies = population.GetStrategies();
+            var offsping = geneticEngine.CrossoverPopulation(strategies);
+            var mutated = geneticEngine.MutatePopulation(strategies);
+            return strategies.Concat(offsping).Concat(mutated).Distinct().ToList();
+        }
     }
 }

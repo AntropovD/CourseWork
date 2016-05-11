@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using GeneticProgramming.Configurations;
 using GeneticProgramming.Genetic.Methods;
 using GeneticProgramming.Simulator.Tanks;
@@ -18,7 +19,7 @@ namespace GeneticProgramming.Genetic.GeneticEngine
             mutation = new Mutation();
         }
 
-        public List<TankStrategy> CrossoverPopulation(List<TankStrategy> strategies)
+        public List<Strategy> CrossoverPopulation(List<Strategy> strategies)
         {
             strategies.AddRange(crossoverMethods.GetPanmixia(strategies));
             strategies.AddRange(crossoverMethods.GetInbreed(strategies));
@@ -26,12 +27,17 @@ namespace GeneticProgramming.Genetic.GeneticEngine
             return strategies;
         }
 
-        public List<TankStrategy> MutatePopulation(List<TankStrategy> strategies)
+        public List<Strategy> MutatePopulation(List<Strategy> strategies)
         { 
             int mutationCount = (int)(strategies.Count * config.MutationProb);
             var mutatedSpecies = mutation.GetMutatedSpecies(strategies, mutationCount);
             strategies.AddRange(mutatedSpecies);
             return strategies;
+        }
+
+        public List<Strategy> SelectPoplulation(List<Strategy> strategies)
+        {
+            throw new NotImplementedException();
         }
     }
 }

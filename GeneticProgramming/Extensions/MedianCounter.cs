@@ -2,7 +2,7 @@
 
 namespace GeneticProgramming.Extensions
 {
-    static class MathExtension
+    public static class MedianCounter
     {
         public static double GetMedian(int[] values)
         {

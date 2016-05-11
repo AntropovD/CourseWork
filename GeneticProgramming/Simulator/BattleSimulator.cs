@@ -19,7 +19,7 @@ namespace GeneticProgramming.Simulator
             visualiser = new ConsoleVisualiser();
         }
         
-        public void Execute(TankStrategy strategy)
+        public void Execute(Strategy strategy)
         {
             int result = 0;
             foreach (var command in strategy.commands)

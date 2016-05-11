@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using GeneticProgramming.Genetic.Methods;
-using GeneticProgramming.Simulator.Tanks;
+﻿using GeneticProgramming.Genetic.Methods;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Tests.GeneticTests

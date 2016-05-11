@@ -49,7 +49,7 @@
   <ItemGroup>
     <Compile Include="Extensions\DictionaryExtension.cs" />
     <Compile Include="Extensions\ListExtension.cs" />
-    <Compile Include="Extensions\MathExtension.cs" />
+    <Compile Include="Extensions\MedianCounter.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="Configurations\Configuration.cs" />
     <Compile Include="Configurations\GeneticConfig.cs" />
@@ -58,7 +58,7 @@
     <Compile Include="Genetic\FitnessFunction.cs" />
     <Compile Include="Genetic\GeneticAlgorithm.cs" />
     <Compile Include="Genetic\GeneticEngine\BaseGeneticEngine.cs" />
-    <Compile Include="Genetic\ProgramGenerator.cs" />
+    <Compile Include="Simulator\Strategies\StrategiesGenerator.cs" />
     <Compile Include="Simulator\Visualiser\ConsoleVisualiser.cs" />
     <Compile Include="Genetic\Methods\CrossoverMethods.cs" />
     <Compile Include="Genetic\GeneticEngine\IGeneticEngine.cs" />
@@ -67,7 +67,7 @@
     <Compile Include="Genetic\Population.cs" />
     <Compile Include="Simulator\BattleSimulator.cs" />
     <Compile Include="Simulator\Tanks\Direction.cs" />
-    <Compile Include="Simulator\Tanks\TankStrategy.cs" />
+    <Compile Include="Simulator\Strategies\Strategy.cs" />
     <Compile Include="Simulator\Maps\Coord.cs" />
     <Compile Include="Simulator\Maps\Map.cs" />
     <Compile Include="Simulator\Maps\MapGenerator.cs" />

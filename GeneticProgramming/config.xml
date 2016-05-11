@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <GeneticConfig>
-    <PopulationSize>100</PopulationSize>
-    <MaxStrategyLength>500</MaxStrategyLength>
+    <PopulationSize>30</PopulationSize>
+    <MaxStrategyLength>20</MaxStrategyLength>
     <CrossoverProb>0.9</CrossoverProb>
     <MutationProb>0.05</MutationProb>
     <PanmixiaRatio>0.4</PanmixiaRatio>

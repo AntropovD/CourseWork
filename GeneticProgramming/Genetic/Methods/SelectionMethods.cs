@@ -14,7 +14,7 @@ namespace GeneticProgramming.Genetic.Methods
             this.populationSize = populationSize;
         }
 
-        public Dictionary<TankStrategy, int> GetTournamentSelection(Dictionary<TankStrategy, int> population)
+        public Dictionary<Strategy, int> GetTournamentSelection(Dictionary<Strategy, int> population)
         {
             int size = population.Count;
             var random = new Random(Guid.NewGuid().GetHashCode());
