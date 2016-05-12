@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -85,6 +86,7 @@ namespace GeneticProgramming.Simulator
             return basePopulation.Where(algo => algo != this)
                     .Max(algo => Tuple.Create(HammingDistance(algo), algo)).Item2;
         }
+
         public Strategy FindMostUnlikely(List<Strategy> basePopulation)
         {
             return basePopulation.Where(algo => algo != this)

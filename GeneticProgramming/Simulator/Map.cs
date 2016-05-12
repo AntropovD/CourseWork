@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using GeneticProgramming.Configurations;
 
 namespace GeneticProgramming.Simulator
 {
@@ -13,15 +14,16 @@ namespace GeneticProgramming.Simulator
         public List<Tank> Enemies { get; set; }
         public List<Coord> Obstacles { get; private set; }
 
-        public Map(int width, int height, List<Coord> obstacles, List<Coord> enemies, Coord start, Coord finish)
+        public Map(int width, int height, List<Coord> obstacles, List<Coord> enemies, Coord start, Coord finish, TankConfig tankConfig)
         {
+            var tankGenerator = new TankGenerator(tankConfig);
             Width = width;
             Height = height;
             Obstacles = obstacles;
             StartCoord = start;
             FinishCoord = finish;
-            Tank = Tank.RandomizeTank(start);
-            Enemies = enemies.Select(Tank.RandomizeTank).ToList();
+            Tank = tankGenerator.RandomizeTank(start);
+            Enemies = enemies.Select(tankGenerator.RandomizeTank).ToList();
         }
     }
 }

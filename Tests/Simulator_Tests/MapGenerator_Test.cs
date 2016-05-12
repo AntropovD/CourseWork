@@ -9,12 +9,12 @@ namespace Tests.Simulator_Tests
     public class MapGenerator_Test
     {
         private MapGenerator generator { get; set; }
-        private MapConfig config { get; set; }
+        private MapConfig MapConfig { get; set; }
 
         [TestInitialize]
         public void TestInitialize()
         {
-            config = ConfigurationFactory.Configuration.MapConfig;
+            var config = ConfigurationFactory.Configuration;
             generator = new MapGenerator(config);
         }
 
@@ -22,28 +22,28 @@ namespace Tests.Simulator_Tests
         public void MapGenerator_on_width_should_return_map_with_same_width()
         {
             var map = generator.GenerateMap();
-            Assert.AreEqual(config.Width, map.Width);
+            Assert.AreEqual(MapConfig.Width, map.Width);
         }
 
         [TestMethod]
         public void MapGenerator_on_height_should_return_map_with_same_height()
         {
             var map = generator.GenerateMap();
-            Assert.AreEqual(config.Height, map.Height);
+            Assert.AreEqual(MapConfig.Height, map.Height);
         }
 
         [TestMethod]
         public void MapGeneratoron_should_return_map_with_obstacles_count()
         {
             var map = generator.GenerateMap();
-            Assert.AreEqual(config.ObstaclesCount, map.Obstacles.Count);
+            Assert.AreEqual(MapConfig.ObstaclesCount, map.Obstacles.Count);
         }
 
         [TestMethod]
         public void MapGenerator_should_return_map_with_same_enemies_count()
         {
             var map = generator.GenerateMap();
-            Assert.AreEqual(config.EnemiesCount, map.Enemies.Count);
+            Assert.AreEqual(MapConfig.EnemiesCount, map.Enemies.Count);
         }
 
         [TestMethod]

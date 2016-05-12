@@ -2,7 +2,7 @@
 {
     public class BattleSimulator
     {
-        private Map Map { get; set; }
+        private Map Map { get; }
         private int fitnessValue;
 
         private bool visual;
@@ -18,6 +18,18 @@
         public void Execute(Strategy strategy)
         {
             int result = 0;
+            int index = 0;
+            int size = strategy.commands.Count;
+            string[] commands = strategy.commands.ToArray();
+
+            while (index < strategy.commands.Count)
+            {
+                if (IsTerminal(commands[index]))
+                {
+                    MakeStep(commands[index]);
+                }
+            }
+
             foreach (var command in strategy.commands)
             {
                 MakeStep(command);

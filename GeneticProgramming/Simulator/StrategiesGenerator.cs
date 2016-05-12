@@ -95,7 +95,5 @@ namespace GeneticProgramming.Simulator
             "If_Obstacle_Right{",
             "If_Obstacle_Left{"
         };
-
-        
     }
 }
