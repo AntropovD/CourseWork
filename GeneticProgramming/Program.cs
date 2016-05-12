@@ -1,6 +1,5 @@
 ﻿using System;
 using GeneticProgramming.Configurations;
-using GeneticProgramming.Configurations.PartialConfigs;
 using GeneticProgramming.Simulator;
 using GeneticProgramming.Simulator.Maps;
 using GeneticProgramming.Simulator.Strategies;
@@ -25,6 +24,7 @@ namespace GeneticProgramming
             var strategiesGenerator = new StrategiesGenerator(30);
             var strategy = strategiesGenerator.GenerateProgram();
             var enemyStrategy = strategiesGenerator.GenerateEnemyProgram();
+            System.IO.File.WriteAllText(@"strategy.txt", string.Join(@"\r\n", strategy.commands));
 
             var mapGenerator = new MapGenerator(configuration);
             var map = mapGenerator.GenerateMap();
@@ -32,6 +32,7 @@ namespace GeneticProgramming
             var simulator = new BattleSimulator(map, enemyStrategy, true);
             int value = simulator.Execute(strategy);
             Console.WriteLine($"Fitness value: {value}");
+            
         }
     }
 }

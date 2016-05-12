@@ -1,4 +1,5 @@
-﻿using GeneticProgramming.Configurations;
+﻿using System;
+using GeneticProgramming.Configurations;
 using GeneticProgramming.Configurations.PartialConfigs;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -49,7 +50,33 @@ namespace Tests
         public void Deserialize()
         {
             //ConfigurationFactory.Configuration.SerializeToFile("ASD");
-            
+
+            int index = 3;
+            add(index);
+            Console.WriteLine(index);
+
+            ComplexClass c = new ComplexClass
+            {
+                i = 3
+            };
+            add2(c);
+            Console.WriteLine(c.i);
+        }
+
+        void add2(ComplexClass c)
+        {
+            c.i++;
+            Console.WriteLine(c.i);
+
+        }
+        class ComplexClass
+        {
+            public int i;
+        }
+        void add(int i)
+        {
+            i++;
+            Console.WriteLine($"add {i}");
         }
     }
 }

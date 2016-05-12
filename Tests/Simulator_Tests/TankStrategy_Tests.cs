@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using GeneticProgramming.Configurations;
-using GeneticProgramming.Configurations.PartialConfigs;
 using GeneticProgramming.Genetic.Engine.Types;
 using GeneticProgramming.Genetic.Methods;
 using GeneticProgramming.Simulator.Strategies;

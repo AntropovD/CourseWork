@@ -10,8 +10,8 @@ namespace GeneticProgramming.Simulator.Tanks
     {
         public Coord Coord { get; set; }
         public Direction Direction { get; set; }
-        public Strategy Strategy { get; }
-        
+        public Strategy Strategy { get; set; }
+
         public bool IsAlive = true;
         public int viewArea;
         public int fireArea;
