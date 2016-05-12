@@ -1,15 +1,8 @@
 using System;
+using GeneticProgramming.Simulator.Tanks;
 
-namespace GeneticProgramming.Simulator
+namespace GeneticProgramming.Simulator.Modules
 {
-    public enum Direction
-    {
-        Up = 0,
-        Right = 1,
-        Down = 2,
-        Left = 3
-    }
-
     public class DirectionExtensions
     {
         private static readonly int length = Enum.GetNames(typeof (Direction)).Length;

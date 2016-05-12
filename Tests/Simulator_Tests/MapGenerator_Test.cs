@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using GeneticProgramming.Configurations;
 using GeneticProgramming.Simulator;
+using GeneticProgramming.Simulator.Maps;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Tests.Simulator_Tests
@@ -15,6 +16,7 @@ namespace Tests.Simulator_Tests
         public void TestInitialize()
         {
             var config = ConfigurationFactory.Configuration;
+            MapConfig = config.MapConfig;
             generator = new MapGenerator(config);
         }
 

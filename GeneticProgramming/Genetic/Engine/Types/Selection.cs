@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using GeneticProgramming.Simulator;
 
-namespace GeneticProgramming.Genetic.Methods
+namespace GeneticProgramming.Genetic.Engine.Types
 {
     public class Selection
     {

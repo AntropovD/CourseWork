@@ -1,13 +1,15 @@
 ﻿using System.Collections.Generic;
 using GeneticProgramming.Configurations;
+using GeneticProgramming.Genetic.Engine.Types;
 using GeneticProgramming.Genetic.Methods;
 using GeneticProgramming.Simulator;
+using GeneticProgramming.Simulator.Strategies;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Tests.Simulator_Tests
 {
     [TestClass]
-    public class Strategy_Tests
+    public class StrategyExtensions_Tests
     {
         private readonly GeneticConfig config = ConfigurationFactory.Configuration.GeneticConfig;
         private Crossover crossover;
@@ -24,6 +26,7 @@ namespace Tests.Simulator_Tests
             var algo1 = new Strategy(new List<string> { "Backward", "Backward", "Shoot" });
             var algo2 = new Strategy(new List<string> { "Backward", "Backward", "Stay" });
             var algo3 = new Strategy(new List<string> { "TurnLeft", "TurnLeft", "TurnLeft" });
+            
             var result = algo1.FindMostLikely(new List<Strategy> { algo1, algo2, algo3 });
 
             CollectionAssert.AreEqual(algo2.commands, result.commands);
@@ -45,7 +48,7 @@ namespace Tests.Simulator_Tests
         {
             var algo1 = new Strategy(new List<string> { "Backward", "Shoot", "Forward" });
             var algo2 = new Strategy(new List<string> { "Backward", "Shoot", "Forward" });
-            var result = algo1.HammingDistance(algo2);
+            var result = StrategyGeneticExtensions.HammingDistance(algo1, algo2);
             Assert.AreEqual(3, result);
         }
 
@@ -54,7 +57,7 @@ namespace Tests.Simulator_Tests
         {
             var algo1 = new Strategy(new List<string> { "Backward", "Shoot", "Forward" });
             var algo2 = new Strategy(new List<string> { "Backward", "Stay", "Forward" });
-            var result = algo1.HammingDistance(algo2);
+            var result = StrategyGeneticExtensions.HammingDistance(algo1, algo2);
             Assert.AreEqual(2, result);
         }
 
@@ -63,7 +66,7 @@ namespace Tests.Simulator_Tests
         {
             var algo1 = new Strategy(new List<string> { "Backward", "Shoot" });
             var algo2 = new Strategy(new List<string> { "Stay", "Forward" });
-            var result = algo1.HammingDistance(algo2);
+            var result = StrategyGeneticExtensions.HammingDistance(algo1, algo2);
             Assert.AreEqual(0, result);
         }
     }

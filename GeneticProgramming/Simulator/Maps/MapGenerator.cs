@@ -4,7 +4,7 @@ using System.Linq;
 using GeneticProgramming.Configurations;
 using GeneticProgramming.Extensions;
 
-namespace GeneticProgramming.Simulator
+namespace GeneticProgramming.Simulator.Maps
 {
     public class MapGenerator
     {

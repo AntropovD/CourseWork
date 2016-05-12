@@ -1,31 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GeneticProgramming.Configurations;
+using GeneticProgramming.Simulator.Maps;
 
-namespace GeneticProgramming.Simulator
+namespace GeneticProgramming.Simulator.Tanks
 {
     class TankGenerator
     {
-        private TankConfig config;
-        public TankGenerator(TankConfig config)
+        private readonly TankConfig tankConfig;
+
+        public TankGenerator(TankConfig tankConfig)
         {
-            this.config = config;
+            this.tankConfig = tankConfig;
         }
 
         public Tank RandomizeTank(Coord coord)
         {
             var directions = Enum.GetValues(typeof(Direction));
             var rnd = new Random(Guid.NewGuid().GetHashCode());
-            return new Tank()
+
+            return new Tank
             {
                 Coord = coord,
                 Direction = (Direction)directions.GetValue(rnd.Next(directions.Length)),
-                ammunition = config.Ammunition,
-                fireArea = config.FireArea,
-                viewArea = config.ViewArea
+                ammunition = tankConfig.Ammunition,
+                fireArea = tankConfig.FireArea,
+                viewArea = tankConfig.ViewArea
             };
         }
     }

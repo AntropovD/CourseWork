@@ -6,11 +6,10 @@ using System.Reflection;
 using System.Threading.Tasks;
 using GeneticProgramming.Configurations;
 using GeneticProgramming.Extensions;
-using GeneticProgramming.Simulator;
+using GeneticProgramming.Simulator.Strategies;
 using log4net;
-using static GeneticProgramming.Extensions.MedianCounter;
 
-namespace GeneticProgramming.Genetic
+namespace GeneticProgramming.Genetic.Engine
 {
     public class Population
     {
@@ -59,7 +58,7 @@ namespace GeneticProgramming.Genetic
             int min = SpeciesAndValues.Min(pair => pair.Value);
             int max = SpeciesAndValues.Max(pair => pair.Value);
             double average = SpeciesAndValues.Average(pair => pair.Value);
-            double median = GetMedian(SpeciesAndValues.Values.ToArray());
+            double median = MedianCounter.GetMedian(SpeciesAndValues.Values.ToArray());
             log.Info($@"Population parameters: Min fitness: {min}, Max fitness: {max}, Average: {average} Median: {median}");
         }
 

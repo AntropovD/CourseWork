@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using GeneticProgramming.Configurations;
-using GeneticProgramming.Simulator;
+using GeneticProgramming.Genetic.Engine.Types;
+using GeneticProgramming.Simulator.Strategies;
 
-namespace GeneticProgramming.Genetic.Methods
+namespace GeneticProgramming.Genetic.Engine
 {
     internal class GeneticEngine : IGeneticEngine
     {

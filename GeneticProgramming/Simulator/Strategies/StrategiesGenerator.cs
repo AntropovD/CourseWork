@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace GeneticProgramming.Simulator
+namespace GeneticProgramming.Simulator.Strategies
 {
     public class StrategiesGenerator
     {
@@ -51,6 +51,19 @@ namespace GeneticProgramming.Simulator
             return new Strategy(result);
         }
 
+        public Strategy GenerateEnemyProgram()
+        {
+            List<string> result = new List<string>();
+            int index = 0;
+            while (index < length)
+            {
+                result.Add("TurnRight");
+                result.Add("Forward");
+                result.Add("Shoot");
+                index += 3;
+            }
+            return new Strategy(result);
+        }
         public bool CheckProgram(List<string> program)
         {
             int depth = 0;
@@ -66,23 +79,28 @@ namespace GeneticProgramming.Simulator
             return true;
         }
 
-        public bool IsTerminal(string cmd)
+        public static bool IsTerminal(string cmd)
         {
             return TerminalSet.Contains(cmd);
         }
 
-        public bool IsFunction(string cmd)
+        public static bool IsFunction(string cmd)
         {
             return FunctionSet.Contains(cmd);
         }
 
+        public static bool IsFunctionEnd(string cmd)
+        {
+            return cmd.Contains('}');
+        }
+
         private List<string> AllTerminals; 
-        private readonly List<string> TerminalSet = new List<string>
+        private static readonly List<string> TerminalSet = new List<string>
         {
             "TurnLeft", "TurnRight", "Forward", "Backward", "Stay", "Shoot"
         };
 
-        private readonly List<string> FunctionSet = new List<string>
+        private static readonly List<string> FunctionSet = new List<string>
         {
             "If_Enemy_In_Visible_Area{",
             "If_Enemy_In_Fire_Area{",
@@ -95,5 +113,6 @@ namespace GeneticProgramming.Simulator
             "If_Obstacle_Right{",
             "If_Obstacle_Left{"
         };
+
     }
 }

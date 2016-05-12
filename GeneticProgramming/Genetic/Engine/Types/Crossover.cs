@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using GeneticProgramming.Configurations;
-using GeneticProgramming.Simulator;
+using GeneticProgramming.Genetic.Methods;
+using GeneticProgramming.Simulator.Strategies;
 
-namespace GeneticProgramming.Genetic.Methods
+namespace GeneticProgramming.Genetic.Engine.Types
 {
     public class Crossover
     {
@@ -23,7 +24,7 @@ namespace GeneticProgramming.Genetic.Methods
             {
                 var strategy1 = strategies[random.Next(strategies.Count)];
                 var strategy2 = strategies[random.Next(strategies.Count)];
-                yield return strategy1.Crossover(strategy2, config.MaxStrategyLength);
+                yield return StrategyCrossoverMethods.Crossover(strategy1, strategy2, config.MaxStrategyLength);
             }
         }
 
@@ -36,7 +37,7 @@ namespace GeneticProgramming.Genetic.Methods
             {
                 var strategy1 = strategies[random.Next(strategies.Count)];
                 var strategy2 = strategy1.FindMostLikely(strategies);
-                yield return strategy1.Crossover(strategy2, config.MaxStrategyLength);
+                yield return StrategyCrossoverMethods.Crossover(strategy1, strategy2, config.MaxStrategyLength);
             }
         }
 
@@ -48,8 +49,8 @@ namespace GeneticProgramming.Genetic.Methods
             for (int i = 0; i < outbreedCount; i++)
             {
                 var strategy1 = strategies[random.Next(strategies.Count)];
-                var strategy2 = strategy1.FindMostLikely(strategies);
-                yield return strategy1.Crossover(strategy2, config.MaxStrategyLength);
+                var strategy2 = strategy1.FindMostUnlikely(strategies);
+                yield return StrategyCrossoverMethods.Crossover(strategy1, strategy2, config.MaxStrategyLength);
             }
         }
     }

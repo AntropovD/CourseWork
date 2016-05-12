@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using GeneticProgramming.Simulator;
+using GeneticProgramming.Simulator.Strategies;
 
-namespace GeneticProgramming.Genetic.Methods
+namespace GeneticProgramming.Genetic.Engine.Types
 {
     public class Mutation
     {

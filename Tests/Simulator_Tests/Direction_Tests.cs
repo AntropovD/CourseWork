@@ -1,4 +1,6 @@
 ﻿using GeneticProgramming.Simulator;
+using GeneticProgramming.Simulator.Modules;
+using GeneticProgramming.Simulator.Tanks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Tests.Simulator_Tests

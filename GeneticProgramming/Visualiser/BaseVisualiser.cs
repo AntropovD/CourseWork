@@ -1,9 +1,11 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using GeneticProgramming.Extensions;
+using GeneticProgramming.Simulator.Maps;
+using GeneticProgramming.Simulator.Tanks;
 
-namespace GeneticProgramming.Simulator
+namespace GeneticProgramming.Visualiser
 {
     abstract class BaseVisualiser
     {
@@ -64,25 +66,10 @@ namespace GeneticProgramming.Simulator
         private static readonly Dictionary<Direction, char> EnemyChars = new Dictionary<Direction, char>
         {
             { Direction.Up, 'I' },
-            { Direction.Left, 'J' },
-            { Direction.Down,  'K'},
-            { Direction.Right,  'L'}
+            { Direction.Left, 'J'},
+            { Direction.Down, 'K'},
+            { Direction.Right, 'L'}
         };
         #endregion
-
-    }
-
-    class ConsoleVisualiser : BaseVisualiser
-    {
-        public override void Visualise(Map map)
-        {
-            string[] field = GetField(map);
-            Console.Clear();
-            foreach (var s in field)
-            {
-                Console.WriteLine(s);
-            }
-            Console.ReadKey();
-        }
     }
 }

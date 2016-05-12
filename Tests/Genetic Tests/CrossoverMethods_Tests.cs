@@ -1,8 +1,9 @@
 ﻿using System.Linq;
 using GeneticProgramming.Configurations;
-using GeneticProgramming.Genetic;
+using GeneticProgramming.Genetic.Engine.Types;
 using GeneticProgramming.Genetic.Methods;
 using GeneticProgramming.Simulator;
+using GeneticProgramming.Simulator.Strategies;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Tests.Genetic_Tests
@@ -24,7 +25,7 @@ namespace Tests.Genetic_Tests
         {
             var algo1 = new Strategy(Enumerable.Range(0, _config.MaxStrategyLength).Select(i => "Forward"));
             var algo2 = new Strategy(Enumerable.Range(0, _config.MaxStrategyLength).Select(i => "Shoot"));
-            var result = algo1.Crossover(algo2, _config.MaxStrategyLength);
+            var result = StrategyCrossoverMethods.Crossover(algo1, algo2, _config.MaxStrategyLength);
             Assert.IsTrue(result.commands.Count < _config.MaxStrategyLength);
         }
     }

@@ -1,45 +1,66 @@
-﻿namespace GeneticProgramming.Simulator
+﻿using System;
+using GeneticProgramming.Simulator.Maps;
+using GeneticProgramming.Simulator.Modules;
+using GeneticProgramming.Simulator.Strategies;
+using GeneticProgramming.Simulator.Tanks;
+using GeneticProgramming.Visualiser;
+
+namespace GeneticProgramming.Simulator
 {
-    public class BattleSimulator
+    class BattleSimulator
     {
         private Map Map { get; }
-        private int fitnessValue;
 
-        private bool visual;
-        private BaseVisualiser visualiser;
+        private readonly bool isDebug;
+        private readonly BaseVisualiser visualiser;
+        private Strategy enemyStrategy;
 
-        public BattleSimulator(Map Map, bool visual = false)
+        public BattleSimulator(Map Map, Strategy enemyStrategy, bool isDebug = false)
         {
             this.Map = Map;
-            this.visual = visual;
-            visualiser = new ConsoleVisualiser();
+            this.isDebug = isDebug;
+            this.enemyStrategy = enemyStrategy;
+            if (isDebug)
+                visualiser = new ConsoleVisualiser();
         }
         
-        public void Execute(Strategy strategy)
+        public int Execute(Strategy strategy)
         {
             int result = 0;
             int index = 0;
-            int size = strategy.commands.Count;
             string[] commands = strategy.commands.ToArray();
+            var tankFunctions = new StrategyFunctions(Map, Map.Tank);
+         
+            if (isDebug)
+                System.IO.File.WriteAllText(@"strategy.txt", string.Join(@"\r\n", commands));
 
             while (index < strategy.commands.Count)
             {
-                if (IsTerminal(commands[index]))
+                if (StrategiesGenerator.IsTerminal(commands[index]))
                 {
                     MakeStep(commands[index]);
+                    if (isDebug)
+                        visualiser.Visualise(Map);
+                    if (Map.Tank.Coord == Map.FinishCoord)
+                    {
+                        result += 1000;
+                        return result;
+                    }
+                    result++;
                 }
+                if (StrategiesGenerator.IsFunction(commands[index]))
+                {
+                    tankFunctions.CheckFunction(commands, ref index);
+                }
+                if (StrategiesGenerator.IsFunctionEnd(commands[index]))
+                {
+                    
+                }
+                Console.WriteLine($"Step#{index} - {commands[index]}");
+                index++;
+             //   Console.ReadKey();
             }
-
-            foreach (var command in strategy.commands)
-            {
-                MakeStep(command);
-                if (visual) 
-                    visualiser.Visualise(Map);
-                if (Map.Tank.Coord == Map.FinishCoord)
-                    result += 1000;
-                result++;
-            }
-            fitnessValue = result;
+            return result;
         }
 
         private void MakeStep(string command)
@@ -49,16 +70,16 @@
             {
                 Map.Tank.Coord = nextCoord;
             }
+
+            foreach (var enemy in Map.Enemies)
+            {
+                enemy.NextStep()
+            }
         }
 
         private bool IsPossible(Coord nextCoord)
         {
             return true;
-        }
-
-        public int GetFitness()
-        {
-            return fitnessValue;
         }
     }
 }

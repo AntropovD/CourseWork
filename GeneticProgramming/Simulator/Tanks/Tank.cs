@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using GeneticProgramming.Simulator.Maps;
+using GeneticProgramming.Simulator.Modules;
+using GeneticProgramming.Simulator.Strategies;
 
-namespace GeneticProgramming.Simulator
+namespace GeneticProgramming.Simulator.Tanks
 {
     public class Tank
     {
         public Coord Coord { get; set; }
         public Direction Direction { get; set; }
+        public Strategy Strategy { get; }
         
         public bool IsAlive = true;
         public int viewArea;
@@ -15,24 +19,25 @@ namespace GeneticProgramming.Simulator
 
         public Coord NextStep(string command)
         {
-            return Coord;
-            /*switch (command)
+            switch (command)
             {
-                case string.Forward:
+                case "Forward":
                     return Coord + Movements[Direction];
-                case string.Backward:
+                case "Backward":
                     return Coord - Movements[Direction];
-                case string.TurnRight:
+                case "TurnRight":
                     Direction = DirectionExtensions.RotateRight(Direction);
                     return Coord;
-                case string.TurnLeft:
+                case "TurnLeft":
                     Direction = DirectionExtensions.RotateLeft(Direction);
                     return Coord;
-                case string.Stay:
+                case "Stay":
+                    return Coord;
+                case "Shoot":
                     return Coord;
                 default:
-                    throw new Exception("Unknown string");
-            }*/
+                    throw new Exception("Unknown command");
+            }
         }
 
         private static readonly Dictionary<Direction, Coord> Movements = new Dictionary<Direction, Coord>

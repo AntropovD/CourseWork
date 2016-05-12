@@ -1,5 +1,6 @@
 ﻿using System;
 using GeneticProgramming.Simulator;
+using GeneticProgramming.Simulator.Strategies;
 
 namespace GeneticProgramming.Genetic
 {
