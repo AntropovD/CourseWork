@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using GeneticProgramming.Configurations;
+using GeneticProgramming.Configurations.PartialConfigs;
 using GeneticProgramming.Genetic.Engine.Types;
 using GeneticProgramming.Genetic.Methods;
-using GeneticProgramming.Simulator;
 using GeneticProgramming.Simulator.Strategies;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -11,13 +11,13 @@ namespace Tests.Simulator_Tests
     [TestClass]
     public class StrategyExtensions_Tests
     {
-        private readonly GeneticConfig config = ConfigurationFactory.Configuration.GeneticConfig;
+        private readonly Configuration config = ConfigurationFactory.Configuration;
         private Crossover crossover;
 
         [TestInitialize]
         public void TestInitialize()
         {
-            crossover = new Crossover(config);
+            crossover = new Crossover(config.GeneticConfig, config.StrategyConfig);
         }
         
         [TestMethod]

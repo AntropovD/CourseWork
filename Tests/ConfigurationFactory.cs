@@ -1,4 +1,6 @@
 ﻿using GeneticProgramming.Configurations;
+using GeneticProgramming.Configurations.PartialConfigs;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Tests
 {
@@ -9,7 +11,6 @@ namespace Tests
             GeneticConfig = new GeneticConfig
             {
                 PopulationSize = 100,
-                MaxStrategyLength = 500,
                 CrossoverProb = 0.90,
                 MutationProb = 0.05,
                 PanmixiaRatio = 0.4,
@@ -28,7 +29,27 @@ namespace Tests
                 Ammunition = 20,
                 FireArea = 2,
                 ViewArea = 4
+            },
+            StrategyConfig = new StrategyConfig
+            {
+                MaxStrategySize = 500
+            },
+            StrategyGeneratorConfig = new StrategyGeneratorConfig
+            {
+                CloseBracketCoefficient = 0.7,
+                NewFunctionCoefficient = 0.5
             }
         };
+    }
+
+    [TestClass]
+    public class TestConfiguration
+    {
+        [TestMethod]
+        public void Deserialize()
+        {
+            //ConfigurationFactory.Configuration.SerializeToFile("ASD");
+            
+        }
     }
 }

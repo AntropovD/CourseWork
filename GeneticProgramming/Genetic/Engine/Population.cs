@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
-using GeneticProgramming.Configurations;
+using GeneticProgramming.Configurations.PartialConfigs;
 using GeneticProgramming.Extensions;
 using GeneticProgramming.Simulator.Strategies;
 using log4net;
@@ -19,10 +19,10 @@ namespace GeneticProgramming.Genetic.Engine
         private static readonly FitnessEvaluator Evaluator = new FitnessEvaluator();
         private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-        public Population(GeneticConfig config)
+        public Population(GeneticConfig geneticConfig, StrategyConfig strategyConfig)
         {
-            size = config.PopulationSize;
-            maxLength = config.MaxStrategyLength;
+            size = geneticConfig.PopulationSize;
+            maxLength = strategyConfig.MaxStrategySize;
             SpeciesAndValues = new Dictionary<Strategy, int>();
             InitiatePopulation();
         }

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using GeneticProgramming.Configurations;
+using GeneticProgramming.Configurations.PartialConfigs;
 using GeneticProgramming.Simulator.Tanks;
 
 namespace GeneticProgramming.Simulator.Maps

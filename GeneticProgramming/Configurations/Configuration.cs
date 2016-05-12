@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Xml.Serialization;
+using GeneticProgramming.Configurations.PartialConfigs;
 
 namespace GeneticProgramming.Configurations
 {
@@ -12,6 +13,10 @@ namespace GeneticProgramming.Configurations
         public MapConfig MapConfig { get; set; }
 
         public TankConfig TankConfig { get; set; }
+
+        public StrategyConfig StrategyConfig { get; set; }
+
+        public StrategyGeneratorConfig StrategyGeneratorConfig { get; set; }
         
         public void SerializeToFile(string filename)
         {

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Reflection;
 using GeneticProgramming.Configurations;
 using GeneticProgramming.Genetic.Engine;
-using GeneticProgramming.Simulator;
 using GeneticProgramming.Simulator.Strategies;
 using log4net;
 
@@ -20,13 +19,13 @@ namespace GeneticProgramming.Genetic
         public GeneticAlgorithm(Configuration configuration)
         {
             this.configuration = configuration;
-            geneticEngine = new GeneticEngine(configuration.GeneticConfig);
+            geneticEngine = new GeneticEngine(configuration.GeneticConfig, configuration.StrategyConfig);
         }
 
         public void Run()
         {
             log.Info("Genetic Programming Started");
-            population = new Population(configuration.GeneticConfig);
+            population = new Population(configuration.GeneticConfig, configuration.StrategyConfig);
             int index = 0;
             while (!Console.KeyAvailable)
             {

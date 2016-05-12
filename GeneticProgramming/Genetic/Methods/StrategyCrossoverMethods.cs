@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GeneticProgramming.Simulator.Strategies;
 
 namespace GeneticProgramming.Genetic.Methods

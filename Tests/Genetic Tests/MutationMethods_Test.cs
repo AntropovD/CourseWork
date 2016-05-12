@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using GeneticProgramming.Genetic.Engine.Types;
-using GeneticProgramming.Simulator;
 using GeneticProgramming.Simulator.Strategies;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

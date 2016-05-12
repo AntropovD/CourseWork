@@ -1,5 +1,4 @@
-﻿using GeneticProgramming.Genetic;
-using GeneticProgramming.Genetic.Engine;
+﻿using GeneticProgramming.Genetic.Engine;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Tests.Genetic_Tests
@@ -10,10 +9,10 @@ namespace Tests.Genetic_Tests
         [TestMethod]
         public void InitiatePopulation_should_return_population_size_from_config()
         {
-            var config = ConfigurationFactory.Configuration.GeneticConfig;
-            var population = new Population(config);
+            var config = ConfigurationFactory.Configuration;
+            var population = new Population(config.GeneticConfig, config.StrategyConfig);
             
-            Assert.AreEqual(config.PopulationSize, population.SpeciesAndValues.Count);
+            Assert.AreEqual(config.GeneticConfig.PopulationSize, population.SpeciesAndValues.Count);
         }
     }
 }   

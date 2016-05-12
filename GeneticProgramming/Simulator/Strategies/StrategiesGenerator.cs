@@ -10,12 +10,9 @@ namespace GeneticProgramming.Simulator.Strategies
         private const double closeBracketCoeff = 0.7;
         private const double newFunctionCoeff = 0.5; 
 
-        public StrategiesGenerator(int maxStrategyLength)
+        public StrategiesGenerator(int MaxStrategySize)
         {
-            length = maxStrategyLength;
-            AllTerminals = new List<string>(TerminalSet);
-            AllTerminals.AddRange(FunctionSet);
-            AllTerminals.Add("}");
+            length = MaxStrategySize;
         }
 
         public Strategy GenerateProgram()
@@ -69,7 +66,7 @@ namespace GeneticProgramming.Simulator.Strategies
             int depth = 0;
             foreach (var command in program)
             {
-                if (!AllTerminals.Contains(command))
+                if (!IsToken(command))
                     return false;
                 if (command.Contains('{')) depth++;
                 if (command.Contains('}')) depth--;
@@ -77,6 +74,11 @@ namespace GeneticProgramming.Simulator.Strategies
                     return false;
             }
             return true;
+        }
+
+        public static bool IsToken(string cmd)
+        {
+            return IsFunction(cmd) || IsFunctionEnd(cmd) || IsTerminal(cmd);
         }
 
         public static bool IsTerminal(string cmd)
@@ -94,7 +96,6 @@ namespace GeneticProgramming.Simulator.Strategies
             return cmd.Contains('}');
         }
 
-        private List<string> AllTerminals; 
         private static readonly List<string> TerminalSet = new List<string>
         {
             "TurnLeft", "TurnRight", "Forward", "Backward", "Stay", "Shoot"

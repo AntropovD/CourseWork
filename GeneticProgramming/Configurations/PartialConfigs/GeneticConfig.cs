@@ -1,12 +1,11 @@
 using System;
 
-namespace GeneticProgramming.Configurations
+namespace GeneticProgramming.Configurations.PartialConfigs
 {
     [Serializable]
     public class GeneticConfig
     {
         public int PopulationSize { get; set; }
-        public int MaxStrategyLength { get; set; }
 
         public double CrossoverProb { get; set; }
         public double MutationProb { get; set; }

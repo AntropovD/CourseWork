@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using GeneticProgramming.Configurations;
+using GeneticProgramming.Configurations.PartialConfigs;
 using GeneticProgramming.Genetic.Engine.Types;
 using GeneticProgramming.Simulator.Strategies;
 
@@ -7,17 +7,17 @@ namespace GeneticProgramming.Genetic.Engine
 {
     internal class GeneticEngine : IGeneticEngine
     {
-        private readonly GeneticConfig config;
+        private readonly GeneticConfig geneticConfig;
         private Crossover Crossover { get; }
         private Mutation Mutation { get; }
         private Selection Selection { get; }
 
-        public GeneticEngine(GeneticConfig config)
+        public GeneticEngine(GeneticConfig geneticConfig, StrategyConfig strategyConfig)
         {
-            this.config = config;
-            Crossover = new Crossover(config);
+            this.geneticConfig = geneticConfig;
+            Crossover = new Crossover(geneticConfig, strategyConfig);
             Mutation = new Mutation();
-            Selection = new Selection(config.PopulationSize);
+            Selection = new Selection(geneticConfig.PopulationSize);
         }
 
         public List<Strategy> CrossoverStrategies(List<Strategy> strategies)
@@ -30,7 +30,7 @@ namespace GeneticProgramming.Genetic.Engine
 
         public List<Strategy> MutateStrategies(List<Strategy> strategies)
         { 
-            int mutationCount = (int)(strategies.Count * config.MutationProb);
+            int mutationCount = (int)(strategies.Count * geneticConfig.MutationProb);
             var mutatedSpecies = Mutation.GetMutatedSpecies(strategies, mutationCount);
             strategies.AddRange(mutatedSpecies);
             return strategies;

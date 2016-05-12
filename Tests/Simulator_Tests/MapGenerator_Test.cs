@@ -1,6 +1,5 @@
 ﻿using System.Linq;
-using GeneticProgramming.Configurations;
-using GeneticProgramming.Simulator;
+using GeneticProgramming.Configurations.PartialConfigs;
 using GeneticProgramming.Simulator.Maps;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 

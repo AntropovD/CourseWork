@@ -1,5 +1,5 @@
 ﻿using System;
-using GeneticProgramming.Configurations;
+using GeneticProgramming.Configurations.PartialConfigs;
 using GeneticProgramming.Simulator.Maps;
 
 namespace GeneticProgramming.Simulator.Tanks

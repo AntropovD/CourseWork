@@ -47,14 +47,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\PartialConfigs\StrategyConfig.cs" />
+    <Compile Include="Configurations\PartialConfigs\StrategyGeneratorConfig.cs" />
     <Compile Include="Extensions\DictionaryExtension.cs" />
     <Compile Include="Extensions\ListExtension.cs" />
     <Compile Include="Extensions\MedianCounter.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="Configurations\Configuration.cs" />
-    <Compile Include="Configurations\GeneticConfig.cs" />
-    <Compile Include="Configurations\MapConfig.cs" />
-    <Compile Include="Configurations\TankConfig.cs" />
+    <Compile Include="Configurations\PartialConfigs\GeneticConfig.cs" />
+    <Compile Include="Configurations\PartialConfigs\MapConfig.cs" />
+    <Compile Include="Configurations\PartialConfigs\TankConfig.cs" />
     <Compile Include="Genetic\FitnessEvaluator.cs" />
     <Compile Include="Genetic\GeneticAlgorithm.cs" />
     <Compile Include="Genetic\Methods\StrategyCrossoverMethods.cs" />
@@ -78,7 +80,7 @@
     <Compile Include="Simulator\Tanks\Tank.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Simulator\Modules\TankFunctions.cs" />
+    <Compile Include="Simulator\Modules\StrategyFunctions.cs" />
     <Compile Include="Simulator\Tanks\TankGenerator.cs" />
   </ItemGroup>
   <ItemGroup>

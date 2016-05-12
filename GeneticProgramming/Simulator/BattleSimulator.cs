@@ -2,7 +2,6 @@
 using GeneticProgramming.Simulator.Maps;
 using GeneticProgramming.Simulator.Modules;
 using GeneticProgramming.Simulator.Strategies;
-using GeneticProgramming.Simulator.Tanks;
 using GeneticProgramming.Visualiser;
 
 namespace GeneticProgramming.Simulator
@@ -71,10 +70,10 @@ namespace GeneticProgramming.Simulator
                 Map.Tank.Coord = nextCoord;
             }
 
-            foreach (var enemy in Map.Enemies)
-            {
-                enemy.NextStep()
-            }
+//            foreach (var enemy in Map.Enemies)
+//            {
+//                enemy.NextStep();
+//            }
         }
 
         private bool IsPossible(Coord nextCoord)

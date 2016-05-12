@@ -1,5 +1,4 @@
-﻿using GeneticProgramming.Simulator;
-using GeneticProgramming.Simulator.Strategies;
+﻿using GeneticProgramming.Simulator.Strategies;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Tests.Genetic_Tests
