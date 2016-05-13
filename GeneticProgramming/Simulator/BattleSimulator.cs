@@ -1,6 +1,4 @@
-﻿using GeneticProgramming.Simulator.Maps;
-using GeneticProgramming.Simulator.Strategies;
-using GeneticProgramming.Visualiser;
+﻿using GeneticProgramming.Visualiser;
 
 namespace GeneticProgramming.Simulator
 {

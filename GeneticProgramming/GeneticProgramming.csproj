@@ -63,7 +63,9 @@
     <Compile Include="Genetic\Methods\StrategyGeneticExtensions.cs" />
     <Compile Include="Genetic\Engine\GeneticEngine.cs" />
     <Compile Include="Simulator\Battle.cs" />
-    <Compile Include="Simulator\Modules\DirectionExtensions.cs" />
+    <Compile Include="Simulator\Modules\StrategyEnemiesChecking.cs" />
+    <Compile Include="Simulator\Modules\StrategyObstaclesChecking.cs" />
+    <Compile Include="Simulator\Modules\DirectionMethods.cs" />
     <Compile Include="Simulator\Modules\StrategyTokens.cs" />
     <Compile Include="Simulator\Strategies\StrategiesGenerator.cs" />
     <Compile Include="Visualiser\BaseVisualiser.cs" />

@@ -3,7 +3,7 @@ using GeneticProgramming.Simulator.Tanks;
 
 namespace GeneticProgramming.Simulator.Modules
 {
-    public class DirectionExtensions
+    public class DirectionMethods
     {
         private static readonly int length = Enum.GetNames(typeof (Direction)).Length;
 
@@ -15,6 +15,11 @@ namespace GeneticProgramming.Simulator.Modules
         public static Direction RotateLeft(Direction direction)
         {
             return (Direction)(((int)direction + (length - 1)) % length);
+        }
+
+        public static Direction Flip(Direction direction)
+        {
+            return (Direction)(((int)direction + 2) % length);
         }
     }
 }

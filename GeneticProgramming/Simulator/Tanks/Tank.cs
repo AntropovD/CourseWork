@@ -26,10 +26,10 @@ namespace GeneticProgramming.Simulator.Tanks
                 case "Backward":
                     return Coord - Movements[Direction];
                 case "TurnRight":
-                    Direction = DirectionExtensions.RotateRight(Direction);
+                    Direction = DirectionMethods.RotateRight(Direction);
                     return Coord;
                 case "TurnLeft":
-                    Direction = DirectionExtensions.RotateLeft(Direction);
+                    Direction = DirectionMethods.RotateLeft(Direction);
                     return Coord;
                 case "Stay":
                     return Coord;

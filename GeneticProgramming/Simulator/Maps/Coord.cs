@@ -20,6 +20,11 @@
             return new Coord(C.X - D.X, C.Y - D.Y);
         }
 
+        public static Coord operator *(Coord C, Coord D)
+        {
+            return new Coord(C.X * D.X, C.Y * D.Y);
+        }
+
         public static bool operator ==(Coord C, Coord D)
         {
             return C.Equals(D);

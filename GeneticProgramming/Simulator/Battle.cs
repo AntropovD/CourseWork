@@ -26,14 +26,17 @@ namespace GeneticProgramming.Simulator
 
         private void MakeEnemiesStep()
         {
-            var command = Strategy.GetNextCommand();
+          /*  var command = Strategy.GetNextCommand(Map, Map.Tank);
             if (Map.Tank.Coord == Map.FinishCoord)
                 IsOver = true;
+            */
         }
 
         private void MakeTankStep()
         {
-            throw new System.NotImplementedException();
+            var command = Strategy.GetNextCommand(Map, Map.Tank);
+            if (Map.Tank.Coord == Map.FinishCoord)
+                IsOver = true;
         }
     }
 }

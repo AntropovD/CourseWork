@@ -3,7 +3,7 @@ using GeneticProgramming.Configurations.PartialConfigs;
 using GeneticProgramming.Simulator.Maps;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Tests.Simulator_Tests
+namespace Tests.Simulator_Tests.Map_Tests
 {
     [TestClass]
     public class MapGenerator_Test
