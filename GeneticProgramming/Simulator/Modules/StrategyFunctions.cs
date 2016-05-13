@@ -20,20 +20,20 @@ namespace GeneticProgramming.Simulator.Modules
                 index++;
                 return;
             }
-            while (!(StrategiesGenerator.IsFunctionEnd(commands[index]) || index == commands.Length))
+            while (!(StrategyTokens.IsFunctionEnd(commands[index]) || index == commands.Length))
             {
                 index++;
             }
         }
 
-        private Dictionary<string, Func<Map, Tank, bool>> Rules = new Dictionary<string, Func<Map, Tank, bool>>
+        public static Dictionary<string, Func<Map, Tank, bool>> Rules = new Dictionary<string, Func<Map, Tank, bool>>
         {
-           /* { "If_Enemy_In_Visible_Area{", CheckEnemyInVisibleArea },
+            { "If_Enemy_In_Visible_Area{", CheckEnemyInVisibleArea },
             { "If_Enemy_In_Fire_Area{", CheckEnemyInFireArea },
             { "If_Enemy_Up{", CheckEnemyUp },
             { "If_Enemy_Left{", CheckEnemyLeft },
             { "If_Enemy_Right{", CheckEnemyRight },
-            { "If_Ememy_Down{", CheckEnemyDown },*/
+            { "If_Ememy_Down{", CheckEnemyDown },
             { "If_Obstacle_Forward{", CheckObstacleForward },
             { "If_Obstacle_Backward{", CheckObstacleBackward },
             { "If_Obstacle_Right{", CheckObstacleRight },

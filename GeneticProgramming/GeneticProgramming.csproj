@@ -64,6 +64,7 @@
     <Compile Include="Genetic\Engine\GeneticEngine.cs" />
     <Compile Include="Simulator\Battle.cs" />
     <Compile Include="Simulator\Modules\DirectionExtensions.cs" />
+    <Compile Include="Simulator\Modules\StrategyTokens.cs" />
     <Compile Include="Simulator\Strategies\StrategiesGenerator.cs" />
     <Compile Include="Visualiser\BaseVisualiser.cs" />
     <Compile Include="Visualiser\ConsoleVisualiser.cs" />

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using GeneticProgramming.Simulator.Modules;
 
 namespace GeneticProgramming.Simulator.Strategies
 {
@@ -9,17 +10,18 @@ namespace GeneticProgramming.Simulator.Strategies
         public List<string> commands;
         public int index;
 
-        public Strategy(IEnumerable<string> commands)
-        {
-            this.commands = commands.ToList();
-            index = 0;
-        }
-
         public Strategy(List<string> commands)
         {
             this.commands = commands;
         }
 
+        public string GetNextCommand()
+        {
+            if (StrategyTokens.IsTerminal(commands[index]))
+                return commands[index];
+            return null;
+        }
+        
         public int CompareTo(object obj)
         {
             return obj.GetHashCode();

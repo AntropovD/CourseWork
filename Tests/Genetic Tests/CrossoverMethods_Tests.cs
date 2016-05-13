@@ -24,10 +24,10 @@ namespace Tests.Genetic_Tests
         {
             var algo1 = new Strategy(Enumerable.
                 Range(0, configuration.StrategyConfig.MaxStrategySize)
-                .Select(i => "Forward"));
+                .Select(i => "Forward").ToList());
             var algo2 = new Strategy(Enumerable.
                 Range(0, configuration.StrategyConfig.MaxStrategySize)
-                .Select(i => "Shoot"));
+                .Select(i => "Shoot").ToList());
             var result = StrategyCrossoverMethods.Crossover(algo1, algo2, configuration.StrategyConfig.MaxStrategySize);
             Assert.IsTrue(result.commands.Count < configuration.StrategyConfig.MaxStrategySize);
         }

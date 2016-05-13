@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using GeneticProgramming.Configurations.PartialConfigs;
 using GeneticProgramming.Simulator.Tanks;
 
 namespace GeneticProgramming.Simulator.Maps
 {
-    public class Map
+    public class Map : ICloneable
     {
         public int Width { get; private set; }
         public int Height { get; private set; }
@@ -25,6 +26,11 @@ namespace GeneticProgramming.Simulator.Maps
             FinishCoord = finish;
             Tank = tankGenerator.RandomizeTank(start);
             Enemies = enemies.Select(tankGenerator.RandomizeTank).ToList();
+        }
+
+        public object Clone()
+        {
+            return MemberwiseClone();
         }
     }
 }

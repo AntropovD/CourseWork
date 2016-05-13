@@ -6,52 +6,53 @@ namespace GeneticProgramming.Simulator
 {
     class BattleSimulator
     {
-        private Map Map { get; }
         private readonly bool isDebug;
-        private readonly BaseVisualiser visualiser;
+        private BaseVisualiser Visualiser { get; }
+        private Battle Battle { get;  }
 
-        public BattleSimulator(Map map, Strategy enemyStrategy, bool isDebug = false)
+        public BattleSimulator(Battle battle, bool isDebug = false)
         {
-            Map = Map;
-            visualiser = new ConsoleVisualiser();
+            Battle = battle;
+            Visualiser = new ConsoleVisualiser();
             this.isDebug = isDebug;
         }
-        
-        public int Execute(Strategy strategy)
+
+        public int Execute()
         {
             int fitnessValue = 0;
-          //  string[] commands = strategy.commands.ToArray();
-          //  var tankFunctions = new StrategyFunctions(Map, Map.Tank);
-
-            Map.Tank.Strategy = strategy;
-
-            while (true)
+            while (!Battle.IsOver)
             {
-                
+                Battle.MakeStep(ref fitnessValue);
+                if (isDebug)
+                {
+                    Visualiser.Visualise(Battle.Map);
+                }
             }
             return fitnessValue;
         }
+    }
+}
 
-        private void MakeStep(string command)
-        {
-            Coord nextCoord = Map.Tank.NextStep(command);
-            if (IsPossible(nextCoord))
-            {
-                Map.Tank.Coord = nextCoord;
-            }
+
+/*
+private void MakeStep(string command)
+{
+    Coord nextCoord = Map.Tank.NextStep(command);
+    if (IsPossible(nextCoord))
+    {
+        Map.Tank.Coord = nextCoord;
+    }
 
 //            foreach (var enemy in Map.Enemies)
 //            {
 //                enemy.NextStep();
 //            }
-        }
-
-        private bool IsPossible(Coord nextCoord)
-        {
-            return true;
-        }
-    }
 }
+
+private bool IsPossible(Coord nextCoord)
+{
+    return true;
+}*/
 /* while (index < strategy.commands.Count)
             {
                 if (StrategiesGenerator.IsTerminal(commands[index]))

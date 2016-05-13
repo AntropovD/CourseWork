@@ -35,6 +35,7 @@ namespace GeneticProgramming.Visualiser
             string[] result = new string[height + 2];
             string emptyLine = String.Join("", Enumerable.Repeat(" ", width));
             result[0] = String.Concat(Enumerable.Repeat("#", width + 2));
+
             for (int i = 1; i <= height; i++)
                 result[i] = String.Concat("#", emptyLine, "#");
             result[height + 1] = String.Concat(Enumerable.Repeat("#", width + 2));
@@ -42,34 +43,7 @@ namespace GeneticProgramming.Visualiser
         }
 
         public abstract void Visualise(Map map);
-
-        #region CharsMethods
-
-        private char GetTankChar(Direction direction)
-        {
-            return TankChars[direction];
-        }
-
-        private char GetEnemyChar(Direction direction)
-        {
-            return EnemyChars[direction];
-        }
-
-        private static readonly Dictionary<Direction, char> TankChars = new Dictionary<Direction, char>
-        {
-            { Direction.Up, '8'},
-            { Direction.Left, '4'},
-            { Direction.Right, '6'},
-            { Direction.Down, '2'}
-        };
-
-        private static readonly Dictionary<Direction, char> EnemyChars = new Dictionary<Direction, char>
-        {
-            { Direction.Up, 'I' },
-            { Direction.Left, 'J'},
-            { Direction.Down, 'K'},
-            { Direction.Right, 'L'}
-        };
-        #endregion
+        protected abstract char GetTankChar(Direction direction);
+        protected abstract char GetEnemyChar(Direction direction);
     }
 }

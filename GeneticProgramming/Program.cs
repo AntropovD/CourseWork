@@ -24,15 +24,17 @@ namespace GeneticProgramming
             var strategiesGenerator = new StrategiesGenerator(30);
             var strategy = strategiesGenerator.GenerateProgram();
             var enemyStrategy = strategiesGenerator.GenerateEnemyProgram();
-            System.IO.File.WriteAllText(@"strategy.txt", string.Join(@"\r\n", strategy.commands));
+            System.IO.File.WriteAllText("strategy.txt", string.Join(" ", strategy.commands));
+            System.IO.File.WriteAllText("Enstrategy.txt", string.Join(" ", enemyStrategy.commands));
 
             var mapGenerator = new MapGenerator(configuration);
             var map = mapGenerator.GenerateMap();
 
-            var simulator = new BattleSimulator(map, enemyStrategy, true);
-            int value = simulator.Execute(strategy);
-            Console.WriteLine($"Fitness value: {value}");
+            var battle = new Battle(map, strategy, enemyStrategy);
+            var simulator = new BattleSimulator(battle);
             
+            int value = simulator.Execute();
+            Console.WriteLine($"Fitness value: {value}");
         }
     }
 }
