@@ -19,10 +19,10 @@
         {
             return new Coord(C.X - D.X, C.Y - D.Y);
         }
-
-        public static Coord operator *(Coord C, Coord D)
+        
+        public static Coord operator *(int n, Coord C)
         {
-            return new Coord(C.X * D.X, C.Y * D.Y);
+            return new Coord(C.X * n, C.Y * n);
         }
 
         public static bool operator ==(Coord C, Coord D)

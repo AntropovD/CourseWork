@@ -37,7 +37,7 @@ namespace GeneticProgramming.Simulator.Modules
             return map.Obstacles.Contains(coord);
         }
 
-        private static Dictionary<Direction, Coord> wayCoords = new Dictionary<Direction, Coord>
+        public static Dictionary<Direction, Coord> wayCoords = new Dictionary<Direction, Coord>
         {
             {Direction.Up, new Coord(0, -1)},
             {Direction.Right, new Coord(1, 0)},
