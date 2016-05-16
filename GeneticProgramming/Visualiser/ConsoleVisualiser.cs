@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using GeneticProgramming.Simulator;
 using GeneticProgramming.Simulator.Maps;
 using GeneticProgramming.Simulator.Tanks;
 
@@ -7,10 +8,10 @@ namespace GeneticProgramming.Visualiser
 {
     class ConsoleVisualiser : BaseVisualiser
     {
-        public override void Visualise(Map map)
+        public override void Visualise(Battle battle)
         {
             Console.Clear();
-            string[] field = GetField(map);
+            string[] field = GetField(battle.Map);
             foreach (var s in field)
             {
                 Console.WriteLine(s);

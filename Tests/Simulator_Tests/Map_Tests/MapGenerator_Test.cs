@@ -71,5 +71,49 @@ namespace Tests.Simulator_Tests.Map_Tests
             allCoords.Add(map.FinishCoord);
             Assert.IsTrue(allCoords.Distinct().Count() == allCoords.Count);
         }
+
+        [TestMethod]
+        public void GenerateMap_all_coords_more_than_coord_0_0()
+        {
+            var map = generator.GenerateMap();
+
+            Assert.IsTrue(NotZeroCoord(map.StartCoord));
+            Assert.IsTrue(NotZeroCoord(map.FinishCoord));
+            foreach (var tank in map.AllTanks)
+            {
+                Assert.IsTrue(NotZeroCoord(tank.Coord));
+            }
+            foreach (var obstacle in map.Obstacles)
+            {
+                Assert.IsTrue(NotZeroCoord(obstacle));
+            }
+        }
+
+        [TestMethod]
+        public void GenerateMap_all_coords_less_than_coord_width_height()
+        {
+            var map = generator.GenerateMap();
+
+            Assert.IsTrue(LessThemMaxCoord(map.StartCoord));
+            Assert.IsTrue(LessThemMaxCoord(map.FinishCoord));
+            foreach (var tank in map.AllTanks)
+            {
+                Assert.IsTrue(LessThemMaxCoord(tank.Coord));
+            }
+            foreach (var obstacle in map.Obstacles)
+            {
+                Assert.IsTrue(LessThemMaxCoord(obstacle));
+            }
+        }
+
+        private bool NotZeroCoord(Coord c)
+        {
+            return c.X != 0 && c.Y != 0;
+        }
+
+        private bool LessThemMaxCoord(Coord c)
+        {
+            return c.X <= MapConfig.Width && c.Y <= MapConfig.Height;
+        }
     }
 }

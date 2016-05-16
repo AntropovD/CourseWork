@@ -69,6 +69,7 @@
     <Compile Include="Genetic Tests\CrossoverMethods_Tests.cs" />
     <Compile Include="Simulator_Tests\Modules_Tests\StrategyObstaclesChecking_Tests.cs" />
     <Compile Include="Simulator_Tests\Modules_Tests\StrategyEnemiesChecking_Tests.cs" />
+    <Compile Include="Simulator_Tests\Modules_Tests\AreaChecking.cs" />
     <Compile Include="Simulator_Tests\Strategy_Tests\TankStrategy_Tests.cs" />
     <Compile Include="Simulator_Tests\Tank_Tests\Direction_Tests.cs" />
   </ItemGroup>

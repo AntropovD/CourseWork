@@ -5,7 +5,7 @@ using static GeneticProgramming.Simulator.Modules.DirectionMethods;
 
 namespace GeneticProgramming.Simulator.Modules
 {
-    public static class StrategyObstaclesChecking
+    public static class ObstaclesChecking
     {
         public static bool CheckObstacleFront(Map map, Tank tank)
         {

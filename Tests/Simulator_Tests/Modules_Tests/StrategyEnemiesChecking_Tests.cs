@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using GeneticProgramming.Simulator.Maps;
 using GeneticProgramming.Simulator.Modules;
 using GeneticProgramming.Simulator.Tanks;
@@ -30,7 +29,7 @@ namespace Tests.Simulator_Tests.Modules_Tests
                 Direction = Direction.Right,
                 fireArea = 4
             };
-            bool result = StrategyEnemiesChecking.CheckEnemyFront(map, tank);
+            bool result = EnemiesChecking.CheckEnemyFront(map, tank);
             Assert.AreEqual(true, result);
         }
 
@@ -43,7 +42,7 @@ namespace Tests.Simulator_Tests.Modules_Tests
                 Direction = Direction.Right,
                 fireArea = 7
             };
-            bool result = StrategyEnemiesChecking.CheckEnemyFront(map, tank);
+            bool result = EnemiesChecking.CheckEnemyFront(map, tank);
             Assert.AreEqual(false, result);
         }
 
@@ -56,7 +55,7 @@ namespace Tests.Simulator_Tests.Modules_Tests
                 Direction = Direction.Right,
                 fireArea = 3
             };
-            bool result = StrategyEnemiesChecking.CheckEnemyRight(map, tank);
+            bool result = EnemiesChecking.CheckEnemyRight(map, tank);
             Assert.AreEqual(true, result);
         }
 
@@ -69,7 +68,7 @@ namespace Tests.Simulator_Tests.Modules_Tests
                 Direction = Direction.Right,
                 fireArea = 2
             };
-            bool result = StrategyEnemiesChecking.CheckEnemyRight(map, tank);
+            bool result = EnemiesChecking.CheckEnemyRight(map, tank);
             Assert.AreEqual(false, result);
         }
     }

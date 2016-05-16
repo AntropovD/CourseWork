@@ -11,7 +11,8 @@ namespace GeneticProgramming.Simulator.Strategies
     {
         public List<string> commands;
         public int index;
-        public string Token => commands[index];
+        public string lastCommand = "Init";
+        
 
         public Strategy(List<string> commands)
         {
@@ -20,22 +21,36 @@ namespace GeneticProgramming.Simulator.Strategies
 
         public string GetNextCommand(Map map, Tank tank)
         {
-            while (!IsTerminal(Token))
+            if (index >= commands.Count)
+                return "Finish";
+            while (!IsTerminal(commands[index]))
             {
-                if (IsFunction(Token))
+                if (IsFunction(commands[index]))
                 {
-                    if (StrategyFunctions.Rules[Token](map, tank))
+                    if (StrategyFunctions.Rules[commands[index]](map, tank))
+                    {
                         index++;
+                        if (index >= commands.Count)
+                            return "Finish";
+                    }
                     else
-                        while (!IsFunctionEnd(Token))
+                        while (!IsFunctionEnd(commands[index]))
                         {
                             index++;
+                            if (index >= commands.Count)
+                                return "Finish";
                         }
                 }
-                if (IsFunctionEnd(Token))
+                if (IsFunctionEnd(commands[index]))
+                {
                     index++;
+                    if (index >= commands.Count)
+                        return "Finish";
+                }
             }
-            return Token;
+            lastCommand = commands[index];
+            index++;
+            return lastCommand;
         }
         
         public int CompareTo(object obj)

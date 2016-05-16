@@ -6,7 +6,7 @@ using GeneticProgramming.Simulator.Strategies;
 
 namespace GeneticProgramming.Simulator.Tanks
 {
-    public class Tank
+    public class Tank 
     {
         public Coord Coord { get; set; }
         public Direction Direction { get; set; }
@@ -17,35 +17,35 @@ namespace GeneticProgramming.Simulator.Tanks
         public int fireArea;
         public int ammunition;
 
-        public Coord NextStep(string command)
+        public static bool operator ==(Tank firstTank, Tank secondTank)
         {
-            switch (command)
-            {
-                case "Forward":
-                    return Coord + Movements[Direction];
-                case "Backward":
-                    return Coord - Movements[Direction];
-                case "TurnRight":
-                    Direction = DirectionMethods.RotateRight(Direction);
-                    return Coord;
-                case "TurnLeft":
-                    Direction = DirectionMethods.RotateLeft(Direction);
-                    return Coord;
-                case "Stay":
-                    return Coord;
-                case "Shoot":
-                    return Coord;
-                default:
-                    throw new Exception("Unknown command");
-            }
+            return firstTank?.Coord == secondTank?.Coord;
         }
 
-        private static readonly Dictionary<Direction, Coord> Movements = new Dictionary<Direction, Coord>
+        public static bool operator !=(Tank firstTank, Tank secondTank)
         {
-            { Direction.Up, new Coord(0, 1) },
-            { Direction.Down, new Coord(0, -1) },
-            { Direction.Left, new Coord(-1, 0) },
-            { Direction.Right, new Coord(0, 1) }
-        };
+            return !(firstTank == secondTank);
+        }
+
+        protected bool Equals(Tank other)
+        {
+            return Equals(Coord, other.Coord) && Direction == other.Direction;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return Equals((Tank)obj);
+        }
+
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                return ((Coord != null ? Coord.GetHashCode() : 0) * 397) ^ (int)Direction;
+            }
+        }
     }
 }

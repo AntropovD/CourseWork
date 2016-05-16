@@ -46,7 +46,7 @@ namespace Tests
     [TestClass]
     public class TestConfiguration
     {
-        [TestMethod]
+       // [TestMethod]
         public void Deserialize()
         {
             //ConfigurationFactory.Configuration.SerializeToFile("ASD");

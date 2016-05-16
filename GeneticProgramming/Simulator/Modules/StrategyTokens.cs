@@ -27,7 +27,7 @@ namespace GeneticProgramming.Simulator.Modules
 
         internal static readonly List<string> TerminalSet = new List<string>
         {
-            "TurnLeft", "TurnRight", "Forward", "Backward", "Stay", "Shoot"
+            "TurnLeft", "TurnRight", "Forward", "Backward", "Shoot"
         };
 
         internal static readonly List<string> FunctionSet = StrategyFunctions.Rules.Keys.ToList();

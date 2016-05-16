@@ -1,11 +1,10 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using GeneticProgramming.Simulator.Maps;
 using GeneticProgramming.Simulator.Tanks;
 
 namespace GeneticProgramming.Simulator.Modules
 {
-    public static class StrategyEnemiesChecking
+    public static class EnemiesChecking
     {
         public static bool CheckEnemyFront(Map map, Tank tank)
         {
@@ -35,7 +34,7 @@ namespace GeneticProgramming.Simulator.Modules
         {
             for (int i = 1; i <= tank.fireArea; i++)
             {
-                var coord = tank.Coord + i*StrategyObstaclesChecking.wayCoords[way];
+                var coord = tank.Coord + i*ObstaclesChecking.wayCoords[way];
                 if (map.Enemies.Any(tank1 =>  tank1.Coord == coord))
                     return true;
                 if (map.Obstacles.Contains(coord))

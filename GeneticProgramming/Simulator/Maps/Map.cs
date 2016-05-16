@@ -15,6 +15,7 @@ namespace GeneticProgramming.Simulator.Maps
         public Tank Tank { get; set; }
         public List<Tank> Enemies { get; set; }
         public List<Coord> Obstacles { get; set; }
+        public List<Tank> AllTanks => Enemies.Concat(new List<Tank> { Tank }).ToList();
 
         public Map(int width, int height, List<Coord> obstacles, List<Coord> enemies, Coord start, Coord finish, TankConfig tankConfig)
         {

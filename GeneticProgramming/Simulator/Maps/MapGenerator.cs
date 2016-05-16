@@ -24,7 +24,7 @@ namespace GeneticProgramming.Simulator.Maps
             var rnd = new Random(Guid.NewGuid().GetHashCode());
             return Enumerable.Range(0, width*height)
                 .OrderBy(i => rnd.Next())
-                .Select(i => new Coord(i/width, i%width))
+                .Select(i => new Coord(i % width + 1, i / width + 1))
                 .ToList();
         }
 
