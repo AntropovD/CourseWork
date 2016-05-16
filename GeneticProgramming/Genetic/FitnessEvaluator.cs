@@ -1,18 +1,40 @@
 ﻿using System;
+using GeneticProgramming.Configurations;
+using GeneticProgramming.Simulator;
+using GeneticProgramming.Simulator.Maps;
 using GeneticProgramming.Simulator.Strategies;
 
 namespace GeneticProgramming.Genetic
 {
     public class FitnessEvaluator
     {
-//        private BattleSimulator simulator = new BattleSimulator();
+        private Battle Battle { get; }
+        private Strategy Strategy { get; }
+        private Strategy EnemyStrategy { get; }
+        private Map Map { get; }
+
+        public FitnessEvaluator(Configuration config)
+        {
+            var strategyGenerator = new StrategiesGenerator(config.StrategyConfig.MaxStrategySize);
+            Strategy = strategyGenerator.GenerateProgram();
+            EnemyStrategy = strategyGenerator.GenerateEnemyProgram();
+
+            var mapGenerator = new MapGenerator(config);
+            Map = mapGenerator.GenerateMap();
+        }
 
         public int countFitness(Strategy tankStrategy)
         {
-//            simulator.Execute(tankStrategy);
-//            return simulator.GetFitness();
-            var rnd = new Random(Guid.NewGuid().GetHashCode());
-            return rnd.Next(1000);
+            ResetStrategies();
+            var map = new Map(Map);
+            var battleSimulator = new BattleSimulator(map, tankStrategy, EnemyStrategy);
+            return battleSimulator.Execute();
+        }
+
+        private void ResetStrategies()
+        {
+            Strategy.Reset();
+            EnemyStrategy.Reset();
         }
     }
 }

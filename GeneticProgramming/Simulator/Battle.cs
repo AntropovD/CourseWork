@@ -61,6 +61,10 @@ namespace GeneticProgramming.Simulator
                     ShootAction(tank, ref fitnessValue);
                     return;
                 case "Finish":
+                    if (tank == Map.Tank)
+                    {
+                        tank.IsAlive = false;
+                    }
                     return;
                 default:
                     throw new Exception("Unknown command");
@@ -80,10 +84,10 @@ namespace GeneticProgramming.Simulator
                     if (tank == Map.Tank)
                     {
                         fitnessValue += 20;
-                        Console.WriteLine("Main tank shoot someone");
+//                        Console.WriteLine("Main tank shoot someone");
                     }
                     var visibleTank = Map.AllTanks.First(t => t.Coord == newCoord);
-                    Console.WriteLine($"Killed on {visibleTank.Coord.X},{visibleTank.Coord.Y}");
+//                    Console.WriteLine($"Killed on {visibleTank.Coord.X},{visibleTank.Coord.Y}");
                     visibleTank.IsAlive = false;
                     if (visibleTank != Map.Tank)
                         Map.Enemies.Remove(visibleTank);

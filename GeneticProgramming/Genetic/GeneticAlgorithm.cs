@@ -25,7 +25,7 @@ namespace GeneticProgramming.Genetic
         public void Run()
         {
             log.Info("Genetic Programming Started");
-            population = new Population(configuration.GeneticConfig, configuration.StrategyConfig);
+            population = new Population(configuration);
             int index = 0;
             while (!Console.KeyAvailable)
             {

@@ -28,9 +28,27 @@ namespace GeneticProgramming.Simulator.Maps
             Tank = tankGenerator.RandomizeTank(start);
             Enemies = enemies.Select(tankGenerator.RandomizeTank).ToList();
         }
+        
+        public Map(Map map)
+        {
+            Width = map.Width;
+            Height = map.Height;
+            Obstacles = new List<Coord>(map.Obstacles);
+            Enemies = new List<Tank>(map.Enemies);
+            Tank = map.Tank;
+            StartCoord = map.StartCoord;
+            FinishCoord = map.FinishCoord;
+
+            Tank.IsAlive = true;
+            foreach (var enemy in Enemies)
+            {
+                enemy.IsAlive = true;
+            }
+        }
 
         public Map()
         {
+            
         }
 
         public object Clone()

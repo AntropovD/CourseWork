@@ -10,9 +10,9 @@ namespace GeneticProgramming.Simulator.Strategies
     public class Strategy : IComparable
     {
         public List<string> commands;
-        public int index;
-        public string lastCommand = "Init";
-        
+        private int index;
+
+        public string LastCommand { get; set; } = "Init";
 
         public Strategy(List<string> commands)
         {
@@ -48,14 +48,19 @@ namespace GeneticProgramming.Simulator.Strategies
                         return "Finish";
                 }
             }
-            lastCommand = commands[index];
+            LastCommand = commands[index];
             index++;
-            return lastCommand;
+            return LastCommand;
         }
         
         public int CompareTo(object obj)
         {
             return obj.GetHashCode();
+        }
+
+        public void Reset()
+        {
+            index = 0;
         }
     }
 }

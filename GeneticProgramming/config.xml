@@ -9,10 +9,10 @@
     <OutbreedRatio>0.3</OutbreedRatio>
   </GeneticConfig>
   <MapConfig>
-    <Width>4</Width>
-    <Height>4</Height>
-    <ObstaclesCount>0</ObstaclesCount>
-    <EnemiesCount>1</EnemiesCount>
+    <Width>20</Width>
+    <Height>15</Height>
+    <ObstaclesCount>30</ObstaclesCount>
+    <EnemiesCount>10</EnemiesCount>
   </MapConfig>
   <TankConfig>
     <ViewArea>4</ViewArea>

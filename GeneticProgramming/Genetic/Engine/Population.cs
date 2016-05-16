@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using GeneticProgramming.Configurations;
 using GeneticProgramming.Configurations.PartialConfigs;
 using GeneticProgramming.Extensions;
 using GeneticProgramming.Simulator.Strategies;
@@ -16,7 +17,7 @@ namespace GeneticProgramming.Genetic.Engine
         private readonly int size;
         private readonly int maxLength;
         public Dictionary<Strategy, int> SpeciesAndValues { get; set; }
-        private static readonly FitnessEvaluator Evaluator = new FitnessEvaluator();
+        private static FitnessEvaluator Evaluator;
         private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
         public Population(GeneticConfig geneticConfig, StrategyConfig strategyConfig)
@@ -24,6 +25,15 @@ namespace GeneticProgramming.Genetic.Engine
             size = geneticConfig.PopulationSize;
             maxLength = strategyConfig.MaxStrategySize;
             SpeciesAndValues = new Dictionary<Strategy, int>();
+            InitiatePopulation();
+        }
+
+        public Population(Configuration config)
+        {
+            size = config.GeneticConfig.PopulationSize;
+            maxLength = config.StrategyConfig.MaxStrategySize;
+            SpeciesAndValues = new Dictionary<Strategy, int>();
+            Evaluator = new FitnessEvaluator(config);
             InitiatePopulation();
         }
 
@@ -41,14 +51,14 @@ namespace GeneticProgramming.Genetic.Engine
 
         public void UpdateStrategies(IEnumerable<Strategy> strategies)
         {
-            ConcurrentDictionary<Strategy, int> tempDictionary = new ConcurrentDictionary<Strategy, int>();
-            Parallel.ForEach(strategies, strategy =>
+//            ConcurrentDictionary<Strategy, int> tempDictionary = new ConcurrentDictionary<Strategy, int>();
+//            Parallel.ForEach(strategies, strategy =>
+//            {
+//                tempDictionary.TryAdd(strategy, Evaluator.countFitness(strategy));
+//            });
+            foreach (var strategy in strategies)
             {
-                tempDictionary.TryAdd(strategy, Evaluator.countFitness(strategy));
-            });
-            foreach (var keyValuePair in tempDictionary)
-            {
-                SpeciesAndValues.AddOrUpdate(keyValuePair.Key, keyValuePair.Value);
+                SpeciesAndValues.AddOrUpdate(strategy, Evaluator.countFitness(strategy));
             }
         }
         
