@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using GeneticProgramming.Simulator.Maps;
-using GeneticProgramming.Simulator.Modules;
 using GeneticProgramming.Simulator.Strategies;
 
 namespace GeneticProgramming.Simulator.Tanks
 {
+    [Serializable]
     public class Tank 
     {
         public Coord Coord { get; set; }

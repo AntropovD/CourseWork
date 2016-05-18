@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <GeneticConfig>
+    <PopulationSize>100</PopulationSize>
+    <CrossoverProb>0.9</CrossoverProb>
+    <MutationProb>0.05</MutationProb>
+    <PanmixiaRatio>0.4</PanmixiaRatio>
+    <InbreedRatio>0.3</InbreedRatio>
+    <OutbreedRatio>0.3</OutbreedRatio>
+  </GeneticConfig>
+  <MapConfig>
+    <Width>20</Width>
+    <Height>15</Height>
+    <ObstaclesCount>30</ObstaclesCount>
+    <EnemiesCount>10</EnemiesCount>
+  </MapConfig>
+  <TankConfig>
+    <ViewArea>4</ViewArea>
+    <FireArea>2</FireArea>
+    <Ammunition>20</Ammunition>
+  </TankConfig>
+  <StrategyConfig>
+    <MaxStrategySize>500</MaxStrategySize>
+  </StrategyConfig>
+  <StrategyGeneratorConfig>
+    <CloseBracketCoefficient>0.7</CloseBracketCoefficient>
+    <NewFunctionCoefficient>0.5</NewFunctionCoefficient>
+  </StrategyGeneratorConfig>
+</Configuration>

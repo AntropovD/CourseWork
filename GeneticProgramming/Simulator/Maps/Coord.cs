@@ -1,5 +1,8 @@
-﻿namespace GeneticProgramming.Simulator.Maps
+﻿using System;
+
+namespace GeneticProgramming.Simulator.Maps
 {
+    [Serializable]
     public class Coord
     {
         public readonly int X;

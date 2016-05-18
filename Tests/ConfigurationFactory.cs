@@ -51,11 +51,11 @@ namespace Tests
         {
             //ConfigurationFactory.Configuration.SerializeToFile("ASD");
 
-            int index = 3;
+            var index = 3;
             add(index);
             Console.WriteLine(index);
 
-            ComplexClass c = new ComplexClass
+            var c = new ComplexClass
             {
                 i = 3
             };

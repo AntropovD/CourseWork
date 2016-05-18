@@ -21,8 +21,8 @@ namespace GeneticProgramming.Genetic.Methods
 
         public static int HammingDistance(Strategy firstStrategy, Strategy secondStrategy)
         {
-            int count = 0;
-            for (int i = 0; i < Math.Min(firstStrategy.commands.Count, secondStrategy.commands.Count); i++)
+            var count = 0;
+            for (var i = 0; i < Math.Min(firstStrategy.commands.Count, secondStrategy.commands.Count); i++)
                 if (firstStrategy.commands[i] == secondStrategy.commands[i])
                     count++;
             return count;

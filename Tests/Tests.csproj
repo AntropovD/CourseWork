@@ -63,6 +63,7 @@
     <Compile Include="Extensions\DictionaryExtensions_Tests.cs" />
     <Compile Include="Genetic Tests\MutationMethods_Test.cs" />
     <Compile Include="Genetic Tests\ProgramGenerator_Tests.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Simulator_Tests\Map_Tests\MapGenerator_Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Genetic Tests\Population_Tests.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Simulator_Tests\Modules_Tests\AreaChecking.cs" />
     <Compile Include="Simulator_Tests\Strategy_Tests\TankStrategy_Tests.cs" />
     <Compile Include="Simulator_Tests\Tank_Tests\Direction_Tests.cs" />
+    <Compile Include="Visualiser_Tests\FieldBuilder_Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GeneticProgramming\GeneticProgramming.csproj">

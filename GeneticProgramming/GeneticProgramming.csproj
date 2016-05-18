@@ -69,7 +69,7 @@
     <Compile Include="Simulator\Modules\StrategyTokens.cs" />
     <Compile Include="Simulator\Modules\AreaChecking.cs" />
     <Compile Include="Simulator\Strategies\StrategiesGenerator.cs" />
-    <Compile Include="Visualiser\BaseVisualiser.cs" />
+    <Compile Include="Visualiser\FieldBuilder.cs" />
     <Compile Include="Visualiser\ConsoleVisualiser.cs" />
     <Compile Include="Genetic\Engine\Types\Crossover.cs" />
     <Compile Include="Genetic\Engine\IGeneticEngine.cs" />

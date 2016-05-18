@@ -26,7 +26,7 @@ namespace GeneticProgramming.Genetic
         {
             log.Info("Genetic Programming Started");
             population = new Population(configuration);
-            int index = 0;
+            var index = 0;
             while (!Console.KeyAvailable)
             {
                 MakeNextGeneration(ref index);

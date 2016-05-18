@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using GeneticProgramming.Configurations.PartialConfigs;
 using GeneticProgramming.Simulator.Maps;
 using GeneticProgramming.Simulator.Modules;
 using GeneticProgramming.Simulator.Strategies;
@@ -74,7 +73,7 @@ namespace GeneticProgramming.Simulator
         private void ShootAction(Tank tank, ref int fitnessValue)
         {
             var shiftCoord = Movements[tank.Direction];
-            for (int i = 1; i <= tank.fireArea; i++)
+            for (var i = 1; i <= tank.fireArea; i++)
             {
                 var newCoord = tank.Coord + i * shiftCoord;
                 if (Map.Obstacles.Contains(newCoord))
@@ -84,10 +83,8 @@ namespace GeneticProgramming.Simulator
                     if (tank == Map.Tank)
                     {
                         fitnessValue += 20;
-//                        Console.WriteLine("Main tank shoot someone");
                     }
                     var visibleTank = Map.AllTanks.First(t => t.Coord == newCoord);
-//                    Console.WriteLine($"Killed on {visibleTank.Coord.X},{visibleTank.Coord.Y}");
                     visibleTank.IsAlive = false;
                     if (visibleTank != Map.Tank)
                         Map.Enemies.Remove(visibleTank);
@@ -131,7 +128,7 @@ namespace GeneticProgramming.Simulator
             { Direction.Up, new Coord(0, -1) },
             { Direction.Down, new Coord(0, 1) },
             { Direction.Left, new Coord(-1, 0) },
-            { Direction.Right, new Coord(0, 1) }
+            { Direction.Right, new Coord(1, 0) }
         };
     }
 }

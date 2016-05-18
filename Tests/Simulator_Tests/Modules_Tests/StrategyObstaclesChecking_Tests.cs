@@ -28,7 +28,7 @@ namespace Tests.Simulator_Tests.Modules_Tests
                 Coord = new Coord(2, 1),
                 Direction = Direction.Up
             };
-            bool result = ObstaclesChecking.CheckObstacleLeft(map, tank);
+            var result = ObstaclesChecking.CheckObstacleLeft(map, tank);
             Assert.AreEqual(true, result);
         }
 
@@ -40,7 +40,7 @@ namespace Tests.Simulator_Tests.Modules_Tests
                 Coord = new Coord(2, 2),
                 Direction = Direction.Up
             };
-            bool result = ObstaclesChecking.CheckObstacleLeft(map, tank);
+            var result = ObstaclesChecking.CheckObstacleLeft(map, tank);
             Assert.AreEqual(false, result);
         }
 
@@ -52,7 +52,7 @@ namespace Tests.Simulator_Tests.Modules_Tests
                 Coord = new Coord(0, 1),
                 Direction = Direction.Up
             };
-            bool result = ObstaclesChecking.CheckObstacleRight(map, tank);
+            var result = ObstaclesChecking.CheckObstacleRight(map, tank);
             Assert.AreEqual(true, result);
         }
 
@@ -64,7 +64,7 @@ namespace Tests.Simulator_Tests.Modules_Tests
                 Coord = new Coord(2, 1),
                 Direction = Direction.Down
             };
-            bool result = ObstaclesChecking.CheckObstacleRight(map, tank);
+            var result = ObstaclesChecking.CheckObstacleRight(map, tank);
             Assert.AreEqual(true, result);
         }
 
@@ -76,7 +76,7 @@ namespace Tests.Simulator_Tests.Modules_Tests
                 Coord = new Coord(1, 0),
                 Direction = Direction.Down
             };
-            bool result = ObstaclesChecking.CheckObstacleFront(map, tank);
+            var result = ObstaclesChecking.CheckObstacleFront(map, tank);
             Assert.AreEqual(true, result);
         }
 
@@ -88,7 +88,7 @@ namespace Tests.Simulator_Tests.Modules_Tests
                 Coord = new Coord(1, 0),
                 Direction = Direction.Right
             };
-            bool result = ObstaclesChecking.CheckObstacleFront(map, tank);
+            var result = ObstaclesChecking.CheckObstacleFront(map, tank);
             Assert.AreEqual(false, result);
         }
         
@@ -100,7 +100,7 @@ namespace Tests.Simulator_Tests.Modules_Tests
                 Coord = new Coord(2, 1),
                 Direction = Direction.Right
             };
-            bool result = ObstaclesChecking.CheckObstacleBack(map, tank);
+            var result = ObstaclesChecking.CheckObstacleBack(map, tank);
             Assert.AreEqual(true, result);
         }
 
@@ -112,7 +112,7 @@ namespace Tests.Simulator_Tests.Modules_Tests
                 Coord = new Coord(0, 1),
                 Direction = Direction.Left
             };
-            bool result = ObstaclesChecking.CheckObstacleRight(map, tank);
+            var result = ObstaclesChecking.CheckObstacleRight(map, tank);
             Assert.AreEqual(false, result);
         }
     }

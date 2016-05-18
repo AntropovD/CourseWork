@@ -19,10 +19,10 @@ namespace GeneticProgramming.Genetic.Engine.Types
 
         public IEnumerable<Strategy> GetPanmixia(List<Strategy> strategies)
         {
-            int panmixiaCount = (int)(strategies.Count * geneticConfig.PanmixiaRatio * geneticConfig.CrossoverProb);
+            var panmixiaCount = (int)(strategies.Count * geneticConfig.PanmixiaRatio * geneticConfig.CrossoverProb);
             var random = new Random(Guid.NewGuid().GetHashCode());
 
-            for (int i = 0; i < panmixiaCount; i++)
+            for (var i = 0; i < panmixiaCount; i++)
             {
                 var strategy1 = strategies[random.Next(strategies.Count)];
                 var strategy2 = strategies[random.Next(strategies.Count)];
@@ -32,10 +32,10 @@ namespace GeneticProgramming.Genetic.Engine.Types
 
         public IEnumerable<Strategy> GetInbreed(List<Strategy> strategies)
         {
-            int inbreedCount = (int) (strategies.Count * geneticConfig.InbreedRatio * geneticConfig.CrossoverProb);
+            var inbreedCount = (int) (strategies.Count * geneticConfig.InbreedRatio * geneticConfig.CrossoverProb);
             var random = new Random(Guid.NewGuid().GetHashCode());
 
-            for (int i = 0; i < inbreedCount; i++)
+            for (var i = 0; i < inbreedCount; i++)
             {
                 var strategy1 = strategies[random.Next(strategies.Count)];
                 var strategy2 = strategy1.FindMostLikely(strategies);
@@ -45,10 +45,10 @@ namespace GeneticProgramming.Genetic.Engine.Types
 
         public IEnumerable<Strategy> GetOutbreed(List<Strategy> strategies)
         {
-            int outbreedCount = (int) (strategies.Count * geneticConfig.OutbreedRatio * geneticConfig.CrossoverProb);
+            var outbreedCount = (int) (strategies.Count * geneticConfig.OutbreedRatio * geneticConfig.CrossoverProb);
             var random = new Random(Guid.NewGuid().GetHashCode());
 
-            for (int i = 0; i < outbreedCount; i++)
+            for (var i = 0; i < outbreedCount; i++)
             {
                 var strategy1 = strategies[random.Next(strategies.Count)];
                 var strategy2 = strategy1.FindMostUnlikely(strategies);

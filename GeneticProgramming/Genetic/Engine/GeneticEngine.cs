@@ -30,7 +30,7 @@ namespace GeneticProgramming.Genetic.Engine
 
         public List<Strategy> MutateStrategies(List<Strategy> strategies)
         { 
-            int mutationCount = (int)(strategies.Count * geneticConfig.MutationProb);
+            var mutationCount = (int)(strategies.Count * geneticConfig.MutationProb);
             var mutatedSpecies = Mutation.GetMutatedSpecies(strategies, mutationCount);
             strategies.AddRange(mutatedSpecies);
             return strategies;

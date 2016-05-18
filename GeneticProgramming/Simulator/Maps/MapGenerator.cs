@@ -19,8 +19,8 @@ namespace GeneticProgramming.Simulator.Maps
 
         private List<Coord> GenerateRandomCoords()
         {
-            int width = MapConfig.Width;
-            int height = MapConfig.Height;
+            var width = MapConfig.Width;
+            var height = MapConfig.Height;
             var rnd = new Random(Guid.NewGuid().GetHashCode());
             return Enumerable.Range(0, width*height)
                 .OrderBy(i => rnd.Next())

@@ -10,12 +10,12 @@ namespace GeneticProgramming.Genetic.Methods
         public static Strategy Crossover(Strategy firstStrategy, Strategy secondStrategy, int maxSize)
         {
             var random = new Random(Guid.NewGuid().GetHashCode());
-            int firstIndex = random.Next(firstStrategy.commands.Count);
-            int secondIndex = random.Next(secondStrategy.commands.Count);
+            var firstIndex = random.Next(firstStrategy.commands.Count);
+            var secondIndex = random.Next(secondStrategy.commands.Count);
 
             if (firstIndex + secondIndex > maxSize)
             {
-                int diff = (firstIndex + secondIndex) - maxSize;
+                var diff = (firstIndex + secondIndex) - maxSize;
                 if (diff % 2 == 1) diff++;
                 firstIndex -= diff << 1;
                 secondIndex -= diff << 1;
@@ -38,7 +38,7 @@ namespace GeneticProgramming.Genetic.Methods
 
         public static List<string> AddBracketsToEnd(List<string> programPart)
         {
-            int depth = 0;
+            var depth = 0;
             foreach (var command in programPart)
             {
                 if (command.Contains('{'))
@@ -56,7 +56,7 @@ namespace GeneticProgramming.Genetic.Methods
         public static List<string> ShiftWhileDepthNotZero(List<string> programPart)
         {
             int depth = 0, minDepth = 0, minIndex = 0;
-            for (int index = 0; index < programPart.Count; index++)
+            for (var index = 0; index < programPart.Count; index++)
             {
                 var command = programPart[index];
                 if (command.Contains('{'))

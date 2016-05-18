@@ -1,9 +1,7 @@
-﻿using System.Collections.Concurrent;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 using GeneticProgramming.Configurations;
 using GeneticProgramming.Configurations.PartialConfigs;
 using GeneticProgramming.Extensions;
@@ -65,10 +63,10 @@ namespace GeneticProgramming.Genetic.Engine
         public void LogInfo(int index)
         {
             log.Info($"Generation #{index}");
-            int min = SpeciesAndValues.Min(pair => pair.Value);
-            int max = SpeciesAndValues.Max(pair => pair.Value);
-            double average = SpeciesAndValues.Average(pair => pair.Value);
-            double median = MedianCounter.GetMedian(SpeciesAndValues.Values.ToArray());
+            var min = SpeciesAndValues.Min(pair => pair.Value);
+            var max = SpeciesAndValues.Max(pair => pair.Value);
+            var average = SpeciesAndValues.Average(pair => pair.Value);
+            var median = MedianCounter.GetMedian(SpeciesAndValues.Values.ToArray());
             log.Info($@"Population parameters: Min fitness: {min}, Max fitness: {max}, Average: {average} Median: {median}");
         }
 
@@ -76,7 +74,7 @@ namespace GeneticProgramming.Genetic.Engine
         {
             string folderName = $"Logs\\Generation{index}";
             Directory.CreateDirectory(folderName);
-            int j = 0;
+            var j = 0;
             foreach (var pair in SpeciesAndValues)
             {
                 File.WriteAllText($"{folderName}\\{j}st-{pair.Value}.gen", string.Join(" ", pair.Key.commands));

@@ -6,6 +6,7 @@ using GeneticProgramming.Simulator.Tanks;
 
 namespace GeneticProgramming.Simulator.Maps
 {
+    [Serializable]
     public class Map : ICloneable
     {
         public int Width { get; private set; }

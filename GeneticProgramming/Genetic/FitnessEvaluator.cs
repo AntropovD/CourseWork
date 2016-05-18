@@ -1,5 +1,4 @@
-﻿using System;
-using GeneticProgramming.Configurations;
+﻿using GeneticProgramming.Configurations;
 using GeneticProgramming.Simulator;
 using GeneticProgramming.Simulator.Maps;
 using GeneticProgramming.Simulator.Strategies;

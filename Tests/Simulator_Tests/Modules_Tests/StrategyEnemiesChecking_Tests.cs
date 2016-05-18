@@ -29,7 +29,7 @@ namespace Tests.Simulator_Tests.Modules_Tests
                 Direction = Direction.Right,
                 fireArea = 4
             };
-            bool result = EnemiesChecking.CheckEnemyFront(map, tank);
+            var result = EnemiesChecking.CheckEnemyFront(map, tank);
             Assert.AreEqual(true, result);
         }
 
@@ -42,7 +42,7 @@ namespace Tests.Simulator_Tests.Modules_Tests
                 Direction = Direction.Right,
                 fireArea = 7
             };
-            bool result = EnemiesChecking.CheckEnemyFront(map, tank);
+            var result = EnemiesChecking.CheckEnemyFront(map, tank);
             Assert.AreEqual(false, result);
         }
 
@@ -55,7 +55,7 @@ namespace Tests.Simulator_Tests.Modules_Tests
                 Direction = Direction.Right,
                 fireArea = 3
             };
-            bool result = EnemiesChecking.CheckEnemyRight(map, tank);
+            var result = EnemiesChecking.CheckEnemyRight(map, tank);
             Assert.AreEqual(true, result);
         }
 
@@ -68,7 +68,7 @@ namespace Tests.Simulator_Tests.Modules_Tests
                 Direction = Direction.Right,
                 fireArea = 2
             };
-            bool result = EnemiesChecking.CheckEnemyRight(map, tank);
+            var result = EnemiesChecking.CheckEnemyRight(map, tank);
             Assert.AreEqual(false, result);
         }
     }

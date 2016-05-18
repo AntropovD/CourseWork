@@ -30,7 +30,7 @@ namespace GeneticProgramming.Configurations
         {
             Configuration result;
             var formatter = new XmlSerializer(typeof(Configuration));
-            using (FileStream fs = new FileStream(filename, FileMode.OpenOrCreate))
+            using (var fs = new FileStream(filename, FileMode.OpenOrCreate))
             {
                 result = (Configuration)formatter.Deserialize(fs);
             }

@@ -19,13 +19,13 @@ namespace GeneticProgramming.Simulator.Strategies
 
         public Strategy GenerateProgram()
         {
-            List<string> result = new List<string>();
-            int functionDepth = 0;
+            var result = new List<string>();
+            var functionDepth = 0;
             var rnd = new Random();
-            int i = 0;
+            var i = 0;
             while (i < length)
             {
-                double p = rnd.NextDouble();
+                var p = rnd.NextDouble();
                 if (functionDepth != 0 && p < closeBracketCoeff)
                 {
                     result.Add("}");
@@ -52,20 +52,21 @@ namespace GeneticProgramming.Simulator.Strategies
 
         public Strategy GenerateEnemyProgram()
         {
-            List<string> result = new List<string>();
-            int index = 0;
+            var result = new List<string>();
+            var index = 0;
             while (index < length)
             {
                 result.Add("TurnRight");
                 result.Add("Forward");
+                result.Add("Forward");
                 result.Add("Shoot");
-                index += 3;
+                index += 4;
             }
             return new Strategy(result);
         }
         public bool CheckProgram(List<string> program)
         {
-            int depth = 0;
+            var depth = 0;
             foreach (var command in program)
             {
                 if (!StrategyTokens.IsToken(command))

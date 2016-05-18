@@ -10,15 +10,15 @@ namespace GeneticProgramming.Genetic.Engine.Types
         {
             var rnd = new Random(Guid.NewGuid().GetHashCode());
 
-            for (int i = 0; i < mutationCount; i++)
+            for (var i = 0; i < mutationCount; i++)
             {
                 var rndAlgorithm = basePopulation[rnd.Next(basePopulation.Count)];
-                int changesCount = rnd.Next(rndAlgorithm.commands.Count);
+                var changesCount = rnd.Next(rndAlgorithm.commands.Count);
 
-                for (int j = 0; j < changesCount; j++)
+                for (var j = 0; j < changesCount; j++)
                 {
-                    int index = rnd.Next(rndAlgorithm.commands.Count);
-                    string cmd = rndAlgorithm.commands[index];
+                    var index = rnd.Next(rndAlgorithm.commands.Count);
+                    var cmd = rndAlgorithm.commands[index];
 //                    if (StrategiesGenerator.IsFunction(cmd))
 //                        rndAlgorithm.commands[index] = StrategiesGenerator.FunctionSet[rnd.Next(FunctionSet.Count)];
 
