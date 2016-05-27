@@ -3,7 +3,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using GeneticProgramming.Configurations;
-using GeneticProgramming.Configurations.PartialConfigs;
 using GeneticProgramming.Extensions;
 using GeneticProgramming.Simulator.Strategies;
 using log4net;
@@ -17,19 +16,11 @@ namespace GeneticProgramming.Genetic.Engine
         public Dictionary<Strategy, int> SpeciesAndValues { get; set; }
         private static FitnessEvaluator Evaluator;
         private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
-        public Population(GeneticConfig geneticConfig, StrategyConfig strategyConfig)
-        {
-            size = geneticConfig.PopulationSize;
-            maxLength = strategyConfig.MaxStrategySize;
-            SpeciesAndValues = new Dictionary<Strategy, int>();
-            InitiatePopulation();
-        }
-
+        
         public Population(Configuration config)
         {
             size = config.GeneticConfig.PopulationSize;
-            maxLength = config.StrategyConfig.MaxStrategySize;
+            maxLength = config.GeneticConfig.MaxStrategySize;
             SpeciesAndValues = new Dictionary<Strategy, int>();
             Evaluator = new FitnessEvaluator(config);
             InitiatePopulation();
@@ -54,6 +45,10 @@ namespace GeneticProgramming.Genetic.Engine
 //            {
 //                tempDictionary.TryAdd(strategy, Evaluator.countFitness(strategy));
 //            });
+//            foreach (var pair in tempDictionary)
+//            {
+//                SpeciesAndValues.AddOrUpdate(pair.Key, pair.Value);
+//            }
             foreach (var strategy in strategies)
             {
                 SpeciesAndValues.AddOrUpdate(strategy, Evaluator.countFitness(strategy));
@@ -72,19 +67,19 @@ namespace GeneticProgramming.Genetic.Engine
 
         public void LogAllStrategies(int index)
         {
-            string folderName = $"Logs\\Generation{index}";
+            string folderName = $"Logs\\Generations\\Generation{index}";
             Directory.CreateDirectory(folderName);
             var j = 0;
             foreach (var pair in SpeciesAndValues)
             {
-                File.WriteAllText($"{folderName}\\{j}st-{pair.Value}.gen", string.Join(" ", pair.Key.commands));
+                File.WriteAllText($"{folderName}\\#{j} fitness={pair.Value}", string.Join(" ", pair.Key.commands));
                 j++;
             }
         }
 
         public bool HasAnyFinished()
         {
-            return SpeciesAndValues.Any(pair => pair.Value > 10000);
+            return SpeciesAndValues.Any(pair => pair.Value > 1000);
         }
     }
 }

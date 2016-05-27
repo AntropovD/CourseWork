@@ -16,7 +16,9 @@ namespace Tests.Simulator_Tests.Modules_Tests
             map = new Map
             {
                 Enemies = new List<Tank> { new Tank { Coord = new Coord(7, 5)} },
-                Obstacles = new List<Coord> { new Coord(4, 5)}
+                Obstacles = new List<Coord> { new Coord(4, 5)},
+                FireArea = 2,
+                ViewArea = 2
             };
         }
 
@@ -27,7 +29,6 @@ namespace Tests.Simulator_Tests.Modules_Tests
             {
                 Coord = new Coord(6, 5),
                 Direction = Direction.Right,
-                fireArea = 4
             };
             var result = EnemiesChecking.CheckEnemyFront(map, tank);
             Assert.AreEqual(true, result);
@@ -40,7 +41,6 @@ namespace Tests.Simulator_Tests.Modules_Tests
             {
                 Coord = new Coord(3, 5),
                 Direction = Direction.Right,
-                fireArea = 7
             };
             var result = EnemiesChecking.CheckEnemyFront(map, tank);
             Assert.AreEqual(false, result);
@@ -53,8 +53,8 @@ namespace Tests.Simulator_Tests.Modules_Tests
             {
                 Coord = new Coord(7, 2),
                 Direction = Direction.Right,
-                fireArea = 3
             };
+            map.FireArea = 3;
             var result = EnemiesChecking.CheckEnemyRight(map, tank);
             Assert.AreEqual(true, result);
         }
@@ -66,7 +66,6 @@ namespace Tests.Simulator_Tests.Modules_Tests
             {
                 Coord = new Coord(7, 2),
                 Direction = Direction.Right,
-                fireArea = 2
             };
             var result = EnemiesChecking.CheckEnemyRight(map, tank);
             Assert.AreEqual(false, result);

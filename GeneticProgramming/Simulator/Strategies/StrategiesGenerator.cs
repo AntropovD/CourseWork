@@ -7,22 +7,24 @@ namespace GeneticProgramming.Simulator.Strategies
 {
     public class StrategiesGenerator
     {
-        private readonly int length;
+        private readonly int maxLength;
 
         private const double closeBracketCoeff = 0.7;
         private const double newFunctionCoeff = 0.5; 
 
         public StrategiesGenerator(int MaxStrategySize)
         {
-            length = MaxStrategySize;
+            maxLength = MaxStrategySize;
         }
 
         public Strategy GenerateProgram()
         {
             var result = new List<string>();
             var functionDepth = 0;
-            var rnd = new Random();
+            var rnd = new Random(Guid.NewGuid().GetHashCode());
             var i = 0;
+            int length = rnd.Next(1, maxLength);
+        
             while (i < length)
             {
                 var p = rnd.NextDouble();
@@ -54,7 +56,7 @@ namespace GeneticProgramming.Simulator.Strategies
         {
             var result = new List<string>();
             var index = 0;
-            while (index < length)
+            while (index < maxLength)
             {
                 result.Add("TurnRight");
                 result.Add("Forward");
@@ -64,7 +66,7 @@ namespace GeneticProgramming.Simulator.Strategies
             }
             return new Strategy(result);
         }
-        public bool CheckProgram(List<string> program)
+        public static bool CheckProgram(List<string> program)
         {
             var depth = 0;
             foreach (var command in program)

@@ -32,7 +32,7 @@ namespace GeneticProgramming.Simulator.Modules
 
         private static bool CheckEnemyByWay(Map map, Tank tank, Direction way)
         {
-            for (var i = 1; i <= tank.fireArea; i++)
+            for (var i = 1; i <= map.FireArea; i++)
             {
                 var coord = tank.Coord + i*ObstaclesChecking.wayCoords[way];
                 if (map.Enemies.Any(tank1 =>  tank1.Coord == coord))

@@ -15,7 +15,7 @@ namespace Tests.Simulator_Tests.Strategy_Tests
         [TestInitialize]
         public void TestInitialize()
         {
-            crossover = new Crossover(config.GeneticConfig, config.StrategyConfig);
+            crossover = new Crossover(config.GeneticConfig);
         }
         
         [TestMethod]

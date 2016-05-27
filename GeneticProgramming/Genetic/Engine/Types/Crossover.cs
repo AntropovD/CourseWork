@@ -9,12 +9,10 @@ namespace GeneticProgramming.Genetic.Engine.Types
     public class Crossover
     {
         private readonly GeneticConfig geneticConfig;
-        private readonly StrategyConfig strategyConfig;
 
-        public Crossover(GeneticConfig geneticConfig, StrategyConfig strategyConfig)
+        public Crossover(GeneticConfig geneticConfig)
         {
             this.geneticConfig = geneticConfig;
-            this.strategyConfig = strategyConfig;
         }
 
         public IEnumerable<Strategy> GetPanmixia(List<Strategy> strategies)
@@ -26,7 +24,7 @@ namespace GeneticProgramming.Genetic.Engine.Types
             {
                 var strategy1 = strategies[random.Next(strategies.Count)];
                 var strategy2 = strategies[random.Next(strategies.Count)];
-                yield return StrategyCrossoverMethods.Crossover(strategy1, strategy2, strategyConfig.MaxStrategySize);
+                yield return StrategyCrossoverMethods.Crossover(strategy1, strategy2, geneticConfig.MaxStrategySize);
             }
         }
 
@@ -39,7 +37,7 @@ namespace GeneticProgramming.Genetic.Engine.Types
             {
                 var strategy1 = strategies[random.Next(strategies.Count)];
                 var strategy2 = strategy1.FindMostLikely(strategies);
-                yield return StrategyCrossoverMethods.Crossover(strategy1, strategy2, strategyConfig.MaxStrategySize);
+                yield return StrategyCrossoverMethods.Crossover(strategy1, strategy2, geneticConfig.MaxStrategySize);
             }
         }
 
@@ -52,7 +50,7 @@ namespace GeneticProgramming.Genetic.Engine.Types
             {
                 var strategy1 = strategies[random.Next(strategies.Count)];
                 var strategy2 = strategy1.FindMostUnlikely(strategies);
-                yield return StrategyCrossoverMethods.Crossover(strategy1, strategy2, strategyConfig.MaxStrategySize);
+                yield return StrategyCrossoverMethods.Crossover(strategy1, strategy2, geneticConfig.MaxStrategySize);
             }
         }
     }

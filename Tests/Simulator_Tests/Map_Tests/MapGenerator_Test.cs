@@ -51,6 +51,8 @@ namespace Tests.Simulator_Tests.Map_Tests
         public void MapGenerator_should_return_all_different_coords_in_enemies()
         {
             var map = generator.GenerateMap();
+            var a = map.Enemies.Distinct().ToList();
+            var b = map.Enemies.Count;
             Assert.IsTrue(map.Enemies.Distinct().Count() == map.Enemies.Count);
         }
 

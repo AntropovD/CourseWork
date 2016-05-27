@@ -6,11 +6,11 @@ namespace GeneticProgramming.Simulator.Tanks
 {
     class TankGenerator
     {
-        private readonly TankConfig tankConfig;
+        private readonly MapConfig mapConfig;
 
-        public TankGenerator(TankConfig tankConfig)
+        public TankGenerator(MapConfig config)
         {
-            this.tankConfig = tankConfig;
+            mapConfig = config;
         }
 
         public Tank RandomizeTank(Coord coord)
@@ -21,10 +21,7 @@ namespace GeneticProgramming.Simulator.Tanks
             return new Tank
             {
                 Coord = coord,
-                Direction = (Direction)directions.GetValue(rnd.Next(directions.Length)),
-                ammunition = tankConfig.Ammunition,
-                fireArea = tankConfig.FireArea,
-                viewArea = tankConfig.ViewArea
+                Direction = (Direction)directions.GetValue(rnd.Next(directions.Length))
             };
         }
     }

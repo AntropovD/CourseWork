@@ -13,5 +13,7 @@ namespace GeneticProgramming.Configurations.PartialConfigs
         public double PanmixiaRatio { get; set; }
         public double InbreedRatio { get; set; }
         public double OutbreedRatio { get; set; }
+
+        public int MaxStrategySize { get; set; }
     }
 }

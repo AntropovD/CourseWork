@@ -10,8 +10,8 @@ namespace GeneticProgramming.Genetic.Methods
         public static Strategy Crossover(Strategy firstStrategy, Strategy secondStrategy, int maxSize)
         {
             var random = new Random(Guid.NewGuid().GetHashCode());
-            var firstIndex = random.Next(firstStrategy.commands.Count);
-            var secondIndex = random.Next(secondStrategy.commands.Count);
+            var firstIndex = random.Next(1, firstStrategy.commands.Count);
+            var secondIndex = random.Next(1, secondStrategy.commands.Count);
 
             if (firstIndex + secondIndex > maxSize)
             {
@@ -55,7 +55,7 @@ namespace GeneticProgramming.Genetic.Methods
 
         public static List<string> ShiftWhileDepthNotZero(List<string> programPart)
         {
-            int depth = 0, minDepth = 0, minIndex = 0;
+            int depth = 0, minDepth = 0, minIndex = -1;
             for (var index = 0; index < programPart.Count; index++)
             {
                 var command = programPart[index];
@@ -64,9 +64,12 @@ namespace GeneticProgramming.Genetic.Methods
                 if (command.Contains('}'))
                     depth--;
                 if (depth < minDepth)
+                {
                     minIndex = index;
+                    minDepth = depth;
+                }
             }
-            return programPart.Skip(minIndex).ToList();
+            return programPart.Skip(minIndex + 1).ToList();
         }
     }
 }

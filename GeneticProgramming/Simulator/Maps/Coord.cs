@@ -14,6 +14,12 @@ namespace GeneticProgramming.Simulator.Maps
             Y = y;
         }
 
+        public Coord(Coord coord)
+        {
+            X = coord.X;
+            Y = coord.Y;
+        }
+
         public static Coord operator +(Coord C, Coord D)
         {
             return new Coord(C.X + D.X, C.Y + D.Y);

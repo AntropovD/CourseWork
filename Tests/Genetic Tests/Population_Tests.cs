@@ -10,7 +10,7 @@ namespace Tests.Genetic_Tests
         public void InitiatePopulation_should_return_population_size_from_config()
         {
             var config = ConfigurationFactory.Configuration;
-            var population = new Population(config.GeneticConfig, config.StrategyConfig);
+            var population = new Population(config);
             
             Assert.AreEqual(config.GeneticConfig.PopulationSize, population.SpeciesAndValues.Count);
         }

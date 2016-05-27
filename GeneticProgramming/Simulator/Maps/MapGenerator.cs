@@ -10,11 +10,10 @@ namespace GeneticProgramming.Simulator.Maps
     public class MapGenerator
     {
         private MapConfig MapConfig { get; }
-        private TankConfig TankConfig { get; }
+        
         public MapGenerator(Configuration Config)
         {
             MapConfig = Config.MapConfig;
-            TankConfig = Config.TankConfig;
         }
 
         private List<Coord> GenerateRandomCoords()
@@ -36,7 +35,7 @@ namespace GeneticProgramming.Simulator.Maps
             var startCoord = coordsList.FirstAndRemove();
             var finishCoord = coordsList.FirstAndRemove();
             
-            return new Map(MapConfig.Width, MapConfig.Height, obstacles, enemies, startCoord, finishCoord, TankConfig);
+            return new Map(MapConfig, obstacles, enemies, startCoord, finishCoord);
         }
     }
 }

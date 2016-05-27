@@ -30,5 +30,17 @@ namespace GeneticProgramming.Genetic.Engine.Types
                 }
             }
         }
+
+        public void MakeMaximalSelection(Population population)
+        {
+            var size = population.SpeciesAndValues.Count;
+            var random = new Random(Guid.NewGuid().GetHashCode());
+            var array = population.SpeciesAndValues.OrderByDescending(pair => pair.Value).ToList();
+
+            foreach (var keyValuePair in array.Skip(populationSize))
+            {
+                population.SpeciesAndValues.Remove(keyValuePair.Key);
+            }
+        }
     }
 }

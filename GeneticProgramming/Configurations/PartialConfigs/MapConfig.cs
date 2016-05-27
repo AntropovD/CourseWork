@@ -10,5 +10,7 @@ namespace GeneticProgramming.Configurations.PartialConfigs
 
         public int ObstaclesCount { get; set; }
         public int EnemiesCount { get; set; }
+        public int ViewArea { get; set; }
+        public int FireArea { get; set; }
     }
 }

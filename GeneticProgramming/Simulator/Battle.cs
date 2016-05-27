@@ -11,8 +11,6 @@ namespace GeneticProgramming.Simulator
     public class Battle
     {
         public Map Map { get; }
-        public Strategy Strategy { get; }
-        public Strategy EnemyStrategy { get; }
 
         public bool IsOver => !Map.Tank.IsAlive || isTankReachFinish;
 
@@ -21,8 +19,11 @@ namespace GeneticProgramming.Simulator
         public Battle(Map map, Strategy strategy, Strategy enemyStrategy)
         {
             Map = map;
-            Strategy = strategy;
-            EnemyStrategy = enemyStrategy;
+            Map.Tank.Strategy = new Strategy(strategy);
+            foreach (var enemy in Map.Enemies)
+            {
+                enemy.Strategy = new Strategy(enemyStrategy);
+            }
             isTankReachFinish = false;
         }
 
@@ -35,7 +36,7 @@ namespace GeneticProgramming.Simulator
                 if (Map.Tank.Coord == Map.FinishCoord)
                 {
                     isTankReachFinish = true;
-                    fitnessValue+=1000;
+                    fitnessValue += 1000;
                 }
             }
         }
@@ -60,10 +61,7 @@ namespace GeneticProgramming.Simulator
                     ShootAction(tank, ref fitnessValue);
                     return;
                 case "Finish":
-                    if (tank == Map.Tank)
-                    {
-                        tank.IsAlive = false;
-                    }
+                    tank.IsAlive = false;
                     return;
                 default:
                     throw new Exception("Unknown command");
@@ -73,7 +71,7 @@ namespace GeneticProgramming.Simulator
         private void ShootAction(Tank tank, ref int fitnessValue)
         {
             var shiftCoord = Movements[tank.Direction];
-            for (var i = 1; i <= tank.fireArea; i++)
+            for (var i = 1; i <= Map.FireArea; i++)
             {
                 var newCoord = tank.Coord + i * shiftCoord;
                 if (Map.Obstacles.Contains(newCoord))
@@ -95,9 +93,7 @@ namespace GeneticProgramming.Simulator
 
         private string GetNextStrategy(Tank tank)
         {
-            return Map.Tank == tank ? 
-                Strategy.GetNextCommand(Map, tank) 
-                : EnemyStrategy.GetNextCommand(Map, tank);
+            return tank.Strategy.GetNextCommand(Map, tank);
         }
 
         private void CheckAndMove(Tank tank, Coord coord)

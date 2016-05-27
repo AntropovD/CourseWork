@@ -47,7 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Configurations\PartialConfigs\StrategyConfig.cs" />
     <Compile Include="Configurations\PartialConfigs\StrategyGeneratorConfig.cs" />
     <Compile Include="Extensions\DictionaryExtension.cs" />
     <Compile Include="Extensions\ListExtension.cs" />
@@ -56,13 +55,14 @@
     <Compile Include="Configurations\Configuration.cs" />
     <Compile Include="Configurations\PartialConfigs\GeneticConfig.cs" />
     <Compile Include="Configurations\PartialConfigs\MapConfig.cs" />
-    <Compile Include="Configurations\PartialConfigs\TankConfig.cs" />
     <Compile Include="Genetic\FitnessEvaluator.cs" />
     <Compile Include="Genetic\GeneticAlgorithm.cs" />
     <Compile Include="Genetic\Methods\StrategyCrossoverMethods.cs" />
     <Compile Include="Genetic\Methods\StrategyGeneticExtensions.cs" />
     <Compile Include="Genetic\Engine\GeneticEngine.cs" />
     <Compile Include="Simulator\Battle.cs" />
+    <Compile Include="Simulator\FightStat.cs" />
+    <Compile Include="Simulator\Maps\MapSerializator.cs" />
     <Compile Include="Simulator\Modules\EnemiesChecking.cs" />
     <Compile Include="Simulator\Modules\ObstaclesChecking.cs" />
     <Compile Include="Simulator\Modules\DirectionMethods.cs" />

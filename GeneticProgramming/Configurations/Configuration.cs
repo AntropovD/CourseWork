@@ -9,13 +9,7 @@ namespace GeneticProgramming.Configurations
     public class Configuration
     {
         public GeneticConfig GeneticConfig { get; set; }
-
         public MapConfig MapConfig { get; set; }
-
-        public TankConfig TankConfig { get; set; }
-
-        public StrategyConfig StrategyConfig { get; set; }
-
         public StrategyGeneratorConfig StrategyGeneratorConfig { get; set; }
         
         public void SerializeToFile(string filename)

@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace GeneticProgramming.Simulator.Modules
 {
-    class StrategyTokens
+    static class StrategyTokens
     {
         public static bool IsToken(string cmd)
         {
@@ -23,6 +24,18 @@ namespace GeneticProgramming.Simulator.Modules
         public static bool IsFunctionEnd(string cmd)
         {
             return cmd.Contains('}');
+        }
+
+        public static string GetRandomTerminal()
+        {
+            var rnd = new Random(Guid.NewGuid().GetHashCode());
+            return TerminalSet[rnd.Next(TerminalSet.Count)];
+        }
+
+        public static string GetRandomFunction()
+        {
+            var rnd = new Random(Guid.NewGuid().GetHashCode());
+            return FunctionSet[rnd.Next(FunctionSet.Count)];
         }
 
         internal static readonly List<string> TerminalSet = new List<string>

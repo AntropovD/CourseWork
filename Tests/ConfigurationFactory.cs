@@ -11,29 +11,22 @@ namespace Tests
         {
             GeneticConfig = new GeneticConfig
             {
-                PopulationSize = 100,
+                PopulationSize = 5,
                 CrossoverProb = 0.90,
                 MutationProb = 0.05,
                 PanmixiaRatio = 0.4,
                 InbreedRatio = 0.3,
-                OutbreedRatio = 0.3
+                OutbreedRatio = 0.3,
+                MaxStrategySize = 10
             },
             MapConfig = new MapConfig
             {
                 Height = 10,
-                Width = 20,
-                EnemiesCount = 10,
-                ObstaclesCount = 50
-            },
-            TankConfig = new TankConfig
-            {
-                Ammunition = 20,
+                Width = 15,
+                EnemiesCount = 5,
+                ObstaclesCount = 10,
                 FireArea = 2,
                 ViewArea = 4
-            },
-            StrategyConfig = new StrategyConfig
-            {
-                MaxStrategySize = 500
             },
             StrategyGeneratorConfig = new StrategyGeneratorConfig
             {
@@ -46,10 +39,10 @@ namespace Tests
     [TestClass]
     public class TestConfiguration
     {
-       // [TestMethod]
+        [TestMethod]
         public void Deserialize()
         {
-            //ConfigurationFactory.Configuration.SerializeToFile("ASD");
+            ConfigurationFactory.Configuration.SerializeToFile("ASD");
 
             var index = 3;
             add(index);

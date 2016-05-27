@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using GeneticProgramming.Simulator.Strategies;
+using static GeneticProgramming.Simulator.Modules.StrategyTokens;
 
 namespace GeneticProgramming.Genetic.Engine.Types
 {
@@ -14,17 +15,24 @@ namespace GeneticProgramming.Genetic.Engine.Types
             {
                 var rndAlgorithm = basePopulation[rnd.Next(basePopulation.Count)];
                 var changesCount = rnd.Next(rndAlgorithm.commands.Count);
-
-                for (var j = 0; j < changesCount; j++)
-                {
-                    var index = rnd.Next(rndAlgorithm.commands.Count);
-                    var cmd = rndAlgorithm.commands[index];
-//                    if (StrategiesGenerator.IsFunction(cmd))
-//                        rndAlgorithm.commands[index] = StrategiesGenerator.FunctionSet[rnd.Next(FunctionSet.Count)];
-
-                    rndAlgorithm.commands[index] = cmd;
-                }
+                MakeRandomChanges(rndAlgorithm, changesCount);
                 yield return rndAlgorithm;
+            }
+        }
+
+        public void MakeRandomChanges(Strategy algorithm, int count)
+        {
+            var rnd = new Random(Guid.NewGuid().GetHashCode());
+            for (var j = 0; j < count; j++)
+            {
+                var index = rnd.Next(algorithm.commands.Count);
+                var cmd = algorithm.commands[index];
+            
+                if (IsFunction(cmd))
+                    algorithm.commands[index] = GetRandomFunction();
+
+                if (IsTerminal(cmd))
+                    algorithm.commands[index] = GetRandomTerminal();
             }
         }
     }

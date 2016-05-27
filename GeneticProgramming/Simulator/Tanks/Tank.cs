@@ -12,9 +12,19 @@ namespace GeneticProgramming.Simulator.Tanks
         public Strategy Strategy { get; set; }
 
         public bool IsAlive = true;
-        public int viewArea;
-        public int fireArea;
         public int ammunition;
+
+        public Tank(Tank tank)
+        {
+            Coord = new Coord(tank.Coord);
+            Direction = tank.Direction;
+            IsAlive = true;
+        }
+
+        public Tank()
+        {
+
+        }
 
         public static bool operator ==(Tank firstTank, Tank secondTank)
         {
@@ -43,7 +53,7 @@ namespace GeneticProgramming.Simulator.Tanks
         {
             unchecked
             {
-                return ((Coord != null ? Coord.GetHashCode() : 0) * 397) ^ (int)Direction;
+                return ((Coord?.GetHashCode() ?? 0) * 397) ^ (int)Direction;
             }
         }
     }
