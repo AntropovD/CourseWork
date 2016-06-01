@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Windows;
 using GeneticProgramming.Configurations;
 using GeneticProgramming.Simulator;
 using GeneticProgramming.Simulator.Maps;
@@ -15,23 +17,51 @@ namespace BattleVisualiser
         [STAThread]
         static void Main()
         {
+            string fileNotExceeded;
+            if (!CheckFiles(out fileNotExceeded))
+            {
+                MessageBox.Show($"File not exists {fileNotExceeded}");
+                return;
+            }
             var battle = GetBattle();
             using (var game = new GameVisualiser(battle))
                 game.Run();
         }
 
+        private static bool CheckFiles(out string file)
+        {
+            if (File.Exists(folder + mapFile))
+            {
+                file = folder + mapFile;
+                return false;
+            }
+            if (File.Exists(folder + enemyStrategyFile))
+            {
+                file = folder + enemyStrategyFile;
+                return false;
+            }
+            if (File.Exists(folder + strategyFile))
+            {
+                file = folder + strategyFile;
+                return false;
+            }
+            file = "";
+            return true;
+        }
+
+        private static string folder = "Battle\\";
+        private static string mapFile = "Map.dat";
+        private static string enemyStrategyFile = "enemy.strategy";
+        private static string strategyFile = "#1 fitness=202";
+
         static Battle GetBattle()
         {
-            var configuration = Configuration.DeserializeFromFile("config.xml");
+          //  var configuration = Configuration.DeserializeFromFile(folder + "config.xml");
 
-            var strategiesGenerator = new StrategiesGenerator(5000);
-            var strategy = strategiesGenerator.GenerateProgram();
-            var enemyStrategy = strategiesGenerator.GenerateEnemyProgram();
-            System.IO.File.WriteAllLines("strategy.txt", strategy.commands);
-
-            var mapGenerator = new MapGenerator(configuration);
-            var map = mapGenerator.GenerateMap();
-
+            var map = MapSerializator.Deserialise(folder + mapFile);
+            var strategy = StrategySerializator.Deserialize(folder + strategyFile);
+            var enemyStrategy = StrategySerializator.Deserialize(folder + enemyStrategyFile);
+            
             return new Battle(map, strategy, enemyStrategy);
         }
     }

@@ -20,31 +20,20 @@ namespace GeneticProgramming.Simulator
 
         public int Execute()
         {
-            int fitnessValue = 0;
+            var fitnessStat = new FightStat();
             while (!Battle.IsOver)
             {
-                Battle.MakeStep(ref fitnessValue);
-                Visualise(fitnessValue);
-                fitnessValue++;
+                Battle.MakeStep(fitnessStat);
+                Visualise(fitnessStat);
+                fitnessStat.Steps++;
             }
-            fitnessValue += countNearMetric();
-            Visualise(fitnessValue);
-            return fitnessValue;
+            Visualise(fitnessStat);
+            return fitnessStat.Result(Battle);
         }
 
-        private int countNearMetric()
-        {
-            int d1 = Distance(Battle.Map.Tank.Coord, Battle.Map.FinishCoord);
-            int d2 = Distance(Battle.Map.StartCoord, Battle.Map.FinishCoord);
-            return (d2 - d1)*10;
-        }
+       
 
-        private int Distance(Coord startCoord, Coord finishCoord)
-        {
-            return startCoord.X - finishCoord.X + startCoord.Y - finishCoord.Y;
-        }
-
-        private void Visualise(int fitnessValue)
+        private void Visualise(FightStat fitnessValue)
         {
             if (isDebug)
             {

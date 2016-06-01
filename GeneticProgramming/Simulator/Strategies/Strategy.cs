@@ -91,6 +91,16 @@ namespace GeneticProgramming.Simulator.Strategies
             {
                 Directory.CreateDirectory(folder);
             }
+            try
+            {
+                File.WriteAllText(folder + file, string.Join(" ", commands));
+            }
+            catch (SecurityException)
+            {
+                log.Error("Strategy Serialization. Cannot access to map.dat file.");
+            }
+
+            /*
             var formatter = new XmlSerializer(typeof(Strategy));
             using (var fs = new FileStream(folder + file, FileMode.OpenOrCreate))
             {
@@ -106,7 +116,7 @@ namespace GeneticProgramming.Simulator.Strategies
                 {
                     log.Error("Map serialization. Cannot access to map.dat file.");
                 }
-            }
+            }*/
         }
     }
 }

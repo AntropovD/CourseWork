@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using GeneticProgramming.Simulator.Maps;
 using GeneticProgramming.Simulator.Tanks;
 
@@ -16,7 +17,7 @@ namespace GeneticProgramming.Visualiser
 
             foreach (var obstacle in map.Obstacles)
                 result[obstacle.Y, obstacle.X] = '#';
-            foreach (var enemy in map.Enemies)
+            foreach (var enemy in map.Enemies.Where(enemy => enemy.IsAlive))
                 result[enemy.Coord.Y, enemy.Coord.X] = GetEnemyChar(enemy.Direction);
 
             return result;

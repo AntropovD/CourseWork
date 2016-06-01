@@ -31,10 +31,8 @@ namespace BattleVisualiser
 
             Battle = battle;
             FieldBuilder = new FieldBuilder();
+            FightStat = new FightStat();
             Content.RootDirectory = "Content";
-
-            
-            
         }
 
         protected override void Initialize()
@@ -50,21 +48,22 @@ namespace BattleVisualiser
             spriteBatch = new SpriteBatch(GraphicsDevice);
             var texture = Content.Load<Texture2D>("atlas");
             Painter = new Painter(texture, 16, 25);
+            font = Content.Load<SpriteFont>("Font");
 
-           FieldCommands = new Dictionary<char, Action<SpriteBatch, Vector2>>
-           {
-               {'#', Painter.DrawBrick },
-               {' ', Painter.DrawGround },
-               {'2', Painter.DrawTankDown },
-               {'4', Painter.DrawTankLeft },
-               {'8', Painter.DrawTankUp },
-               {'6', Painter.DrawTankRight },
-               {'K', Painter.DrawEnemyDown },
-               {'J', Painter.DrawEnemyLeft },
-               {'I', Painter.DrawEnemyUp },
-               {'L', Painter.DrawEnemyRight },
-               {'S', Painter.DrawStart },
-               {'F', Painter.DrawFinish }
+            FieldCommands = new Dictionary<char, Action<SpriteBatch, Vector2>>
+            {
+                {'#', Painter.DrawBrick },
+                {' ', Painter.DrawGround },
+                {'2', Painter.DrawTankDown },
+                {'4', Painter.DrawTankLeft },
+                {'8', Painter.DrawTankUp },
+                {'6', Painter.DrawTankRight },
+                {'K', Painter.DrawEnemyDown },
+                {'J', Painter.DrawEnemyLeft },
+                {'I', Painter.DrawEnemyUp },
+                {'L', Painter.DrawEnemyRight },
+                {'S', Painter.DrawStart },
+                {'F', Painter.DrawFinish }
             };
         }
         
@@ -78,10 +77,9 @@ namespace BattleVisualiser
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
             // TODO: Add your update logic here
-            int fv = 0;
             if (stopwatch.ElapsedMilliseconds > 500)
             {
-                Battle.MakeStep(ref fv);
+                Battle.MakeStep(stat);
                 stopwatch.Restart();
             }
                 
@@ -106,6 +104,9 @@ namespace BattleVisualiser
 
         private Dictionary<char, Action<SpriteBatch, Vector2>> FieldCommands;
         private Stopwatch stopwatch;
+        private FightStat FightStat;
+        private SpriteFont font;
+
         static Painter Painter { get; set; }
         Battle Battle { get; }
         FieldBuilder FieldBuilder { get; }

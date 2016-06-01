@@ -27,21 +27,21 @@ namespace GeneticProgramming.Simulator
             isTankReachFinish = false;
         }
 
-        public void MakeStep(ref int fitnessValue)
+        public void MakeStep(FightStat fitnessStat)
         {
             foreach (var tank in Map.AllTanks.Where(tank => tank.IsAlive))
             {
                 var command = GetNextStrategy(tank);
-                ExecuteCommand(tank, command, ref fitnessValue);
+                ExecuteCommand(tank, command, fitnessStat);
                 if (Map.Tank.Coord == Map.FinishCoord)
                 {
                     isTankReachFinish = true;
-                    fitnessValue += 1000;
+                    fitnessStat.FinishAchieved = true;
                 }
             }
         }
 
-        private void ExecuteCommand(Tank tank, string command, ref int fitnessValue)
+        private void ExecuteCommand(Tank tank, string command, FightStat fitnessStat)
         {
             switch (command)
             {
@@ -58,7 +58,7 @@ namespace GeneticProgramming.Simulator
                     tank.Direction = DirectionMethods.RotateLeft(tank.Direction);
                     return;
                 case "Shoot":
-                    ShootAction(tank, ref fitnessValue);
+                    ShootAction(tank, fitnessStat);
                     return;
                 case "Finish":
                     tank.IsAlive = false;
@@ -68,7 +68,7 @@ namespace GeneticProgramming.Simulator
             }
         }
 
-        private void ShootAction(Tank tank, ref int fitnessValue)
+        private void ShootAction(Tank tank, FightStat fightStat)
         {
             var shiftCoord = Movements[tank.Direction];
             for (var i = 1; i <= Map.FireArea; i++)
@@ -79,13 +79,15 @@ namespace GeneticProgramming.Simulator
                 if (Map.AllTanks.Any(t => t.Coord == newCoord && t.IsAlive))
                 {
                     if (tank == Map.Tank)
-                    {
-                        fitnessValue += 20;
-                    }
+                        fightStat.Killed++;
+                    else
+                        fightStat.EnemiesKilledByEnemies++;
                     var visibleTank = Map.AllTanks.First(t => t.Coord == newCoord);
                     visibleTank.IsAlive = false;
                     if (visibleTank != Map.Tank)
                         Map.Enemies.Remove(visibleTank);
+                    else
+                        fightStat.IsAlive = false;
                     return;
                 }
             }

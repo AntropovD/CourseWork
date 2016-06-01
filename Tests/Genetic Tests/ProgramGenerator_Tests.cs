@@ -11,7 +11,7 @@ namespace Tests.Genetic_Tests
         {
             var generator = new StrategiesGenerator(30);
             var program = generator.GenerateProgram();
-            Assert.IsTrue(generator.CheckProgram(program.commands));
+            Assert.IsTrue(StrategiesGenerator.CheckProgram(program.commands));
         }
     }
 }
