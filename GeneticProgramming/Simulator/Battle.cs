@@ -12,9 +12,9 @@ namespace GeneticProgramming.Simulator
     {
         public Map Map { get; }
 
-        public bool IsOver => !Map.Tank.IsAlive || isTankReachFinish;
+        public bool IsOver => !Map.Tank.IsAlive || hasTankReachFinish;
 
-        public bool isTankReachFinish;
+        public bool hasTankReachFinish;
 
         public Battle(Map map, Strategy strategy, Strategy enemyStrategy)
         {
@@ -24,7 +24,7 @@ namespace GeneticProgramming.Simulator
             {
                 enemy.Strategy = new Strategy(enemyStrategy);
             }
-            isTankReachFinish = false;
+            hasTankReachFinish = false;
         }
 
         public void MakeStep(FightStat fitnessStat)
@@ -35,10 +35,11 @@ namespace GeneticProgramming.Simulator
                 ExecuteCommand(tank, command, fitnessStat);
                 if (Map.Tank.Coord == Map.FinishCoord)
                 {
-                    isTankReachFinish = true;
+                    hasTankReachFinish = true;
                     fitnessStat.FinishAchieved = true;
                 }
             }
+            fitnessStat.Steps++;
         }
 
         private void ExecuteCommand(Tank tank, string command, FightStat fitnessStat)
@@ -82,11 +83,10 @@ namespace GeneticProgramming.Simulator
                         fightStat.Killed++;
                     else
                         fightStat.EnemiesKilledByEnemies++;
-                    var visibleTank = Map.AllTanks.First(t => t.Coord == newCoord);
+                    var visibleTank = Map.AllTanks.First(t => t.Coord == newCoord && t.IsAlive);
                     visibleTank.IsAlive = false;
-                    if (visibleTank != Map.Tank)
-                        Map.Enemies.Remove(visibleTank);
-                    else
+                    visibleTank.FirstMoveDead = 0;
+                    if (visibleTank == Map.Tank)
                         fightStat.IsAlive = false;
                     return;
                 }
@@ -106,7 +106,7 @@ namespace GeneticProgramming.Simulator
 
         private bool IsEmpty(Coord coord)
         {
-            return !(Map.AllTanks.Any(tank => tank.Coord == coord)
+            return !(Map.AllTanks.Any(tank => tank.Coord == coord && tank.IsAlive)
                    || Map.Obstacles.Any(c => c == coord)) 
                    && NotZeroCoord(coord) && LessThemMaxCoord(coord);
         }

@@ -53,11 +53,15 @@ namespace GeneticProgramming.Genetic.Engine
             {
                 SpeciesAndValues.AddOrUpdate(pair.Key, pair.Value);
             }
+//            foreach (var strategy in strategies)
+//            {
+//                SpeciesAndValues.AddOrUpdate(strategy, Evaluator.countFitness(strategy));
+//            }
         }
         
         public bool HasAnyFinished()
         {
-            return SpeciesAndValues.Any(pair => pair.Value.Result > 1000);
+            return SpeciesAndValues.Any(pair => pair.Value.Result >= 10000);
         }
     }
 }

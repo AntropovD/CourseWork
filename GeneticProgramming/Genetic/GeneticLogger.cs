@@ -13,6 +13,7 @@ namespace GeneticProgramming.Genetic
         private static readonly string directory = "Logs\\Generations\\";
 
         private static readonly ILog logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         public void Start()
         {
             logger.Info("Genetic Programming Started");

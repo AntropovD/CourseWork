@@ -21,6 +21,11 @@ namespace GeneticProgramming.Visualiser
             foreach (var enemy in map.Enemies.Where(enemy => enemy.IsAlive))
                 result[enemy.Coord.Y, enemy.Coord.X] = GetEnemyChar(enemy.Direction);
 
+            foreach (var boomCoord in map.AllTanks.Where(tank => tank.FirstMoveDead<15 && !tank.IsAlive))
+            {
+                result[boomCoord.Coord.Y, boomCoord.Coord.X] = '*';
+                boomCoord.FirstMoveDead++;
+            }
             return result;
         }
 

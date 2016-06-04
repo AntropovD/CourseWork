@@ -25,7 +25,6 @@ namespace GeneticProgramming.Simulator
             {
                 Battle.MakeStep(fitnessStat);
                 Visualise(fitnessStat);
-                fitnessStat.Steps++;
             }
             Visualise(fitnessStat);
             fitnessStat.UpdateResult(Battle);
@@ -44,7 +43,7 @@ namespace GeneticProgramming.Simulator
                 Console.WriteLine($"Killed: {fitnessValue.Killed}");
                 Console.WriteLine($"EnemiesKilledEachOther:{fitnessValue.EnemiesKilledByEnemies} ");
                 Console.WriteLine($"Tanks left: {Battle.Map.Enemies.Count} ");
-                System.Threading.Thread.Sleep(100);
+                System.Threading.Thread.Sleep(1000);
             }
         }
     }

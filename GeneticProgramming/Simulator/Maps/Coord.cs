@@ -5,8 +5,8 @@ namespace GeneticProgramming.Simulator.Maps
     [Serializable]
     public class Coord
     {
-        public readonly int X;
-        public readonly int Y;
+        public readonly int X = 0;
+        public readonly int Y = 0;
 
         public Coord(int x, int y)
         {
@@ -18,6 +18,10 @@ namespace GeneticProgramming.Simulator.Maps
         {
             X = coord.X;
             Y = coord.Y;
+        }
+
+        public Coord()
+        {
         }
 
         public static Coord operator +(Coord C, Coord D)

@@ -1,7 +1,7 @@
 ﻿using System;
 using GeneticProgramming.Simulator;
 
-namespace GeneticProgramming.Visualiser
+namespace GeneticProgramming.Visualiser 
 {
     class ConsoleVisualiser 
     {

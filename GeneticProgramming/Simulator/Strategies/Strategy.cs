@@ -95,42 +95,5 @@ namespace GeneticProgramming.Simulator.Strategies
         {
             index = 0;
         }
-        private static string folder = @"Logs\Generations\";
-        private static string file = "enemy.strategy";
-        private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-
-        public void Serialize()
-        {
-            if (!Directory.Exists(folder))
-            {
-                Directory.CreateDirectory(folder);
-            }
-            try
-            {
-                File.WriteAllText(folder + file, string.Join(" ", commands));
-            }
-            catch (SecurityException)
-            {
-                log.Error("Strategy Serialization. Cannot access to map.dat file.");
-            }
-
-            /*
-            var formatter = new XmlSerializer(typeof(Strategy));
-            using (var fs = new FileStream(folder + file, FileMode.OpenOrCreate))
-            {
-                try
-                {
-                    formatter.Serialize(fs, this);
-                }
-                catch (SerializationException)
-                {
-                    log.Error("Map Serialization problems:(");
-                }
-                catch (SecurityException)
-                {
-                    log.Error("Map serialization. Cannot access to map.dat file.");
-                }
-            }*/
-        }
     }
 }

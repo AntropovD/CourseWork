@@ -50,7 +50,7 @@ namespace BattleVisualiser.Modules
             TextureAtlas.Draw(spriteBatch, location, 8, 8);
         }
 
-        public void DrawEnemyRight(SpriteBatch spriteBatch, Vector2 location)
+        public void DrawEnemyLeft(SpriteBatch spriteBatch, Vector2 location)
         {
             TextureAtlas.Draw(spriteBatch, location, 8, 10);
         }
@@ -60,7 +60,7 @@ namespace BattleVisualiser.Modules
             TextureAtlas.Draw(spriteBatch, location, 8, 12);
         }
 
-        public void DrawEnemyLeft(SpriteBatch spriteBatch, Vector2 location)
+        public void DrawEnemyRight(SpriteBatch spriteBatch, Vector2 location)
         {
             TextureAtlas.Draw(spriteBatch, location, 8, 14);
         }
@@ -73,6 +73,10 @@ namespace BattleVisualiser.Modules
         public void DrawFinish(SpriteBatch spriteBatch, Vector2 location)
         {
             TextureAtlas.Draw(spriteBatch, location, 2, 19);
+        }
+        public void DrawBomb(SpriteBatch spriteBatch, Vector2 location)
+        {
+            TextureAtlas.Draw(spriteBatch, location, 8, 18);
         }
 
         private TextureAtlas TextureAtlas { get; }

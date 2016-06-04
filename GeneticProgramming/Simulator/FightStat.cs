@@ -14,13 +14,13 @@ namespace GeneticProgramming.Simulator
         public int EnemiesKilledByEnemies { get; set; } = 0;
         public bool FinishAchieved { get; set; } = false;
         public bool IsAlive { get; set; } = true;
-        public int Result { get; set; }
+        public int Result { get; set; } = 0;
         
         public void UpdateResult(Battle battle)
         {
             Result = Steps + Killed * 50 + countNearMetric(battle) * 10;
             if (FinishAchieved)
-                Result += 1000;
+                Result = 10000;
         }
 
         private int countNearMetric(Battle Battle)

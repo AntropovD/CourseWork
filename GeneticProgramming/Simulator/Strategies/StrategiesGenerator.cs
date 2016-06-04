@@ -70,7 +70,7 @@ namespace GeneticProgramming.Simulator.Strategies
                 result.Add("Forward");
                 result.Add("Forward");
                 result.Add("Shoot");
-                index += 2;
+                index += 4;
             }
             return new Strategy(result);
         }

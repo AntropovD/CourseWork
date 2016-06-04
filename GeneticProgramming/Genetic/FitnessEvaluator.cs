@@ -7,17 +7,26 @@ namespace GeneticProgramming.Genetic
 {
     public class FitnessEvaluator
     {
-        private Strategy EnemyStrategy { get; }
-        private Map Map { get; }
+        private Strategy EnemyStrategy { get; set; }
+        private Map Map { get; set; }
 
         public FitnessEvaluator(Configuration config)
         {
+            CreateAndSerializeMap(config);
+            CreateAndSerializeEnemyStrategy(config);
+        }
+
+        private void CreateAndSerializeEnemyStrategy(Configuration config)
+        {
             var strategyGenerator = new StrategiesGenerator(config.GeneticConfig.MaxStrategySize);
             EnemyStrategy = strategyGenerator.GenerateEnemyProgram();
+            StrategySerializator.SerializeToFile(enemyStrategyFile, EnemyStrategy, new FightStat());
+        }
 
+        private void CreateAndSerializeMap(Configuration config)
+        {
             var mapGenerator = new MapGenerator(config);
             Map = mapGenerator.GenerateMap();
-            EnemyStrategy.Serialize();
             MapSerializator.Serialize(Map);
         }
 
@@ -28,5 +37,7 @@ namespace GeneticProgramming.Genetic
             var battleSimulator = new BattleSimulator(map, tankStrategy, enemyStrategy);
             return battleSimulator.Execute();
         }
+        
+        private const string enemyStrategyFile = @"Logs\Generations\enemy.strategy";
     }
 }

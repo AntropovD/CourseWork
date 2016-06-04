@@ -12,12 +12,14 @@ namespace GeneticProgramming.Simulator.Tanks
         public Strategy Strategy { get; set; }
 
         public bool IsAlive = true;
+        public int FirstMoveDead = 10;
         public int ammunition;
 
         public Tank(Tank tank)
         {
             Coord = new Coord(tank.Coord);
             Direction = tank.Direction;
+            FirstMoveDead = tank.FirstMoveDead;
             IsAlive = true;
         }
 

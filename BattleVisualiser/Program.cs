@@ -49,19 +49,19 @@ namespace BattleVisualiser
             return true;
         }
 
-        private static string folder = "Battle\\";
-        private static string mapFile = "Map.dat";
-        private static string enemyStrategyFile = "enemy.strategy";
-        private static string strategyFile = "tank.Strategy";
-
         static Battle GetBattle()
         {
             var map = MapSerializator.Deserialise(folder + mapFile);
             var strategy = StrategySerializator.Deserialize(folder + strategyFile);
             var enemyStrategy = StrategySerializator.Deserialize(folder + enemyStrategyFile);
-            
+
             return new Battle(map, strategy, enemyStrategy);
         }
+
+        private static string folder = "Battle\\";
+        private static string mapFile = "Map.dat";
+        private static string enemyStrategyFile = "enemy.strategy";
+        private static string strategyFile = "tank.Strategy";
     }
 #endif
 }
