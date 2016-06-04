@@ -18,7 +18,7 @@ namespace GeneticProgramming.Simulator
             this.isDebug = isDebug;
         }
 
-        public int Execute()
+        public FightStat Execute()
         {
             var fitnessStat = new FightStat();
             while (!Battle.IsOver)
@@ -28,18 +28,22 @@ namespace GeneticProgramming.Simulator
                 fitnessStat.Steps++;
             }
             Visualise(fitnessStat);
-            return fitnessStat.Result(Battle);
+            fitnessStat.UpdateResult(Battle);
+            return fitnessStat;
         }
-
-       
 
         private void Visualise(FightStat fitnessValue)
         {
             if (isDebug)
             {
                 Visualiser.Visualise(Battle);
-                Console.WriteLine($"{Battle.Map.Tank.Strategy.LastCommand} {fitnessValue}");
-                Console.WriteLine($"Tanks left: {Battle.Map.Enemies.Count}");
+                fitnessValue.UpdateResult(Battle);
+                Console.WriteLine($"LastCommand: {Battle.Map.Tank.Strategy.LastCommand} ");
+                Console.WriteLine($"FitnessValue: {fitnessValue.Result}");
+                Console.WriteLine($"Steps: {fitnessValue.Steps}");
+                Console.WriteLine($"Killed: {fitnessValue.Killed}");
+                Console.WriteLine($"EnemiesKilledEachOther:{fitnessValue.EnemiesKilledByEnemies} ");
+                Console.WriteLine($"Tanks left: {Battle.Map.Enemies.Count} ");
                 System.Threading.Thread.Sleep(100);
             }
         }

@@ -13,7 +13,8 @@ namespace GeneticProgramming.Visualiser
 
             result[map.StartCoord.Y, map.StartCoord.X] = 'S';
             result[map.FinishCoord.Y, map.FinishCoord.X] = 'F';
-            result[map.Tank.Coord.Y, map.Tank.Coord.X] = GetTankChar(map.Tank.Direction);
+            if (map.Tank.IsAlive)
+                result[map.Tank.Coord.Y, map.Tank.Coord.X] = GetTankChar(map.Tank.Direction);
 
             foreach (var obstacle in map.Obstacles)
                 result[obstacle.Y, obstacle.X] = '#';

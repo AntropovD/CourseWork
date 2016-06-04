@@ -22,7 +22,7 @@ namespace GeneticProgramming.Genetic.Engine.Types
             {
                 var index1 = random.Next(size);
                 var index2 = random.Next(size);
-                if (array[index1].Value >= array[index2].Value)
+                if (array[index1].Value.Result >= array[index2].Value.Result)
                 {
                     population.SpeciesAndValues.Remove(array[index2].Key);
                     array.RemoveAt(index2);
@@ -33,10 +33,8 @@ namespace GeneticProgramming.Genetic.Engine.Types
 
         public void MakeMaximalSelection(Population population)
         {
-            var size = population.SpeciesAndValues.Count;
-            var random = new Random(Guid.NewGuid().GetHashCode());
-            var array = population.SpeciesAndValues.OrderByDescending(pair => pair.Value).ToList();
-
+            var array = population.SpeciesAndValues.
+                OrderByDescending(pair => pair.Value).ToList();
             foreach (var keyValuePair in array.Skip(populationSize))
             {
                 population.SpeciesAndValues.Remove(keyValuePair.Key);

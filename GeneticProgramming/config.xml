@@ -7,18 +7,18 @@
     <PanmixiaRatio>0.3</PanmixiaRatio>
     <InbreedRatio>0.2</InbreedRatio>
     <OutbreedRatio>0.2</OutbreedRatio>
-    <MaxStrategySize>200</MaxStrategySize>
+    <MaxStrategySize>1000</MaxStrategySize>
   </GeneticConfig>
-  <MapConfig>*
-    <Width>10</Width>
-    <Height>10</Height>
-    <ObstaclesCount>10</ObstaclesCount>
-    <EnemiesCount>5</EnemiesCount>
-    <ViewArea>4</ViewArea>
-    <FireArea>3</FireArea>
+  <MapConfig>
+    <Width>20</Width>
+    <Height>20</Height>
+    <ObstaclesCount>50</ObstaclesCount>
+    <EnemiesCount>20</EnemiesCount>
+    <ViewArea>10</ViewArea>
+    <FireArea>10</FireArea>
   </MapConfig>
   <StrategyGeneratorConfig>
-    <CloseBracketCoefficient>0.7</CloseBracketCoefficient>
-    <NewFunctionCoefficient>0.5</NewFunctionCoefficient>
+    <CloseBracketCoefficient>0.5</CloseBracketCoefficient>
+    <NewFunctionCoefficient>0.7</NewFunctionCoefficient>
   </StrategyGeneratorConfig>
 </Configuration>

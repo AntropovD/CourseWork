@@ -21,7 +21,7 @@ namespace GeneticProgramming.Genetic
             MapSerializator.Serialize(Map);
         }
 
-        public int countFitness(Strategy tankStrategy)
+        public FightStat countFitness(Strategy tankStrategy)
         {
             var map = new Map(Map);
             var enemyStrategy = new Strategy(EnemyStrategy);

@@ -5,8 +5,10 @@ using BattleVisualiser.Modules;
 using GeneticProgramming.Simulator;
 using GeneticProgramming.Visualiser;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 
 namespace BattleVisualiser
 {
@@ -19,17 +21,17 @@ namespace BattleVisualiser
 
         public GameVisualiser(Battle battle)
         {
-            int width = (battle.Map.Width+2) * spriteMultiplier;
-            int height = (battle.Map.Height+2) * spriteMultiplier;
+            width = (battle.Map.Width+2) * spriteMultiplier;
+            height = (battle.Map.Height+2) * spriteMultiplier;
 
             graphics = new GraphicsDeviceManager(this)
             {
-                PreferredBackBufferWidth = width,
+                PreferredBackBufferWidth = Math.Max(width, 700),
                 PreferredBackBufferHeight = height + 50,
                 IsFullScreen = false
             };
 
-            Battle = battle;
+            this.battle = battle;
             FieldBuilder = new FieldBuilder();
             FightStat = new FightStat();
             Content.RootDirectory = "Content";
@@ -48,8 +50,14 @@ namespace BattleVisualiser
             spriteBatch = new SpriteBatch(GraphicsDevice);
             var texture = Content.Load<Texture2D>("atlas");
             Painter = new Painter(texture, 16, 25);
-            font = Content.Load<SpriteFont>("Font");
+            textFont = Content.Load<SpriteFont>("Text");
+            messageFont = Content.Load<SpriteFont>("Message");
+            song = Content.Load<SoundEffect>("music");
+            boomSound = Content.Load<SoundEffect>("bomb");
+            song.Play();
+            
 
+            
             FieldCommands = new Dictionary<char, Action<SpriteBatch, Vector2>>
             {
                 {'#', Painter.DrawBrick },
@@ -76,39 +84,98 @@ namespace BattleVisualiser
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-            // TODO: Add your update logic here
-            if (stopwatch.ElapsedMilliseconds > 500)
+
+            PresentKey = Keyboard.GetState();
+            if (PresentKey.IsKeyDown(Keys.OemMinus) && PastKey.IsKeyUp(Keys.OemMinus))
+                DecreaseSpeed();
+            if (PresentKey.IsKeyDown(Keys.OemPlus) && PastKey.IsKeyUp(Keys.OemPlus))
+                IncreaseSpeed();
+            PastKey = PresentKey;
+            
+            if (stopwatch.ElapsedMilliseconds > currentSpeed)
             {
-                Battle.MakeStep(stat);
+                if (!battle.IsOver)
+                    battle.MakeStep(FightStat);
                 stopwatch.Restart();
             }
-                
+            
             base.Update(gameTime);
         }
-        
+
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.AliceBlue);
 
-            var field = FieldBuilder.GetField(Battle.Map);
+            var field = FieldBuilder.GetField(battle.Map);
             int h = field.GetLength(0);
             int w = field.GetLength(1);
+
+            
             for (int i = 0; i < h; i++)
                 for (int j = 0; j < w; j++)
                 {
-                    var location = new Vector2(j * spriteMultiplier, i * spriteMultiplier);
+                    var location = new Vector2(j*spriteMultiplier, i*spriteMultiplier);
                     FieldCommands[field[i, j]](spriteBatch, location);
                 }
+
+            if (!battle.Map.Tank.IsAlive)
+            {
+                spriteBatch.Begin();
+                string message = battle.Map.Tank.Strategy.strategyOver ? "Strategy Was Over" : "Tank was killed";
+                spriteBatch.DrawString(messageFont, message, 
+                        new Vector2((float) (height*0.5-100), (float) (100)), Color.Red);
+                spriteBatch.End();
+            }
+            if (battle.isTankReachFinish)
+            {
+                spriteBatch.Begin();
+                string message = "Tank reaches finish";
+                spriteBatch.DrawString(messageFont, message,
+                        new Vector2((float)(height * 0.5 - 100), (float)(100)), Color.Red);
+                spriteBatch.End();
+            }
+
+            int stringHeight = spriteMultiplier*h;
+            FightStat.UpdateResult(battle);
+            string statString = $"Score: {FightStat.Result} " +
+                                $"Tank kills: {FightStat.Killed} " +
+                                $"Enemies killed each other: {FightStat.EnemiesKilledByEnemies} " +
+                                $"Step: {FightStat.Steps} " +
+                                $"Tanks left: {battle.Map.AllTanks.Count} " +
+                                $"Current speed: {currentSpeed}";
+
+
+            spriteBatch.Begin();
+            spriteBatch.DrawString(textFont, statString, new Vector2(10, stringHeight), Color.Green);
+            spriteBatch.End();
             base.Draw(gameTime);
         }
 
         private Dictionary<char, Action<SpriteBatch, Vector2>> FieldCommands;
         private Stopwatch stopwatch;
         private FightStat FightStat;
-        private SpriteFont font;
+        private SpriteFont textFont;
+        private SpriteFont messageFont;
+        private long currentSpeed = 500;
+        private SoundEffect song;
+        private SoundEffect boomSound;
+        private int width;
+        private int height;
 
+        private void DecreaseSpeed()
+        {
+            currentSpeed = Math.Max(50, currentSpeed - 50);
+        }
+
+        private void IncreaseSpeed()
+        {
+            currentSpeed = Math.Min(1000, currentSpeed + 50);
+        }
+        
+        public KeyboardState PastKey { get; set; }
+        public KeyboardState PresentKey { get; set; }
         static Painter Painter { get; set; }
-        Battle Battle { get; }
+        Battle battle { get; }
         FieldBuilder FieldBuilder { get; }
     }
 

@@ -30,17 +30,17 @@ namespace BattleVisualiser
 
         private static bool CheckFiles(out string file)
         {
-            if (File.Exists(folder + mapFile))
+            if (!File.Exists(folder + mapFile))
             {
                 file = folder + mapFile;
                 return false;
             }
-            if (File.Exists(folder + enemyStrategyFile))
+            if (!File.Exists(folder + enemyStrategyFile))
             {
                 file = folder + enemyStrategyFile;
                 return false;
             }
-            if (File.Exists(folder + strategyFile))
+            if (!File.Exists(folder + strategyFile))
             {
                 file = folder + strategyFile;
                 return false;
@@ -52,12 +52,10 @@ namespace BattleVisualiser
         private static string folder = "Battle\\";
         private static string mapFile = "Map.dat";
         private static string enemyStrategyFile = "enemy.strategy";
-        private static string strategyFile = "#1 fitness=202";
+        private static string strategyFile = "tank.Strategy";
 
         static Battle GetBattle()
         {
-          //  var configuration = Configuration.DeserializeFromFile(folder + "config.xml");
-
             var map = MapSerializator.Deserialise(folder + mapFile);
             var strategy = StrategySerializator.Deserialize(folder + strategyFile);
             var enemyStrategy = StrategySerializator.Deserialize(folder + enemyStrategyFile);

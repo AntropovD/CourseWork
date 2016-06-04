@@ -39,8 +39,8 @@ namespace GeneticProgramming.Genetic.Engine
 
         public Population SelectPopulation(Population population)
         {
-           // Selection.MakeTournamentSelection(population);
-            Selection.MakeMaximalSelection(population);
+            Selection.MakeTournamentSelection(population);
+           // Selection.MakeMaximalSelection(population);
             return population;
         }
     }

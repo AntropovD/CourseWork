@@ -14,24 +14,31 @@ namespace GeneticProgramming.Simulator
         public int EnemiesKilledByEnemies { get; set; } = 0;
         public bool FinishAchieved { get; set; } = false;
         public bool IsAlive { get; set; } = true;
+        public int Result { get; set; }
         
-        public int Result(Battle Battle)
+        public void UpdateResult(Battle battle)
         {
-            return Steps + Killed * 50 + countNearMetric(Battle) * 50;
+            Result = Steps + Killed * 50 + countNearMetric(battle) * 10;
+            if (FinishAchieved)
+                Result += 1000;
         }
 
         private int countNearMetric(Battle Battle)
         {
             int d1 = Distance(Battle.Map.Tank.Coord, Battle.Map.FinishCoord);
             int d2 = Distance(Battle.Map.StartCoord, Battle.Map.FinishCoord);
-            return (d2 - d1) * 10;
+            return (d2 - d1);
         }
 
         private int Distance(Coord startCoord, Coord finishCoord)
         {
-            return startCoord.X - finishCoord.X + startCoord.Y - finishCoord.Y;
+            return Math.Abs(startCoord.X - finishCoord.X) + Math.Abs(startCoord.Y - finishCoord.Y);
         }
 
-
+        public override string ToString()
+        {
+            return $"Fitness: {Result}, Steps: {Steps}, Killed: {Killed}" +
+                   $" Finish Achieved: {FinishAchieved}, Alive: {IsAlive}";
+        }
     }
 }

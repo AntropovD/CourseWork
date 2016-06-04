@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using GeneticProgramming.Configurations.PartialConfigs;
 using GeneticProgramming.Simulator.Modules;
 
 namespace GeneticProgramming.Simulator.Strategies
@@ -9,12 +10,19 @@ namespace GeneticProgramming.Simulator.Strategies
     {
         private readonly int maxLength;
 
-        private const double closeBracketCoeff = 0.7;
-        private const double newFunctionCoeff = 0.5; 
+        private readonly double closeBracketCoeff = 0.7;
+        private readonly double newFunctionCoeff = 0.5;
 
-        public StrategiesGenerator(int MaxStrategySize)
+        public StrategiesGenerator(int MaxStrategySize, StrategyGeneratorConfig strategyGeneratorConfig)
         {
+            closeBracketCoeff = strategyGeneratorConfig.CloseBracketCoefficient;
+            newFunctionCoeff = strategyGeneratorConfig.NewFunctionCoefficient;
             maxLength = MaxStrategySize;
+        }
+
+        public StrategiesGenerator(int maxStrategySize)
+        {
+            maxLength = maxStrategySize;
         }
 
         public Strategy GenerateProgram()
@@ -62,7 +70,7 @@ namespace GeneticProgramming.Simulator.Strategies
                 result.Add("Forward");
                 result.Add("Forward");
                 result.Add("Shoot");
-                index += 4;
+                index += 2;
             }
             return new Strategy(result);
         }

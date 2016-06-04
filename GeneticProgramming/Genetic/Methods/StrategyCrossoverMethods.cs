@@ -10,8 +10,8 @@ namespace GeneticProgramming.Genetic.Methods
         public static Strategy Crossover(Strategy firstStrategy, Strategy secondStrategy, int maxSize)
         {
             var random = new Random(Guid.NewGuid().GetHashCode());
-            var firstIndex = random.Next(1, firstStrategy.commands.Count);
-            var secondIndex = random.Next(1, secondStrategy.commands.Count);
+            var firstIndex = random.Next(0, firstStrategy.commands.Count);
+            var secondIndex = random.Next(0, secondStrategy.commands.Count);
 
             if (firstIndex + secondIndex > maxSize)
             {

@@ -7,7 +7,7 @@ using GeneticProgramming.Simulator.Tanks;
 namespace GeneticProgramming.Simulator.Maps
 {
     [Serializable]
-    public class Map : ICloneable
+    public class Map
     {
         public int Width { get; }
         public int Height { get; }
@@ -19,19 +19,6 @@ namespace GeneticProgramming.Simulator.Maps
         public List<Tank> AllTanks => Enemies.Concat(new List<Tank> { Tank }).ToList();
         public int ViewArea { get; set; }
         public int FireArea { get; set; }
-
-        public Map(MapConfig mapConfig, List<Coord> obstacles, List<Coord> enemies, Coord start, Coord finish)
-        {
-            var tankGenerator = new TankGenerator(mapConfig);
-            Width = mapConfig.Width;
-            Height = mapConfig.Height;
-           
-            Obstacles = obstacles;
-            StartCoord = start;
-            FinishCoord = finish;
-            Tank = tankGenerator.RandomizeTank(start);
-            Enemies = enemies.Select(tankGenerator.RandomizeTank).ToList();
-        }
         
         public Map(Map map)
         {
@@ -47,16 +34,25 @@ namespace GeneticProgramming.Simulator.Maps
             CloneEnemies(map);
         }
 
-
         public Map()
         {
         }
 
-        public object Clone()
+        public Map(MapConfig mapConfig, List<Coord> obstacles, List<Coord> enemies, Coord startCoord, Coord finishCoord)
         {
-            return MemberwiseClone();
-        }
+            var tankGenerator = new TankGenerator(mapConfig);
+            Width = mapConfig.Width;
+            Height = mapConfig.Height;
+            FireArea = mapConfig.FireArea;
+            ViewArea = mapConfig.ViewArea;
 
+            Obstacles = obstacles;
+            StartCoord = startCoord;
+            FinishCoord = finishCoord;
+            Tank = tankGenerator.RandomizeTank(startCoord);
+            Enemies = enemies.Select(tankGenerator.RandomizeTank).ToList();
+        }
+        
         private void CloneEnemies(Map map)
         {
             Enemies = new List<Tank>();

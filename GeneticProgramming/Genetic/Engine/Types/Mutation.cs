@@ -27,10 +27,8 @@ namespace GeneticProgramming.Genetic.Engine.Types
             {
                 var index = rnd.Next(algorithm.commands.Count);
                 var cmd = algorithm.commands[index];
-            
                 if (IsFunction(cmd))
                     algorithm.commands[index] = GetRandomFunction();
-
                 if (IsTerminal(cmd))
                     algorithm.commands[index] = GetRandomTerminal();
             }

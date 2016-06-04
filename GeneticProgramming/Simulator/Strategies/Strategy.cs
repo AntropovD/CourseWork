@@ -21,6 +21,8 @@ namespace GeneticProgramming.Simulator.Strategies
 
         public string LastCommand { get; set; } = "Init";
 
+        public bool strategyOver = false;
+
         private Strategy()
         {
             
@@ -41,7 +43,10 @@ namespace GeneticProgramming.Simulator.Strategies
         public string GetNextCommand(Map map, Tank tank)
         {
             if (index >= commands.Count)
+            {
+                strategyOver = true;
                 return "Finish";
+            }
             while (!IsTerminal(commands[index]))
             {
                 if (IsFunction(commands[index]))
@@ -50,21 +55,30 @@ namespace GeneticProgramming.Simulator.Strategies
                     {
                         index++;
                         if (index >= commands.Count)
+                        {
+                            strategyOver = true;
                             return "Finish";
+                        }
                     }
                     else
                         while (!IsFunctionEnd(commands[index]))
                         {
                             index++;
                             if (index >= commands.Count)
+                            {
+                                strategyOver = true;
                                 return "Finish";
+                            }
                         }
                 }
                 if (IsFunctionEnd(commands[index]))
                 {
                     index++;
                     if (index >= commands.Count)
+                    {
+                        strategyOver = true;
                         return "Finish";
+                    }
                 }
             }
             LastCommand = commands[index];
