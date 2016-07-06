@@ -12,7 +12,7 @@ namespace Tests.Visualiser_Tests
             var builder = new FieldBuilder();
             var result = builder.GenerateEmptyFieldWithBorder(1, 1);
 
-            var expected = new char[,]
+            var expected = new[,]
             {
                 {'#', '#', '#'},
                 {'#', ' ', '#'},

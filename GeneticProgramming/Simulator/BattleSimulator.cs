@@ -27,7 +27,7 @@ namespace GeneticProgramming.Simulator
                 Visualise(fitnessStat);
             }
             Visualise(fitnessStat);
-            fitnessStat.UpdateResult(Battle);
+            fitnessStat.CountFitness(Battle);
             return fitnessStat;
         }
 
@@ -36,7 +36,7 @@ namespace GeneticProgramming.Simulator
             if (isDebug)
             {
                 Visualiser.Visualise(Battle);
-                fitnessValue.UpdateResult(Battle);
+                fitnessValue.CountFitness(Battle);
                 Console.WriteLine($"LastCommand: {Battle.Map.Tank.Strategy.LastCommand} ");
                 Console.WriteLine($"FitnessValue: {fitnessValue.Result}");
                 Console.WriteLine($"Steps: {fitnessValue.Steps}");

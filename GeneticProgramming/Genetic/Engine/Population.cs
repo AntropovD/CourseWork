@@ -1,5 +1,6 @@
 ﻿using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -20,6 +21,7 @@ namespace GeneticProgramming.Genetic.Engine
         public Dictionary<Strategy, FightStat> SpeciesAndValues { get; set; }
         private static FitnessEvaluator Evaluator;
         private static readonly ILog log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        public int Index { get; private set; } = 1;
         
         public Population(Configuration config)
         {
@@ -44,6 +46,8 @@ namespace GeneticProgramming.Genetic.Engine
 
         public void UpdateStrategies(IEnumerable<Strategy> strategies)
         {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
             ConcurrentDictionary<Strategy, FightStat> tempDictionary = new ConcurrentDictionary<Strategy, FightStat>();
             Parallel.ForEach(strategies, strategy =>
             {
@@ -53,6 +57,9 @@ namespace GeneticProgramming.Genetic.Engine
             {
                 SpeciesAndValues.AddOrUpdate(pair.Key, pair.Value);
             }
+            log.Info($"Parallel update strategies: {sw.ElapsedMilliseconds}");
+            sw.Reset();
+            
 //            foreach (var strategy in strategies)
 //            {
 //                SpeciesAndValues.AddOrUpdate(strategy, Evaluator.countFitness(strategy));
@@ -62,6 +69,11 @@ namespace GeneticProgramming.Genetic.Engine
         public bool HasAnyFinished()
         {
             return SpeciesAndValues.Any(pair => pair.Value.Result >= 10000);
+        }
+
+        public void IncreaseIndex()
+        {
+            Index++;
         }
     }
 }

@@ -28,15 +28,15 @@ namespace GeneticProgramming.Genetic
             }
         }
 
-        public void LogGeneration(Population population, int index)
+        public void LogGeneration(Population population)
         {
-            LogPopulationInfo(population, index);
-            LogAllStrategies(population, index);
+            LogPopulationInfo(population);
+            LogAllStrategies(population);
         }
 
-        private void LogPopulationInfo(Population population, int index)
+        private void LogPopulationInfo(Population population)
         {
-            logger.Info($"Generation #{index}");
+            logger.Info($"Generation #{population.Index}");
             var speciesAndValues = population.SpeciesAndValues;
             var min = speciesAndValues.Min(pair => pair.Value.Result);
             var max = speciesAndValues.Max(pair => pair.Value.Result);
@@ -44,9 +44,9 @@ namespace GeneticProgramming.Genetic
             logger.Info($@"Min fitness: {min}, Max fitness: {max}, Average: {average}");
         }
 
-        private void LogAllStrategies(Population population, int index)
+        private void LogAllStrategies(Population population)
         {
-            string folderName = $"{directory}Generation{index}";
+            string folderName = $"{directory}Generation{population.Index}";
             try
             {
                 if (Directory.Exists(folderName))
@@ -57,7 +57,7 @@ namespace GeneticProgramming.Genetic
             {
                 logger.Error("Cannot create population directory");
             }
-            index = 0;
+            int index = 0;
             foreach (var pair in population.SpeciesAndValues)
             {
                 string filename = $"{folderName}\\#{index} - fitness={pair.Value.Result}";

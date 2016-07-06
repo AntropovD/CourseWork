@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using GeneticProgramming.Configurations;
 using GeneticProgramming.Extensions;
@@ -28,16 +29,32 @@ namespace GeneticProgramming.Genetic
             logger.Start();
             population = new Population(configuration);
             logger.InitiateMessage();
-            var index = 1;
             while (true)
             {
-                MakeNextGeneration(ref index);
-                if (population.HasAnyFinished())
-                    return;
+                MakeNextGeneration();
+//                if (population.HasAnyFinished())
+//                    return;
             }
         }
 
-        private void MakeNextGeneration(ref int index)
+        public Population RunAndGetPopulation()
+        {
+            logger.Start();
+            population = new Population(configuration);
+            logger.InitiateMessage();
+            var sw = new Stopwatch();
+            sw.Start();
+            while (true)
+            {
+                MakeNextGeneration();
+                if (population.HasAnyFinished())
+                    return population;
+                if (sw.ElapsedMilliseconds > 1000 * 60 * 5)
+                    return population;
+            }
+        }
+
+        private void MakeNextGeneration()
         {
             var nextGenerationStrategies = GetNextGenerationStrategies();
             if (!nextGenerationStrategies.Any(strategy => StrategiesGenerator.CheckProgram(strategy.commands)))
@@ -47,8 +64,8 @@ namespace GeneticProgramming.Genetic
             population.UpdateStrategies(nextGenerationStrategies);
             population = geneticEngine.SelectPopulation(population);
 
-            logger.LogGeneration(population, index);
-            index++;
+            logger.LogGeneration(population);
+            population.IncreaseIndex();
         }
 
         private List<Strategy> GetNextGenerationStrategies()

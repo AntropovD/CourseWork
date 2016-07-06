@@ -16,11 +16,13 @@ namespace GeneticProgramming.Simulator
         public bool IsAlive { get; set; } = true;
         public int Result { get; set; } = 0;
         
-        public void UpdateResult(Battle battle)
+        public void CountFitness(Battle battle)
         {
             Result = Steps + Killed * 50 + countNearMetric(battle) * 10;
             if (FinishAchieved)
-                Result = 10000;
+                Result += 10000;
+            if (!IsAlive)
+                Result -= 100;
         }
 
         private int countNearMetric(Battle Battle)

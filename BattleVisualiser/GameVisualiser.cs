@@ -119,7 +119,7 @@ namespace BattleVisualiser
         {
 
             int stringHeight = height;
-            fightStat.UpdateResult(battle);
+            fightStat.CountFitness(battle);
             string statString = $"Score: {fightStat.Result} " +
                                 $"Tank kills: {fightStat.Killed} " +
                                 $"Enemies killed each other: {fightStat.EnemiesKilledByEnemies} " +
@@ -189,7 +189,7 @@ namespace BattleVisualiser
         }
 
         private const int spriteMultiplier = 24;
-        private long currentSpeed = 500;
+        private long currentSpeed = 300;
 
         public KeyboardState PastKey { get; set; }
         public KeyboardState PresentKey { get; set; }
